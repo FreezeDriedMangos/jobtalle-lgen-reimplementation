@@ -5,11 +5,24 @@ using UnityEngine;
 
 namespace LGen.LRender 
 { 
+
+    public class LeafArmature
+    {
+        public List<VertexTree> side1 = new List<VertexTree>();
+        public List<VertexTree> side2 = new List<VertexTree>();
+    }
+    public class Armature
+    {
+        public VertexTree VertexTree;
+        public List<LeafArmature> leaves;
+    }
+
     public class Modeller
     {
         public List<Mesh> GenerateMeshes(Sentence sentence, float stemRadiusFactor = 0.05f)
         {
-            VertexTree tree = GenerateTree(sentence);
+            Armature armature = GenerateTree(sentence);
+            VertexTree tree = armature.VertexTree;
             
             //List<int> stemLoad = new List<int>();
             Dictionary<VertexTree, int> vertexLoad = new Dictionary<VertexTree, int>();
@@ -33,7 +46,59 @@ namespace LGen.LRender
                 branchMeshes.Add(CreateCylinder(start, end, bottomRadius, topRadius));
             }
 
-            return branchMeshes;
+            List<Mesh> leafMeshes = new List<Mesh>();
+            foreach (LeafArmature leaf in armature.leaves)
+            {
+                List<Vector3> vertices = new List<Vector3>();
+                for(int i = 0; i < leaf.side1.Count; i++)
+                {
+                    Vertex v = leaf.side1[i].vertex;
+                    vertices.Add(new Vector3(v.x, v.y, v.z));
+                }
+                for(int i = leaf.side2.Count-1; i >= 0; i--)
+                {
+                    Vertex v = leaf.side2[i].vertex;
+                    vertices.Add(new Vector3(v.x, v.y, v.z));
+                }
+
+                // verticies now contains all verticies of the leaf, in clockwise order
+                Vector3 center = Vector3.zero;
+                foreach(Vector3 vertex in vertices) center += vertex;
+                center /= (float)vertices.Count;
+                vertices.Add(center);
+                int centerIdx = vertices.Count-1;
+                
+                List<int> triangles = new List<int>();
+                for (int i = 0; i < vertices.Count-1; i++)
+                {
+                    triangles.Add(i);
+                    triangles.Add((i+1)%(vertices.Count-1));
+                    triangles.Add(centerIdx);
+                    
+                    triangles.Add((i+1)%(vertices.Count-1));
+                    triangles.Add(i);
+                    triangles.Add(centerIdx);
+                }
+
+                List<Vector2> uvs = new List<Vector2>();
+                for (int i = 0; i < vertices.Count-1; i++) uvs.Add(new Vector2());
+
+                
+                Mesh mesh = new Mesh();
+        
+                mesh.vertices = vertices.ToArray();
+                mesh.triangles = triangles.ToArray();
+                mesh.uv = uvs.ToArray();
+                //mesh.normals = normals.ToArray();
+                mesh.RecalculateNormals();
+
+                leafMeshes.Add(mesh);
+            }
+
+            List<Mesh> meshes = new List<Mesh>();
+            meshes.AddRange(branchMeshes);
+            meshes.AddRange(leafMeshes);
+            return meshes;
         }
 
         private void makeBranches(List<VertexTree[]> branches, VertexTree tree, VertexTree parent = null) 
@@ -61,20 +126,73 @@ namespace LGen.LRender
             return max;
         }
 
-        public VertexTree GenerateTree(Sentence sentence, float branchLength = 1, float angleDelta = (float)(Math.PI/9f))
+        public Armature GenerateTree(Sentence sentence, float branchLength = 1, float angleDelta = (float)(Math.PI/9f))
         {
+            Armature armature = new Armature();
+
             Turtle turtle = new Turtle();
             Vertex currentLocation = turtle.GetVertexClone();
             VertexTree tree = new VertexTree(currentLocation);
             Stack<VertexTree> stack = new Stack<VertexTree>();
 
-            VertexTree root = tree;
+            armature.VertexTree = tree;
+
+            List<LeafArmature> leavesInProgress = new List<LeafArmature>();
+            List<LeafArmature> leaves = new List<LeafArmature>();
+            int leafOpenCount = 0;
+            int leafCloseCount = 0;
+            
+            armature.leaves = leaves;
+
+            // when a < is encountered, we enter leaf mode, create a new leaf and push it to the leaf stack
+            // when a [ is encountered, if in leaf mode, we create a new leaf and push it to the leaf stack
+            // when a A-Z is encountered, we move the turtle and add the new location to the top two leaves on the leaf stack
+            // when a ] is encountered, if there's only one leaf on the stack, we pop it into completed leaves
+            //                          otherwise, we enter ready to pop mode
+            //                          if we already were in ready to pop mode, we pop the top leaf off the stack and add it to completed leaves
 
             foreach(Token t in sentence.Tokens)
             {
-                if(t == Legend.BRANCH_OPEN)     { stack.Push(tree); }
-                if(t == Legend.LEAF_OPEN)       { stack.Push(tree); }
-                if(t == Legend.BRANCH_CLOSE)    { tree = stack.Pop(); turtle.location = tree.vertex; }
+                if(t == Legend.BRANCH_OPEN)     
+                { 
+                    stack.Push(tree); 
+                    if (leavesInProgress.Count > 0) // leaf mode
+                    {
+                        leavesInProgress.Add(new LeafArmature()); 
+                        leafOpenCount++;
+                    }
+                }
+                if(t == Legend.LEAF_OPEN)       
+                { 
+                    stack.Push(tree);
+                    leavesInProgress.Add(new LeafArmature()); 
+                    leafOpenCount++;
+                }
+                if(t == Legend.BRANCH_CLOSE)    
+                { 
+                    tree = stack.Pop(); 
+                    turtle.location = tree.vertex; 
+                    
+                    if(leavesInProgress.Count > 0) leafCloseCount++;
+
+                    if(leavesInProgress.Count > 0 && leafCloseCount == leafOpenCount-1)
+                    { 
+                        leaves.Add(leavesInProgress[leavesInProgress.Count-1]);
+                        leavesInProgress.RemoveAt(leavesInProgress.Count-1);
+                    }
+                    if (leavesInProgress.Count > 0 && leafOpenCount == leafCloseCount)
+                    {
+                        leaves.Add(leavesInProgress[leavesInProgress.Count-1]);
+                        leavesInProgress.RemoveAt(leavesInProgress.Count-1);
+                        
+                        if (leavesInProgress.Count > 0)
+                        {
+                            leaves.Add(leavesInProgress[leavesInProgress.Count-1]);
+                            leavesInProgress.RemoveAt(leavesInProgress.Count-1);
+                        }
+                    }
+                }
+
                 if(t == Legend.ROLL_INCREMENT)  turtle.location.roll += angleDelta;
                 if(t == Legend.ROLL_DECREMENT)  turtle.location.roll -= angleDelta;
                 if(t == Legend.PITCH_INCREMENT) turtle.location.pitch += angleDelta;
@@ -89,12 +207,15 @@ namespace LGen.LRender
                     
                     tree.children.Add(nextTree);
                     tree = nextTree;
+
+                    if(leavesInProgress.Count >= 1) leavesInProgress[leavesInProgress.Count-1].side1.Add(nextTree);
+                    if(leavesInProgress.Count >= 2) leavesInProgress[leavesInProgress.Count-2].side2.Add(nextTree);
                 }
 
                 tree.vertex = Vertex.Clone(turtle.location);
             }
 
-            return root;
+            return armature;
         }
 
         public Mesh CreateCylinder(Vector3 start, Vector3 end, float firstRadius, float secondRadius, int vertexCountPerEnd = 5)
