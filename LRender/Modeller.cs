@@ -63,8 +63,6 @@ namespace LGen.LRender
 
         public VertexTree GenerateTree(Sentence sentence, float branchLength = 1, float angleDelta = (float)(Math.PI/9f))
         {
-            throw new NotImplementedException();
-
             Turtle turtle = new Turtle();
             Vertex currentLocation = turtle.GetVertexClone();
             VertexTree tree = new VertexTree(currentLocation);
