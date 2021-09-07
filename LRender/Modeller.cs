@@ -54,14 +54,14 @@ namespace LGen.LRender
             int max = 0;
             foreach(VertexTree child in tree.children)
             {
-                max = Math.Max(max, calculateVertexLoad(result, child));
+                max = Math.Max(max, 1+calculateVertexLoad(result, child));
             }
 
             result[tree] = max;
             return max;
         }
 
-        public VertexTree GenerateTree(Sentence sentence, float branchLength = 1, float angleDelta = (float)(Math.PI/9f))
+        public VertexTree GenerateTree(Sentence sentence, float branchLength = 0.25f, float angleDelta = (float)(Math.PI/9f))
         {
             Turtle turtle = new Turtle();
             Vertex currentLocation = turtle.GetVertexClone();
@@ -123,6 +123,8 @@ namespace LGen.LRender
                 vertexCountPerEnd
             );
 
+            Debug.Log(firstCircle.Count + " , " + secondCircle.Count);
+
             List<Vector3> vertices = new List<Vector3>();
             vertices.AddRange(firstCircle);
             vertices.AddRange(secondCircle);
@@ -130,15 +132,15 @@ namespace LGen.LRender
             List<int> triangles = new List<int>();
             for(int i = 0; i < vertexCountPerEnd; i++)
             {
-                triangles.Add(i);
-                triangles.Add((i+1)%vertexCountPerEnd);
-                triangles.Add(i+vertexCountPerEnd);
-            }
-            for(int i = vertexCountPerEnd; i < 2*vertexCountPerEnd; i++)
-            {
-                triangles.Add(i);
-                triangles.Add( (i+1) % (2*vertexCountPerEnd) );
-                triangles.Add(i-vertexCountPerEnd);
+                int circleIdx1 = i;
+                int circleIdx2 = (i+1)%vertexCountPerEnd;
+                triangles.Add(circleIdx1);
+                triangles.Add(circleIdx2);
+                triangles.Add(circleIdx1+vertexCountPerEnd);
+
+                triangles.Add(circleIdx1+vertexCountPerEnd);
+                triangles.Add(circleIdx2);
+                triangles.Add(circleIdx2+vertexCountPerEnd);
             }
 
             List<Vector2> uvs = new List<Vector2>();
@@ -200,6 +202,7 @@ namespace LGen.LRender
                 float px = cx + r * (v1x * Mathf.Cos(a) + v2x * Mathf.Sin(a));
                 float py = cy + r * (v1y * Mathf.Cos(a) + v2y * Mathf.Sin(a));
                 float pz = cz + r * (v1z * Mathf.Cos(a) + v2z * Mathf.Sin(a));
+                points.Add(new Vector3(px, py, pz));
             }
 
             return points;

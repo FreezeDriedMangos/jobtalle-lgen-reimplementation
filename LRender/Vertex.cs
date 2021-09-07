@@ -27,6 +27,8 @@ namespace LGen.LRender
 
         public static Vertex Clone(Vertex original)
         {
+            if (original == null) return null;
+
             Vertex v = new Vertex();
             
             v.x     = original.x;

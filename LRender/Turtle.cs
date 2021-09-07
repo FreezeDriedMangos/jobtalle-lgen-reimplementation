@@ -6,7 +6,7 @@ namespace LGen.LRender
 
     public class Turtle
     {
-        public Vertex location;
+        public Vertex location = new Vertex();
 
         public Vertex Forwards(float distance)
         {
