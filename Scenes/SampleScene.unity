@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mat: {fileID: 2100000, guid: e79dadebcfe76d249b36e443a24a9352, type: 2}
-  s: <A*[^^B[^^C_*C]_B_B]_A_A]
+  s: <A*[^^B[^^C_*C]_B_B]_++A_A]
 --- !u!114 &365986614
 MonoBehaviour:
   m_ObjectHideFlags: 0
