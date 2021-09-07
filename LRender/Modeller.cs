@@ -47,7 +47,6 @@ namespace LGen.LRender
             Armature armature = GenerateTree(sentence);
             VertexTree tree = armature.VertexTree;
             
-            //List<int> stemLoad = new List<int>();
             Dictionary<VertexTree, int> vertexLoad = new Dictionary<VertexTree, int>();
             List<VertexTree[]> branches = new List<VertexTree[]>();
 
@@ -72,6 +71,7 @@ namespace LGen.LRender
             List<Mesh> leafMeshes = new List<Mesh>();
             foreach (LeafArmature leaf in armature.leaves)
             {
+                // TODO: improve leaf mesh generation using this method: https://github.com/jobtalle/LRender/blob/0e1b402327d5d266e6b4103e9b093c795bf98c5c/src/modeller/shapes/leaf.cpp
                 List<Vector3> vertices = new List<Vector3>();
                 for(int i = 0; i < leaf.side1.Count; i++)
                 {
@@ -218,7 +218,6 @@ namespace LGen.LRender
                     turtleStack.Push(turtle.GetVertexClone());
 
                     leafDepth++;
-                    //leaves.Add(new LeafArmature(tree, leafDepth));
                 }
                 if(t == Legend.BRANCH_CLOSE)    
                 { 
@@ -254,16 +253,11 @@ namespace LGen.LRender
                     tree.children.Add(nextTree);
                     tree = nextTree;
                     
-                    //if (workingLeaf1 != null) workingLeaf1.Add(nextTree, leafDepth);
-                    //if (workingLeaf2 != null) workingLeaf2.Add(nextTree, leafDepth);
                     foreach(LeafArmature leaf in leaves)
                     {
                         leaf.Add(nextTree, leafDepth);
                     }
                 }
-
-                // update current position after rotating
-                // tree.vertex = Vertex.Clone(turtle.location);
             }
 
             return armature;
