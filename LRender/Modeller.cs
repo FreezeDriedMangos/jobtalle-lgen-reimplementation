@@ -263,7 +263,7 @@ namespace LGen.LRender
                 }
 
                 // update current position after rotating
-                tree.vertex = Vertex.Clone(turtle.location);
+                // tree.vertex = Vertex.Clone(turtle.location);
             }
 
             return armature;
