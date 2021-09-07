@@ -81,7 +81,7 @@ namespace LGen.LRender
                 }
 
                 List<Vector2> uvs = new List<Vector2>();
-                for (int i = 0; i < vertices.Count-1; i++) uvs.Add(new Vector2());
+                for (int i = 0; i < vertices.Count; i++) uvs.Add(new Vector2());
 
                 
                 Mesh mesh = new Mesh();
@@ -98,7 +98,7 @@ namespace LGen.LRender
             List<Mesh> meshes = new List<Mesh>();
             meshes.AddRange(branchMeshes);
             meshes.AddRange(leafMeshes);
-            return meshes;
+            return branchMeshes; //meshes;
         }
 
         private void makeBranches(List<VertexTree[]> branches, VertexTree tree, VertexTree parent = null) 
@@ -134,6 +134,7 @@ namespace LGen.LRender
             Vertex currentLocation = turtle.GetVertexClone();
             VertexTree tree = new VertexTree(currentLocation);
             Stack<VertexTree> stack = new Stack<VertexTree>();
+            Stack<Vertex> turtleStack = new Stack<Vertex>();
 
             armature.VertexTree = tree;
 
@@ -156,6 +157,7 @@ namespace LGen.LRender
                 if(t == Legend.BRANCH_OPEN)     
                 { 
                     stack.Push(tree); 
+                    turtleStack.Push(turtle.GetVertexClone());
                     if (leavesInProgress.Count > 0) // leaf mode
                     {
                         leavesInProgress.Add(new LeafArmature()); 
@@ -165,13 +167,14 @@ namespace LGen.LRender
                 if(t == Legend.LEAF_OPEN)       
                 { 
                     stack.Push(tree);
+                    turtleStack.Push(turtle.GetVertexClone());
                     leavesInProgress.Add(new LeafArmature()); 
                     leafOpenCount++;
                 }
                 if(t == Legend.BRANCH_CLOSE)    
                 { 
                     tree = stack.Pop(); 
-                    turtle.location = tree.vertex; 
+                    turtle.location = turtleStack.Pop();
                     
                     if(leavesInProgress.Count > 0) leafCloseCount++;
 
