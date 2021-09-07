@@ -10,6 +10,28 @@ namespace LGen.LRender
     {
         public List<VertexTree> side1 = new List<VertexTree>();
         public List<VertexTree> side2 = new List<VertexTree>();
+        public int leafDepth;
+        public bool active = true;
+
+        public LeafArmature(int leafDepth)
+        {
+            this.leafDepth = leafDepth;
+        }
+
+        public LeafArmature(VertexTree tree, int leafDepth) : this(leafDepth)
+        {
+            this.Add(tree, leafDepth);
+        }
+
+        public void Add(VertexTree vertexTree, int leafDepth)
+        {
+            if (!active) return;
+
+            if (leafDepth == this.leafDepth) side1.Add(vertexTree);
+            else if (leafDepth == this.leafDepth-1) side2.Add(vertexTree);
+        }
+
+        public void SetActive(int leafDepth) { if (active && leafDepth <= this.leafDepth-2) active = false; }
     }
     public class Armature
     {
@@ -60,24 +82,37 @@ namespace LGen.LRender
                     Vertex v = leaf.side2[i].vertex;
                     vertices.Add(new Vector3(v.x, v.y, v.z));
                 }
-
+                Debug.Log("leaf vertex count: " + vertices.Count);
+                
+                List<int> triangles = new List<int>();
+                // nice, but doesn't work for concave leaves
+                //for (int i = 1; i < vertices.Count-1; i++)
+                //{
+                //    triangles.Add(i);
+                //    triangles.Add(i+1);
+                //    triangles.Add(0);
+                    
+                //    triangles.Add(i+1);
+                //    triangles.Add(i);
+                //    triangles.Add(0);
+                //}
                 // verticies now contains all verticies of the leaf, in clockwise order
                 Vector3 center = Vector3.zero;
                 foreach(Vector3 vertex in vertices) center += vertex;
                 center /= (float)vertices.Count;
                 vertices.Add(center);
                 int centerIdx = vertices.Count-1;
-                
-                List<int> triangles = new List<int>();
+
                 for (int i = 0; i < vertices.Count-1; i++)
                 {
                     triangles.Add(i);
                     triangles.Add((i+1)%(vertices.Count-1));
                     triangles.Add(centerIdx);
-                    
+
                     triangles.Add((i+1)%(vertices.Count-1));
                     triangles.Add(i);
                     triangles.Add(centerIdx);
+
                 }
 
                 List<Vector2> uvs = new List<Vector2>();
@@ -98,7 +133,7 @@ namespace LGen.LRender
             List<Mesh> meshes = new List<Mesh>();
             meshes.AddRange(branchMeshes);
             meshes.AddRange(leafMeshes);
-            return branchMeshes; //meshes;
+            return meshes;
         }
 
         private void makeBranches(List<VertexTree[]> branches, VertexTree tree, VertexTree parent = null) 
@@ -138,19 +173,15 @@ namespace LGen.LRender
 
             armature.VertexTree = tree;
 
-            List<LeafArmature> leavesInProgress = new List<LeafArmature>();
             List<LeafArmature> leaves = new List<LeafArmature>();
-            int leafOpenCount = 0;
-            int leafCloseCount = 0;
             
             armature.leaves = leaves;
 
-            // when a < is encountered, we enter leaf mode, create a new leaf and push it to the leaf stack
-            // when a [ is encountered, if in leaf mode, we create a new leaf and push it to the leaf stack
-            // when a A-Z is encountered, we move the turtle and add the new location to the top two leaves on the leaf stack
-            // when a ] is encountered, if there's only one leaf on the stack, we pop it into completed leaves
-            //                          otherwise, we enter ready to pop mode
-            //                          if we already were in ready to pop mode, we pop the top leaf off the stack and add it to completed leaves
+            // points only get added to leaves if they're on the same leaf depth the given leaf started on, or one shallower
+            // a leaf permanently ends if a leaf depth of startingDepth-2 is reached
+
+            Stack<LeafArmature> leafStack = new Stack<LeafArmature>();
+            int leafDepth = 0;
 
             foreach(Token t in sentence.Tokens)
             {
@@ -158,41 +189,31 @@ namespace LGen.LRender
                 { 
                     stack.Push(tree); 
                     turtleStack.Push(turtle.GetVertexClone());
-                    if (leavesInProgress.Count > 0) // leaf mode
+                    
+                    if(leafDepth > 0) 
                     {
-                        leavesInProgress.Add(new LeafArmature()); 
-                        leafOpenCount++;
+                        leafDepth++;
+                        leaves.Add(new LeafArmature(tree, leafDepth));
                     }
                 }
                 if(t == Legend.LEAF_OPEN)       
                 { 
                     stack.Push(tree);
                     turtleStack.Push(turtle.GetVertexClone());
-                    leavesInProgress.Add(new LeafArmature()); 
-                    leafOpenCount++;
+
+                    leafDepth++;
+                    leaves.Add(new LeafArmature(tree, leafDepth));
                 }
                 if(t == Legend.BRANCH_CLOSE)    
                 { 
                     tree = stack.Pop(); 
                     turtle.location = turtleStack.Pop();
                     
-                    if(leavesInProgress.Count > 0) leafCloseCount++;
-
-                    if(leavesInProgress.Count > 0 && leafCloseCount == leafOpenCount-1)
-                    { 
-                        leaves.Add(leavesInProgress[leavesInProgress.Count-1]);
-                        leavesInProgress.RemoveAt(leavesInProgress.Count-1);
-                    }
-                    if (leavesInProgress.Count > 0 && leafOpenCount == leafCloseCount)
+                    if (leafDepth > 0)
                     {
-                        leaves.Add(leavesInProgress[leavesInProgress.Count-1]);
-                        leavesInProgress.RemoveAt(leavesInProgress.Count-1);
+                        leafDepth--;
                         
-                        if (leavesInProgress.Count > 0)
-                        {
-                            leaves.Add(leavesInProgress[leavesInProgress.Count-1]);
-                            leavesInProgress.RemoveAt(leavesInProgress.Count-1);
-                        }
+                        foreach(LeafArmature leaf in leaves) leaf.SetActive(leafDepth);
                     }
                 }
 
@@ -210,9 +231,13 @@ namespace LGen.LRender
                     
                     tree.children.Add(nextTree);
                     tree = nextTree;
-
-                    if(leavesInProgress.Count >= 1) leavesInProgress[leavesInProgress.Count-1].side1.Add(nextTree);
-                    if(leavesInProgress.Count >= 2) leavesInProgress[leavesInProgress.Count-2].side2.Add(nextTree);
+                    
+                    //if (workingLeaf1 != null) workingLeaf1.Add(nextTree, leafDepth);
+                    //if (workingLeaf2 != null) workingLeaf2.Add(nextTree, leafDepth);
+                    foreach(LeafArmature leaf in leaves)
+                    {
+                        leaf.Add(nextTree, leafDepth);
+                    }
                 }
 
                 tree.vertex = Vertex.Clone(turtle.location);
