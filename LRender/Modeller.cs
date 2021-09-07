@@ -7,7 +7,7 @@ namespace LGen.LRender
 { 
     public class Modeller
     {
-        public List<Mesh> GenerateMeshes(Sentence sentence, float stemRadiusFactor = 0.01f)
+        public List<Mesh> GenerateMeshes(Sentence sentence, float stemRadiusFactor = 0.05f)
         {
             VertexTree tree = GenerateTree(sentence);
             
@@ -61,7 +61,7 @@ namespace LGen.LRender
             return max;
         }
 
-        public VertexTree GenerateTree(Sentence sentence, float branchLength = 0.25f, float angleDelta = (float)(Math.PI/9f))
+        public VertexTree GenerateTree(Sentence sentence, float branchLength = 1, float angleDelta = (float)(Math.PI/9f))
         {
             Turtle turtle = new Turtle();
             Vertex currentLocation = turtle.GetVertexClone();
@@ -90,6 +90,8 @@ namespace LGen.LRender
                     tree.children.Add(nextTree);
                     tree = nextTree;
                 }
+
+                tree.vertex = Vertex.Clone(turtle.location);
             }
 
             return root;
@@ -97,6 +99,9 @@ namespace LGen.LRender
 
         public Mesh CreateCylinder(Vector3 start, Vector3 end, float firstRadius, float secondRadius, int vertexCountPerEnd = 5)
         {
+            firstRadius = Mathf.Max(firstRadius, 0.001f);
+            secondRadius = Mathf.Max(secondRadius, 0.001f);
+            
             Vector3 nxyz = end - start;
 
             List<Vector3> firstCircle = GenerateCircle
@@ -122,8 +127,6 @@ namespace LGen.LRender
                 secondRadius,
                 vertexCountPerEnd
             );
-
-            Debug.Log(firstCircle.Count + " , " + secondCircle.Count);
 
             List<Vector3> vertices = new List<Vector3>();
             vertices.AddRange(firstCircle);
