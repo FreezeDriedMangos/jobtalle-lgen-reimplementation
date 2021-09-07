@@ -60,7 +60,7 @@ namespace LGen.LParse
 				if(possibleRules.Count > 0)
 				{
 					Rule rule = possibleRules[randomizer.MakeInt_Exclusive(0, possibleRules.Count)];
-					List<Token> result = rule.LHS.Tokens;
+					List<Token> result = rule.RHS.Tokens;
 					
 					foreach(Token t in result) newTokens.Add(Token.Clone(t));
 
