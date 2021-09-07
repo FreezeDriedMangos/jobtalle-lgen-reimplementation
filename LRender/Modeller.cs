@@ -202,7 +202,7 @@ namespace LGen.LRender
                     turtleStack.Push(turtle.GetVertexClone());
 
                     leafDepth++;
-                    leaves.Add(new LeafArmature(tree, leafDepth));
+                    //leaves.Add(new LeafArmature(tree, leafDepth));
                 }
                 if(t == Legend.BRANCH_CLOSE)    
                 { 
