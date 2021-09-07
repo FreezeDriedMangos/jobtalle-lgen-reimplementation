@@ -7,12 +7,15 @@ using UnityEngine;
 public class LRenderTest : MonoBehaviour
 {
     public Material mat;
+    public string s;
 
     // Start is called before the first frame update
     void Start()
     {
         //string s = "A^^A++++A";
-        string s = "A^[AA^A^A]A_A____A^A";
+        //string s = "A^[AA^A^A]A_A____A^A";
+        //string s = "<A^[AA^A^A]A_A____A^A]";
+        //string s = "<A[^^B[^^C_C]_B_B]_A_A]";
         Modeller modeller = new Modeller();
         List<Mesh> branches = modeller.GenerateMeshes(new Sentence(s));
         
