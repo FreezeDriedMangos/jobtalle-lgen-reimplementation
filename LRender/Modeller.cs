@@ -37,11 +37,12 @@ namespace LGen.LRender
     {
         public VertexTree VertexTree;
         public List<LeafArmature> leaves;
+        public List<Vector3> seeds = new List<Vector3>();
     }
 
     public class Modeller
     {
-        public List<Mesh> GenerateMeshes(Sentence sentence, float stemRadiusFactor = 0.05f)
+        public List<Mesh> GenerateMeshes(Sentence sentence, float stemRadiusFactor = 0.05f, float seedSize = 0.2f)
         {
             Armature armature = GenerateTree(sentence);
             VertexTree tree = armature.VertexTree;
@@ -130,9 +131,16 @@ namespace LGen.LRender
                 leafMeshes.Add(mesh);
             }
 
+            List<Mesh> seedMeshes = new List<Mesh>();
+            foreach(Vector3 seedCenter in armature.seeds)
+            {
+                seedMeshes.Add(CreateIcosphere.Create(seedSize, seedCenter));
+            }
+
             List<Mesh> meshes = new List<Mesh>();
             meshes.AddRange(branchMeshes);
             meshes.AddRange(leafMeshes);
+            meshes.AddRange(seedMeshes);
             return meshes;
         }
 
@@ -185,6 +193,14 @@ namespace LGen.LRender
 
             foreach(Token t in sentence.Tokens)
             {
+                //
+                // misc
+                //
+                if (t == Legend.SEED) armature.seeds.Add(new Vector3(turtle.location.x, turtle.location.y, turtle.location.z));
+
+                //
+                // branches and leaves
+                //
                 if(t == Legend.BRANCH_OPEN)     
                 { 
                     stack.Push(tree); 
@@ -217,6 +233,9 @@ namespace LGen.LRender
                     }
                 }
 
+                //
+                // change direction
+                //
                 if(t == Legend.ROLL_INCREMENT)  turtle.location.roll += angleDelta;
                 if(t == Legend.ROLL_DECREMENT)  turtle.location.roll -= angleDelta;
                 if(t == Legend.PITCH_INCREMENT) turtle.location.pitch += angleDelta;
@@ -224,6 +243,9 @@ namespace LGen.LRender
                 if(t == Legend.YAW_INCREMENT)   turtle.location.yaw += angleDelta;
                 if(t == Legend.YAW_DECREMENT)   turtle.location.yaw -= angleDelta;
                 
+                //
+                // move forward
+                //
                 if(t.OnRangeInclusive(Legend.STEP_MIN, Legend.STEP_MAX)) 
                 {
                     Vertex location = turtle.Forwards(branchLength);
@@ -240,6 +262,7 @@ namespace LGen.LRender
                     }
                 }
 
+                // update current position after rotating
                 tree.vertex = Vertex.Clone(turtle.location);
             }
 
