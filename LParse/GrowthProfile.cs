@@ -7,6 +7,6 @@ namespace LGen.LParse
 
         public GrowthProfile(int iterations) { this.Iterations = iterations; }
 
-        public virtual int GetGrowth(int iteration) { return 999; }
+        public virtual int GetGrowth(int iteration) { return 0; }
     }
 }
