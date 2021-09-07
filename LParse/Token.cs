@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace LGen.LParse 
 { 
     public class Token
@@ -14,6 +16,11 @@ namespace LGen.LParse
         public static Token Clone(Token t) { return new Token(t.Symbol); }
 
         public override string ToString() { return this.Symbol+""; }
+
+        public bool OnRangeInclusive(char min, char max)
+        {
+            return min <= this.Symbol && this.Symbol <= max;
+        }
     }
 
 }
