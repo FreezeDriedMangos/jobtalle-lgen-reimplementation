@@ -24,10 +24,8 @@ namespace LGen.LParse
 			for(int i = 1; i < strings.Length; i++) this.Rules.Add(strings[i]);
         }
 
-		public Sentence Generate(GrowthProfile growthProfile, Randomizer randomizer) 
-		{
-			return null;
-
+		public Sentence Generate(GrowthProfile growthProfile, Randomizer randomizer)
+		{ 
 			int iterations = randomizer.MakeInt_Inclusive(1, growthProfile.Iterations);
 			Sentence sentence = new Sentence(this.Axiom);
 
