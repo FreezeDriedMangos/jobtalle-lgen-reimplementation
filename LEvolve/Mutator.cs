@@ -18,11 +18,11 @@ namespace LGen.LEvolve
             
             for(int i = 0; i < system.Rules.Count; i++)
             {
+                system.Rules[i] = Mutate(system.Rules[i], profile, randomizer, E, N);
+
                 if (randomizer.MakeFloat(0,1) < profile.duplicateRuleChance) system.Rules.Add(new Rule(system.Rules[i]));
                 if (randomizer.MakeFloat(0,1) < profile.deleteRuleChance)    system.Rules.RemoveAt(i--); // the -- is here because otherwise we'd skip over the next rule
                 if (randomizer.MakeFloat(0,1) < profile.createNewRuleChance) system.Rules.Add(new Rule("", ""));
-
-                system.Rules[i] = Mutate(system.Rules[i], profile, randomizer, E, N);
             }
 
             return system;
