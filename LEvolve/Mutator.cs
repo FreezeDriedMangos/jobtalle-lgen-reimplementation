@@ -10,7 +10,22 @@ namespace LGen.LEvolve
     {
         public LSystem Mutate(LSystem system, MutationProfile profile, Randomizer randomizer)
         {
-            throw new NotImplementedException();
+            system = new LSystem(system);
+
+            List<Token> E = new List<Token>();
+            List<Token> N = new List<Token>();
+            Sentence axiom = Mutate(system.Axiom, profile, randomizer, E, N);
+            
+            for(int i = 0; i < system.Rules.Count; i++)
+            {
+                if (randomizer.MakeFloat(0,1) < profile.duplicateRuleChance) system.Rules.Add(new Rule(system.Rules[i]));
+                if (randomizer.MakeFloat(0,1) < profile.deleteRuleChance)    system.Rules.RemoveAt(i--); // the -- is here because otherwise we'd skip over the next rule
+                if (randomizer.MakeFloat(0,1) < profile.createNewRuleChance) system.Rules.Add(new Rule("", ""));
+
+                system.Rules[i] = Mutate(system.Rules[i], profile, randomizer, E, N);
+            }
+
+            return system;
         }
 
         public Rule Mutate(Rule rule, MutationProfile profile, Randomizer randomizer, List<Token> E, List<Token> N)
@@ -22,6 +37,7 @@ namespace LGen.LEvolve
 
         public Sentence Mutate(Sentence sentence, MutationProfile profile, Randomizer randomizer, List<Token> E, List<Token> N, bool isRuleLHS = false)
         {
+            Sentence oldSentence = sentence;
             sentence = new Sentence(sentence);    
             
             if (sentence.Tokens.Count == 0)
@@ -41,7 +57,7 @@ namespace LGen.LEvolve
                 if (randomizer.MakeFloat(0,1) < profile.removeLeafChance)   RemoveBranchOrLeafAt(sentence, i);
             }
 
-            return sentence;
+            return sentence.Tokens.Count > profile.sentenceSizeLimit ? oldSentence : sentence;
         }
 
         //
