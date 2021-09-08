@@ -71,50 +71,44 @@ namespace LGen.LRender
             List<Mesh> leafMeshes = new List<Mesh>();
             foreach (LeafArmature leaf in armature.leaves)
             {
-                // TODO: improve leaf mesh generation using this method: https://github.com/jobtalle/LRender/blob/0e1b402327d5d266e6b4103e9b093c795bf98c5c/src/modeller/shapes/leaf.cpp
                 List<Vector3> vertices = new List<Vector3>();
                 for(int i = 0; i < leaf.side1.Count; i++)
                 {
                     Vertex v = leaf.side1[i].vertex;
                     vertices.Add(new Vector3(v.x, v.y, v.z));
                 }
-                for(int i = leaf.side2.Count-1; i >= 0; i--)
+                for(int i = 0; i < leaf.side2.Count; i++)
                 {
                     Vertex v = leaf.side2[i].vertex;
                     vertices.Add(new Vector3(v.x, v.y, v.z));
                 }
-                Debug.Log("leaf vertex count: " + vertices.Count);
-                
+
+                // Strategy for generating leaf meshes
+                // zigzag between the two branches that make up the leaf, like a spider making a web
+
                 List<int> triangles = new List<int>();
-                // nice, but doesn't work for concave leaves
-                //for (int i = 1; i < vertices.Count-1; i++)
-                //{
-                //    triangles.Add(i);
-                //    triangles.Add(i+1);
-                //    triangles.Add(0);
-                    
-                //    triangles.Add(i+1);
-                //    triangles.Add(i);
-                //    triangles.Add(0);
-                //}
-                // verticies now contains all verticies of the leaf, in clockwise order
-                Vector3 center = Vector3.zero;
-                foreach(Vector3 vertex in vertices) center += vertex;
-                center /= (float)vertices.Count;
-                vertices.Add(center);
-                int centerIdx = vertices.Count-1;
-
-                for (int i = 0; i < vertices.Count-1; i++)
+                
+                int N = Mathf.Max(leaf.side1.Count, leaf.side2.Count);
+                int s1 = 0;
+                int s2 = leaf.side1.Count;
+                int prev = -1;
+                int curr = 0+s1;
+                int next = 0+s2;
+                for(int i = 2; i < 2*N; i++)
                 {
-                    triangles.Add(i);
-                    triangles.Add((i+1)%(vertices.Count-1));
-                    triangles.Add(centerIdx);
+                    prev = curr;
+                    curr = next;
+                    next = i%2 == 0? Mathf.Min(i/2, leaf.side1.Count-1)+s1 : Mathf.Min(i/2, leaf.side2.Count-1)+s2;
 
-                    triangles.Add((i+1)%(vertices.Count-1));
-                    triangles.Add(i);
-                    triangles.Add(centerIdx);
-
+                    triangles.Add(prev);
+                    triangles.Add(curr);
+                    triangles.Add(next);
+                    
+                    triangles.Add(prev);
+                    triangles.Add(next);
+                    triangles.Add(curr);
                 }
+
 
                 List<Vector2> uvs = new List<Vector2>();
                 for (int i = 0; i < vertices.Count; i++) uvs.Add(new Vector2());
@@ -127,6 +121,8 @@ namespace LGen.LRender
                 mesh.uv = uvs.ToArray();
                 //mesh.normals = normals.ToArray();
                 mesh.RecalculateNormals();
+                mesh.RecalculateBounds();
+                mesh.RecalculateTangents();
 
                 leafMeshes.Add(mesh);
             }
