@@ -21,6 +21,12 @@ namespace LGen.LParse
 			this.Rules = new List<Rule>();
 			foreach(Rule r in system.Rules) this.Rules.Add(new Rule(r));
         }
+		public LSystem(string axiom, string[] rules)
+        {
+			this.Axiom = new Sentence(axiom);
+			this.Rules = new List<Rule>();
+			foreach(string r in rules) this.Rules.Add(new Rule(r));
+        }
 		public LSystem(string s)
         {
 			string[] strings = s.Split('\n');
@@ -41,6 +47,11 @@ namespace LGen.LParse
 
 			return sentence;
 		}
+
+		public override string ToString()
+        {
+			return this.Axiom + "\n" + string.Join("\n", this.Rules);
+        }
 
 		//std::vector<Token> System::getGeneratedTokens() const {
 		//	std::vector<Token> tokens;
