@@ -28,7 +28,7 @@
         public float removeBranchChance = 0.01f;
         public float addLeafChance = 0.005f;
         public float removeLeafChance = 0.01f;
-         
+        
         // meta stuff - these are only accessed while processing a mutation
         public float addSymbolBehindChance = 0.5f;
         public float useEChance = 0.8f;

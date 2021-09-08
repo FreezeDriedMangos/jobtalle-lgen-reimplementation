@@ -25,10 +25,10 @@ public class LParseTest : MonoBehaviour
         Debug.Log("Sentence " + se.ToString());
 
 
-        Debug.Log(s.Generate(new GrowthProfile(3), new Randomizer()));
-        Debug.Log(s.Generate(new GrowthProfile(3), new Randomizer()));
-        Debug.Log(s.Generate(new GrowthProfile(3), new Randomizer()));
-        Debug.Log(s.Generate(new GrowthProfile(3), new Randomizer()));
+        Debug.Log(s.Generate(new GrowthProfile.Unbounded(3), new Randomizer()));
+        Debug.Log(s.Generate(new GrowthProfile.Unbounded(3), new Randomizer()));
+        Debug.Log(s.Generate(new GrowthProfile.Unbounded(3), new Randomizer()));
+        Debug.Log(s.Generate(new GrowthProfile.Unbounded(3), new Randomizer()));
 
         //Sentence se = new Sentence("A");
         //Debug.Log( se.Apply(s.Rules, new Randomizer(), 99) );
