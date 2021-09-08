@@ -87,7 +87,7 @@ namespace LGen.LEvolve
 
             int depth = 0;
             int minDepth = 0;
-            for(int j = i; j >= 0; j++)
+            for(int j = i; j >= 0; j--)
             {
                 if (sentence.Tokens[j] == Legend.LEAF_OPEN && depth <= minDepth) return true;
 
