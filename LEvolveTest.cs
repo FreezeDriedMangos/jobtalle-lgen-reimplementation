@@ -11,7 +11,8 @@ public class LEvolveTest : MonoBehaviour
 
     public int seed;
 
-    public int parseCount;
+    public int numMutationSteps;
+    public int numRuleApplicationSteps;
 
     // Start is called before the first frame update
     void Start()
@@ -22,16 +23,13 @@ public class LEvolveTest : MonoBehaviour
         Randomizer r  = new Randomizer(seed);
 
         Debug.Log(s);
-        
-        s = m.Mutate(s, p, r);
-        Debug.Log(s);
-        
-        for(int i = 0; i < 100; i++) s = m.Mutate(s, p, r);
+
+        for(int i = 0; i < numMutationSteps; i++) s = m.Mutate(s, p, r);
         Debug.Log(s);
 
-        if (parseCount > 0)
+        if (numRuleApplicationSteps > 0)
         {
-            GrowthProfile g = new GrowthProfile.Quadratic(parseCount);
+            GrowthProfile g = new GrowthProfile.Quadratic(numRuleApplicationSteps);
             Sentence n = s.Generate(g, r);
             Debug.Log(n);
         }
