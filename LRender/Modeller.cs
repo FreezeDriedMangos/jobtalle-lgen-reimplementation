@@ -100,13 +100,18 @@ namespace LGen.LRender
                     curr = next;
                     next = i%2 == 0? Mathf.Min(i/2, leaf.side1.Count-1)+s1 : Mathf.Min(i/2, leaf.side2.Count-1)+s2;
 
-                    triangles.Add(prev);
-                    triangles.Add(curr);
-                    triangles.Add(next);
-                    
-                    triangles.Add(prev);
-                    triangles.Add(next);
-                    triangles.Add(curr);
+                    if (i%2 == 0)
+                    {
+                        triangles.Add(prev);
+                        triangles.Add(curr);
+                        triangles.Add(next);
+                    }
+                    else
+                    {
+                        triangles.Add(prev);
+                        triangles.Add(next);
+                        triangles.Add(curr);
+                    }
                 }
 
 
