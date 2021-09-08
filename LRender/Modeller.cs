@@ -42,17 +42,55 @@ namespace LGen.LRender
 
     public class Modeller
     {
-        public List<Mesh> GenerateMeshes(Sentence sentence, float stemRadiusFactor = 0.05f, float seedSize = 0.2f)
+        public AgentData GenerateAgentData(Sentence sentence)
         {
+            AgentData agent = new AgentData();
             Armature armature = GenerateTree(sentence);
-            VertexTree tree = armature.VertexTree;
-            
+        
+            agent.positionReport.centerOfGravity = CalculateCenterOfGravity(armature.VertexTree);
+            agent.limitsReport = CalculateLimitsReport(armature.VertexTree, agent.limitsReport);    
+            agent.seedReports = armature.seeds.ConvertAll(new Converter<Vector3, SeedReport>((Vector3 v) => new SeedReport(v) ));
+
+            agent.meshes = GenerateMeshes(armature);
+
+            foreach(Mesh m in agent.meshes.leafMeshes)
+            {
+                LeafReport r = new LeafReport();
+                agent.leafReports.Add(r);
+                
+                for(int i = 0; i < m.triangles.Length; i += 6)
+                {
+                    int t0 = m.triangles[i+0];
+                    int t1 = m.triangles[i+1];
+                    int t2 = m.triangles[i+2];
+                    
+                    Vector3 A = m.vertices[t0];
+                    Vector3 B = m.vertices[t0];
+                    Vector3 C = m.vertices[t0];
+
+                    // area of a 3D triangle formula from https://math.stackexchange.com/a/128999
+                    Vector3 AB = B - A;
+                    Vector3 AC = C - A;
+
+                    r.area += 0.5f * Vector3.Cross(AB, AC).magnitude;
+                }
+            }
+
+            return agent;
+        }
+
+        public AgentMeshes GenerateMeshes(Armature armature, float stemRadiusFactor = 0.05f, float seedSize = 0.2f)
+        {
+            AgentMeshes agent = new AgentMeshes();
+
             Dictionary<VertexTree, int> vertexLoad = new Dictionary<VertexTree, int>();
             List<VertexTree[]> branches = new List<VertexTree[]>();
 
+            VertexTree tree = armature.VertexTree;
+
             makeBranches(branches, tree);
             calculateVertexLoad(vertexLoad, tree);
-
+            
             List<Mesh> branchMeshes = new List<Mesh>();
             foreach(VertexTree[] branch in branches)
             {
@@ -64,7 +102,8 @@ namespace LGen.LRender
                 
                 Vector3 start = new Vector3(lower.vertex.x, lower.vertex.y, lower.vertex.z);
                 Vector3 end = new Vector3(upper.vertex.x, upper.vertex.y, upper.vertex.z);
-
+                
+                //UnityEngine.Debug.Log(start + " to " + end + " - " + bottomRadius + ", " + topRadius);
                 branchMeshes.Add(CreateCylinder(start, end, bottomRadius, topRadius));
             }
 
@@ -148,11 +187,30 @@ namespace LGen.LRender
                 seedMeshes.Add(CreateIcosphere.Create(seedSize, seedCenter));
             }
 
-            List<Mesh> meshes = new List<Mesh>();
-            meshes.AddRange(branchMeshes);
-            meshes.AddRange(leafMeshes);
-            meshes.AddRange(seedMeshes);
-            return meshes;
+            agent.stemMeshes = branchMeshes;
+            agent.seedMeshes = seedMeshes;
+            agent.leafMeshes = leafMeshes;
+
+            return agent;
+        }
+
+        private Vector3 CalculateCenterOfGravity(VertexTree tree, bool topLevel = true)
+        {
+            Vector3 v = new Vector3(tree.vertex.x, tree.vertex.y, tree.vertex.z);
+            foreach(VertexTree child in tree.children) v += CalculateCenterOfGravity(child, false);
+            return topLevel? v/((float)CountVertices(tree)) : v;
+        }
+        private int CountVertices(VertexTree tree)
+        {
+            int n = 1;
+            foreach(VertexTree child in tree.children) n += CountVertices(child);
+            return n;
+        }
+        private LimitsReport CalculateLimitsReport(VertexTree tree, LimitsReport report)
+        {
+            report.Add(new Vector3(tree.vertex.x, tree.vertex.y, tree.vertex.z));
+            foreach(VertexTree child in tree.children) CalculateLimitsReport(child, report);
+            return report;
         }
 
         private void makeBranches(List<VertexTree[]> branches, VertexTree tree, VertexTree parent = null) 
@@ -353,7 +411,7 @@ namespace LGen.LRender
             return mesh;
         }
 
-        private List<Vector3> GenerateCircle(float nx, float ny, float nz, float cx, float cy, float cz, float r, int numPoints)
+        public List<Vector3> GenerateCircle(float nx, float ny, float nz, float cx, float cy, float cz, float r, int numPoints)
         {
             // Code from https://stackoverflow.com/a/27715321/9643841
             // Only needed if normal vector (nx, ny, nz) is not already normalized.
@@ -362,17 +420,40 @@ namespace LGen.LRender
             float v3y = s * ny;
             float v3z = s * nz;
 
+
             // Calculate v1.
             s = 1.0f / (v3x * v3x + v3z * v3z);
             float v1x = s * v3z;
             float v1y = 0.0f;
             float v1z = s * -v3x;
+            if (v3x == 0 && v3z == 0)
+            {
+                s = 1.0f / (v3x * v3x + v3y * v3y);
+                v1y = s * v3y;
+                v1x = 0.0f;
+                v1z = s * -v3x;
+            }
 
             // Calculate v2 as cross product of v3 and v1.
             // Since v1y is 0, it could be removed from the following calculations. Keeping it for consistency.
             float v2x = v3y * v1z - v3z * v1y;
             float v2y = v3z * v1x - v3x * v1z;
             float v2z = v3x * v1y - v3y * v1x;
+
+            //Debug.Log("s:" + s + "\n" +
+            //        "v3x:" + v3x + "\n" +
+            //        "v3y:" + v3y + "\n" +
+            //        "v3z:" + v3z + "\n" +
+            //        "v1x:" + v1x + "\n" +
+            //        "v1y:" + v1y + "\n" +
+            //        "v1z:" + v1z + "\n" +
+            //        "v2x:" + v2x + "\n" +
+            //        "v2y:" + v2y + "\n" +
+            //        "v2z:" + v2z + "\n" +
+            //        "nx:" + nx + "\n" +
+            //        "ny:" + ny + "\n" +
+            //        "nz:" + nz + "\n" + 
+            //        "mag:" + (nx * nx + ny * ny + nz * nz));
 
             // For each circle point.
             List<Vector3> points = new List<Vector3>();
@@ -383,6 +464,7 @@ namespace LGen.LRender
                 float py = cy + r * (v1y * Mathf.Cos(a) + v2y * Mathf.Sin(a));
                 float pz = cz + r * (v1z * Mathf.Cos(a) + v2z * Mathf.Sin(a));
                 points.Add(new Vector3(px, py, pz));
+                //Debug.Log(points[points.Count-1]);
             }
 
             return points;

@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2214831
 Transform:
   m_ObjectHideFlags: 0
@@ -258,7 +258,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8351d505457aa44e83a931e4d587205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: e79dadebcfe76d249b36e443a24a9352, type: 2}
+  branchMat: {fileID: 2100000, guid: 69beeb7183d1dd94ab15cbc8ed4c3d3d, type: 2}
+  seedMat: {fileID: 2100000, guid: 9c7d6089297ceca4f8be814997415e3b, type: 2}
+  leafMat: {fileID: 2100000, guid: 3bae1333a15b6934dba0d68662a38fa6, type: 2}
   s: <A*[^^B[^^C_*C]_B____B]_++A_A]
 --- !u!4 &365986615
 Transform:
@@ -340,7 +342,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &537490010
 Transform:
   m_ObjectHideFlags: 0
@@ -526,7 +528,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 3, z: 2}
+  m_LocalPosition: {x: 0, y: 5, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -575,7 +577,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8351d505457aa44e83a931e4d587205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: e79dadebcfe76d249b36e443a24a9352, type: 2}
+  branchMat: {fileID: 2100000, guid: 69beeb7183d1dd94ab15cbc8ed4c3d3d, type: 2}
+  seedMat: {fileID: 2100000, guid: 9c7d6089297ceca4f8be814997415e3b, type: 2}
+  leafMat: {fileID: 2100000, guid: 3bae1333a15b6934dba0d68662a38fa6, type: 2}
   s: <A[^^B[^^C_C]_B_B]_A_A]
 --- !u!1 &1041075676
 GameObject:
@@ -606,7 +610,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8351d505457aa44e83a931e4d587205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: e79dadebcfe76d249b36e443a24a9352, type: 2}
+  branchMat: {fileID: 2100000, guid: 69beeb7183d1dd94ab15cbc8ed4c3d3d, type: 2}
+  seedMat: {fileID: 2100000, guid: 9c7d6089297ceca4f8be814997415e3b, type: 2}
+  leafMat: {fileID: 2100000, guid: 3bae1333a15b6934dba0d68662a38fa6, type: 2}
   s: <A[^^B[^^C_CC[_____D_D_D]C]_B_B]_A_A]
 --- !u!4 &1041075679
 Transform:
@@ -702,7 +708,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8351d505457aa44e83a931e4d587205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mat: {fileID: 2100000, guid: e79dadebcfe76d249b36e443a24a9352, type: 2}
+  branchMat: {fileID: 2100000, guid: 69beeb7183d1dd94ab15cbc8ed4c3d3d, type: 2}
+  seedMat: {fileID: 2100000, guid: 9c7d6089297ceca4f8be814997415e3b, type: 2}
+  leafMat: {fileID: 2100000, guid: 3bae1333a15b6934dba0d68662a38fa6, type: 2}
   s: <A_A_A]
 --- !u!4 &2009468572
 Transform:
