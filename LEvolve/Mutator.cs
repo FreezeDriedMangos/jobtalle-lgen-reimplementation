@@ -24,7 +24,7 @@ namespace LGen.LEvolve
                 if (randomizer.MakeFloat(0,1) < profile.pRuleAdd)       system.Rules.Add(new Rule("", ""));
             }
 
-            return system;
+            return new LSystem(axiom, system.Rules);
         }
 
         private Rule Mutate(Rule rule, MutationProfile profile, Randomizer randomizer, GeneratedSymbols E)
@@ -277,11 +277,6 @@ namespace LGen.LEvolve
                     t == Legend.YAW_DECREMENT
                 ) this.rotations.Add(t);
             }
-
-            //if (this.constants.Count == 0) this.constants.Add(Legend.CONST_MIN);
-            //if (this.steps.Count == 0) this.steps.Add(Legend.STEP_MIN);
-            //if (this.seeds.Count == 0) this.seeds.Add(Legend.SEED);
-            //if (this.rotations.Count == 0) this.rotations.Add(Legend.YAW_INCREMENT);
         }
     }
 }
