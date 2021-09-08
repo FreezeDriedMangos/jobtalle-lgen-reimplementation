@@ -136,6 +136,7 @@ namespace LGen.LEvolve
         {
             int insertAt = (forceBehind || randomizer.MakeFloat(0, 1) < profile.addSymbolBehindChance) ? i : i+1;
             List<Token> set = (forceE || randomizer.MakeFloat(0, 1) < profile.useEChance) ? E : N;
+            if (set.Count == 0) return;
             sentence.Tokens.Insert(insertAt, set[randomizer.MakeInt_Exclusive(0, set.Count)]);
         }
 
