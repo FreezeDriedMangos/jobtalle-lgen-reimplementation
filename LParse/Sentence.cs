@@ -38,6 +38,9 @@ namespace LGen.LParse
 
 		public bool Applicable(int at, Rule rule)
         {
+			if (rule.LHS.Tokens.Count <= 0) return false; // can't apply a rule with an empty left hand side
+			if (this.Tokens.Count - at < rule.LHS.Tokens.Count) return false;
+
 			for (int i = at; i < this.Tokens.Count && i < rule.LHS.Tokens.Count + at; i++)
 				if (this.Tokens[i] != rule.LHS.Tokens[i-at]) 
 					return false;
@@ -78,7 +81,6 @@ namespace LGen.LParse
 					return true;
 			}
 
-			UnityEngine.Debug.Log("success");
 			this.Tokens = newTokens;
 			return ruleWasApplied;
 		}

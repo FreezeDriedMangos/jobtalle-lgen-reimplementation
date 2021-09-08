@@ -14,6 +14,7 @@ namespace LGen.LEvolve
             
             GeneratedSymbols E = new GeneratedSymbols(system);
             Sentence axiom = Mutate(system.Axiom, profile, randomizer, E);
+            if (axiom.Tokens.Count <= 0) axiom = system.Axiom;
             
             for(int i = 0; i < system.Rules.Count; i++)
             {
