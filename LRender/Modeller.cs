@@ -82,6 +82,7 @@ namespace LGen.LRender
                     Vertex v = leaf.side2[i].vertex;
                     vertices.Add(new Vector3(v.x, v.y, v.z));
                 }
+                vertices.AddRange(vertices); // duplicate every entry to the vertices array so that the front and back sides of the leaf don't share vertices
 
                 // Strategy for generating leaf meshes
                 // zigzag between the two branches that make up the leaf, like a spider making a web
@@ -91,6 +92,7 @@ namespace LGen.LRender
                 int N = Mathf.Max(leaf.side1.Count, leaf.side2.Count);
                 int s1 = 0;
                 int s2 = leaf.side1.Count;
+                int backSide = vertices.Count/2;
                 int prev = -1;
                 int curr = 0+s1;
                 int next = 0+s2;
@@ -103,14 +105,22 @@ namespace LGen.LRender
                     if (i%2 == 0)
                     {
                         triangles.Add(prev);
-                        triangles.Add(curr);
                         triangles.Add(next);
+                        triangles.Add(curr);
+        
+                        triangles.Add(prev+backSide);
+                        triangles.Add(curr+backSide);
+                        triangles.Add(next+backSide);
                     }
                     else
                     {
                         triangles.Add(prev);
-                        triangles.Add(next);
                         triangles.Add(curr);
+                        triangles.Add(next);
+        
+                        triangles.Add(prev+backSide);
+                        triangles.Add(next+backSide);
+                        triangles.Add(curr+backSide);
                     }
                 }
 
