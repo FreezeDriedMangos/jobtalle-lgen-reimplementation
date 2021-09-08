@@ -79,5 +79,22 @@ namespace LGen.LParse
 			this.Tokens = newTokens;
 			return true;
 		}
+
+		public bool Validate()
+        {
+			int depth = 0;
+			bool leafMode = false;
+			foreach(Token t in Tokens)
+			{
+				if (t == Legend.BRANCH_OPEN || t == Legend.LEAF_OPEN) depth++;
+				if (t == Legend.BRANCH_CLOSE) depth--;
+
+				if (t == Legend.LEAF_OPEN)
+					if (leafMode) return false;
+					else leafMode = true;
+			}
+
+			return depth == 0;
+        }
     }
 }
