@@ -11,6 +11,8 @@ public class LEvolveTest : MonoBehaviour
 
     public int seed;
 
+    public int parseCount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,13 @@ public class LEvolveTest : MonoBehaviour
         
         for(int i = 0; i < 100; i++) s = m.Mutate(s, p, r);
         Debug.Log(s);
+
+        if (parseCount > 0)
+        {
+            GrowthProfile g = new GrowthProfile.Quadratic(parseCount);
+            Sentence n = s.Generate(g, r);
+            Debug.Log(n);
+        }
     }
 
     // Update is called once per frame
