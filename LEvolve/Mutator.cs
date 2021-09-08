@@ -12,8 +12,8 @@ namespace LGen.LEvolve
         {
             system = new LSystem(system);
 
-            List<Token> E = new List<Token>();
-            List<Token> N = new List<Token>();
+            List<Token> E = GetESet(system);
+            List<Token> N = GetNSet(profile);
             Sentence axiom = Mutate(system.Axiom, profile, randomizer, E, N);
             
             for(int i = 0; i < system.Rules.Count; i++)
@@ -66,12 +66,59 @@ namespace LGen.LEvolve
 
         private List<Token> GetESet(LSystem system)
         {
-            throw new NotImplementedException();
+            // add all non-branch tokens from system.axiom and system.rules.map(r => r.RHS)
+
+            List<Token> E = new List<Token>();
+            List<Token> allTokens = new List<Token>();
+            allTokens.AddRange(system.Axiom.Tokens);
+            foreach(Rule r in system.Rules) allTokens.AddRange(r.RHS.Tokens);
+
+            foreach(Token t in allTokens) 
+            {
+                if(t == Legend.BRANCH_OPEN)  continue;
+                if(t != Legend.BRANCH_CLOSE) continue;
+                if(t != Legend.LEAF_OPEN)    continue;
+
+                E.Add(t);
+            }
+
+            return E;
         }
 
-        private List<Token> GetNSet()
+        private List<Token> GetNSet(MutationProfile profile)
         {
-            throw new NotImplementedException();
+            List<Token> N = new List<Token>();
+            
+            for(char t = Legend.STEP_MIN; t < Legend.STEP_MAX; t++) N.Add(t);
+            for(char t = Legend.CONST_MIN; t < Legend.CONST_MAX; t++) N.Add(t);
+            N.Add(Legend.SEED            );
+            N.Add(Legend.PITCH_INCREMENT );
+            N.Add(Legend.PITCH_DECREMENT );
+            N.Add(Legend.ROLL_INCREMENT  );
+            N.Add(Legend.ROLL_DECREMENT  );
+            N.Add(Legend.YAW_INCREMENT   );
+            N.Add(Legend.YAW_DECREMENT   );
+            
+            List<Token> R = GetRSet();
+            for(int i = 0; i < profile.NDopingAmount; i++)
+            {
+                N.AddRange(R);
+                N.Add(Legend.SEED);
+            }
+
+            return N;
+        }
+
+        private List<Token> GetRSet()
+        {
+            List<Token> R = new List<Token>();
+            R.Add(Legend.ROLL_INCREMENT );
+            R.Add(Legend.ROLL_DECREMENT );
+            R.Add(Legend.PITCH_INCREMENT);
+            R.Add(Legend.PITCH_DECREMENT);
+            R.Add(Legend.YAW_INCREMENT  );
+            R.Add(Legend.YAW_DECREMENT  );
+            return R;
         }
 
         private bool InsideLeaf(Sentence sentence, int i)

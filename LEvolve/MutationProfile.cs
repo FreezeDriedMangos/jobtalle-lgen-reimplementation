@@ -4,7 +4,8 @@
     {
         // misc
         public int sentenceSizeLimit = 10;
-        
+        public int NDopingAmount = 10;
+
         //
         // System level mutations
         //
