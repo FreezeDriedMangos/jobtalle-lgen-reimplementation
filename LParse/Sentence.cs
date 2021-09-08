@@ -48,6 +48,7 @@ namespace LGen.LParse
 		public bool Apply(List<Rule> rules, Randomizer randomizer, int limit) 
 		{
 			List<Token> newTokens = new List<Token>();
+			bool ruleWasApplied = false;
 
 			for (int at = 0; at < this.Tokens.Count;)
 			{
@@ -65,6 +66,7 @@ namespace LGen.LParse
 					foreach(Token t in result) newTokens.Add(Token.Clone(t));
 
 					at += rule.LHS.Tokens.Count;
+					ruleWasApplied = true;
 				}
 				else
 				{
@@ -73,11 +75,12 @@ namespace LGen.LParse
 				}
 
 				if (newTokens.Count > limit) 
-					return false;
+					return true;
 			}
 
+			UnityEngine.Debug.Log("success");
 			this.Tokens = newTokens;
-			return true;
+			return ruleWasApplied;
 		}
 
 		public bool Validate()
