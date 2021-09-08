@@ -5,6 +5,21 @@
         // misc
         public int sentenceSizeLimit = 10;
         
+        //
+        // System level mutations
+        //
+
+        public float duplicateRuleChance = 0.01f;
+        public float deleteRuleChance = 0.01f;
+        public float createNewRuleChance = 0.01f;
+
+        // meta
+        public float chooseEForNewRuleLHSChance = 1f;
+
+        //
+        // Sentence-level mutations
+        //
+
         // chances for each type of mutation to occur
         public float addSymbolChance = 0.01f;
         public float removeSymbolChance = 0.01f;

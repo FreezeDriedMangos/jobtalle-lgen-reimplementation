@@ -15,6 +15,12 @@ namespace LGen.LParse
         public List<Rule> Rules { get; set; }
 
         public LSystem(Sentence Axiom, List<Rule> Rules) { this.Axiom = Axiom; this.Rules = Rules; }
+		public LSystem(LSystem system)
+        {
+			this.Axiom = new Sentence(system.Axiom);
+			this.Rules = new List<Rule>();
+			foreach(Rule r in system.Rules) this.Rules.Add(new Rule(r));
+        }
 		public LSystem(string s)
         {
 			string[] strings = s.Split('\n');
