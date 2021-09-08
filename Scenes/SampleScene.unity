@@ -323,7 +323,8 @@ MonoBehaviour:
   - B => BA
   - A => A
   seed: 0
-  parseCount: 4
+  numMutationSteps: 100
+  numRuleApplicationSteps: 4
 --- !u!1 &537490009
 GameObject:
   m_ObjectHideFlags: 0
