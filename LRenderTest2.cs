@@ -19,6 +19,7 @@ public class LRenderTest2 : MonoBehaviour
     {
         LGen.LRender.Renderer r = new LGen.LRender.Renderer();
         AgentRenderData d = r.Render(s, randomizer, num);
+        AgentRenderData d2 = r.Render(s, randomizer, num/2);
     }
 
     // Update is called once per frame
