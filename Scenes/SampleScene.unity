@@ -277,7 +277,7 @@ MonoBehaviour:
   branchMat: {fileID: 2100000, guid: 69beeb7183d1dd94ab15cbc8ed4c3d3d, type: 2}
   seedMat: {fileID: 2100000, guid: 9c7d6089297ceca4f8be814997415e3b, type: 2}
   leafMat: {fileID: 2100000, guid: 3bae1333a15b6934dba0d68662a38fa6, type: 2}
-  s: +++++AA--------------A\\\\\\\\\\\A^^^^^A
+  s: <A[^^B[^^C_C]_B_B]\\\\_A_A]
 --- !u!1 &365986612
 GameObject:
   m_ObjectHideFlags: 0

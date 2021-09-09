@@ -26,7 +26,7 @@ public class LRenderTest : MonoBehaviour
         float rad = 0.1f;
         
         Vector3 n = v2-v1;
-        modeller.GenerateCircle(n.x, n.y, n.z, v1.x, v1.y, v1.z, rad, 5);
+        //modeller.GenerateCircle(n.x, n.y, n.z, v1.x, v1.y, v1.z, rad, 5);
         //if(true) return;
         AgentData agent = modeller.GenerateAgentData(new Sentence(s));
         
