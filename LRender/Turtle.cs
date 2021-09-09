@@ -8,6 +8,11 @@ namespace LGen.LRender
     {
         public Vertex location = new Vertex();
 
+        public Turtle()
+        {
+            location.pitch = Mathf.PI/2;
+        }
+
         public Vertex Forwards(float distance)
         {
             Vector3 dxyz = distance * Utils.ApplyRollPitchYaw(location.roll, location.pitch, location.yaw, Vector3.forward);
