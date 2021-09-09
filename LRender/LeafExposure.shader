@@ -95,7 +95,6 @@ Shader "Unlit/LeafExposure" {
                 fixed4 _Color;
                 float _Opacity;
                 int _Seed;
-                uint randindex;
 
                 struct appdata {
                     float4 vertex : POSITION;
@@ -112,63 +111,15 @@ Shader "Unlit/LeafExposure" {
                     return o;
                 }
 
-                // low bias hash from https://www.shadertoy.com/view/WttXWX
-                uint lowbias32(uint x)
-                {
-                    x ^= x >> 16;
-                    x *= 0x7feb352dU;
-                    x ^= x >> 15;
-                    x *= 0x846ca68bU;
-                    x ^= x >> 16;
-                    return x;
-                }
-
-                float makeRandom() {
-                    randindex++;
-                    return (float)(lowbias32(_Seed + randindex) % 0x10000000) / (float)0x10000000;
-                }
-
-                // function from https://www.shadertoy.com/view/4djSRW
-                float hashOld12(fixed2 p)
-                {
-                    // Two typical hashes...
-                    return frac(sin(dot(p, fixed2(12.9898, 78.233))) * 43758.5453);
-                }
-
-                // function from https://answers.unity.com/questions/399751/randomity-in-cg-shaders-beginner.html
-                float rand(float3 co)
-                {
-                    return frac(sin(dot(co.xyz, float3(12.9898, 78.233, 45.5432))) * 43758.5453);
-                }
-
                 // function from https://www.shadertoy.com/view/4sfGzS
-                float hash(float3 p)  // replace this by something better
+                float hash(float3 p)
                 {
-                    p.z = 0; // TESTING ONLY
-
                     p = frac(p * 0.3183099 + .1);
                     p *= 17.0;
                     return frac(p.x * p.y * p.z * (p.x + p.y + p.z));
                 }
 
                 fixed4 frag(v2f i) : COLOR{
-                    //float opacity = floor(makeRandom() + _Opacity);
-                    ////return _Color * opacity + fixed4(0, 0, 0, 0) * (1 - opacity);
-                    //return fixed4(1, opacity, opacity, opacity);
-
-                    //randindex = i.vertex.x;
-                    //randindex = (i.uv.x + i.uv.y) * (i.uv.x + i.uv.y + 1) / 2 + i.uv.x;
-                    //if (makeRandom() > _Opacity) discard;
-                    //return _Color;
-                    
-                    //if (hashOld12(i.uv +_Seed * 1500. + 50.0) > _Opacity) discard;
-                    //return _Color;
-                    
-                    // working:
-                    //if (rand(i.vertex) > _Opacity) discard;
-                    //return _Color;
-
-                    // working:
                     if (hash(i.vertex + _Seed/ 0x00FFFFFE) > _Opacity) discard;
                     return _Color;
                 }
