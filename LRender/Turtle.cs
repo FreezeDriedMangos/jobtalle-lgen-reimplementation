@@ -10,7 +10,7 @@ namespace LGen.LRender
 
         public Turtle()
         {
-            location.pitch = Mathf.PI/2;
+            location.pitch = -Mathf.PI/2;
         }
 
         public Vertex Forwards(float distance)
