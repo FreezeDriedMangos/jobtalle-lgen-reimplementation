@@ -94,7 +94,7 @@ Shader "Unlit/LeafExposure" {
 
                 fixed4 _Color;
                 float _Opacity;
-                uint _Seed;
+                int _Seed;
                 uint randindex;
 
                 struct appdata {
@@ -144,9 +144,11 @@ Shader "Unlit/LeafExposure" {
                 // function from https://www.shadertoy.com/view/4sfGzS
                 float hash(float3 p)  // replace this by something better
                 {
-                    p = frac(p * 0.3183099 + .1 + _Seed);
+                    p.z = 0; // TESTING ONLY
+
+                    p = frac(p * 0.3183099 + .1);
                     p *= 17.0;
-                    return frac(_Seed + p.x * p.y * p.z * (p.x + p.y + p.z));
+                    return frac(p.x * p.y * p.z * (p.x + p.y + p.z));
                 }
 
                 fixed4 frag(v2f i) : COLOR{
@@ -167,7 +169,7 @@ Shader "Unlit/LeafExposure" {
                     //return _Color;
 
                     // working:
-                    if (hash(i.vertex) > _Opacity) discard;
+                    if (hash(i.vertex + _Seed/ 0x00FFFFFE) > _Opacity) discard;
                     return _Color;
                 }
             ENDCG
