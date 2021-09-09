@@ -104,7 +104,7 @@ namespace LGen.LRender
                 Vector3 end = new Vector3(upper.vertex.x, upper.vertex.y, upper.vertex.z);
                 
                 //UnityEngine.Debug.Log(start + " to " + end + " - " + bottomRadius + ", " + topRadius);
-                branchMeshes.Add(CreateCylinder(start, end, bottomRadius, topRadius));
+                branchMeshes.Add(CreateCylinder(upper.vertex.roll, upper.vertex.pitch, upper.vertex.yaw, start, end, bottomRadius, topRadius));
             }
 
             List<Mesh> leafMeshes = new List<Mesh>();
@@ -332,36 +332,16 @@ namespace LGen.LRender
             return armature;
         }
 
-        public Mesh CreateCylinder(Vector3 start, Vector3 end, float firstRadius, float secondRadius, int vertexCountPerEnd = 5)
+        public Mesh CreateCylinder(float roll, float pitch, float yaw, Vector3 start, Vector3 end, float firstRadius, float secondRadius, int vertexCountPerEnd = 5)
         {
             firstRadius = Mathf.Max(firstRadius, 0.001f);
             secondRadius = Mathf.Max(secondRadius, 0.001f);
             
             Vector3 nxyz = end - start;
 
-            List<Vector3> firstCircle = GenerateCircle
-            (
-                nxyz.x, 
-                nxyz.y, 
-                nxyz.z, 
-                start.x, 
-                start.y, 
-                start.z,
-                firstRadius,
-                vertexCountPerEnd
-            );
+            List<Vector3> firstCircle = GenerateCircle(roll, pitch, yaw, start, firstRadius, vertexCountPerEnd);
+            List<Vector3> secondCircle = GenerateCircle(roll, pitch, yaw, end, secondRadius, vertexCountPerEnd);
 
-            List<Vector3> secondCircle = GenerateCircle
-            (
-                nxyz.x, 
-                nxyz.y, 
-                nxyz.z, 
-                end.x, 
-                end.y, 
-                end.z,
-                secondRadius,
-                vertexCountPerEnd
-            );
 
             List<Vector3> vertices = new List<Vector3>();
             vertices.AddRange(firstCircle);
@@ -411,60 +391,19 @@ namespace LGen.LRender
             return mesh;
         }
 
-        public List<Vector3> GenerateCircle(float nx, float ny, float nz, float cx, float cy, float cz, float r, int numPoints)
+        public List<Vector3> GenerateCircle(float roll, float pitch, float yaw, Vector3 center, float r, int numPoints)
         {
-            // Code from https://stackoverflow.com/a/27715321/9643841
-            // Only needed if normal vector (nx, ny, nz) is not already normalized.
-            float s = 1.0f / (nx * nx + ny * ny + nz * nz);
-            float v3x = s * nx;
-            float v3y = s * ny;
-            float v3z = s * nz;
-
-
-            // Calculate v1.
-            s = 1.0f / (v3x * v3x + v3z * v3z);
-            float v1x = s * v3z;
-            float v1y = 0.0f;
-            float v1z = s * -v3x;
-            if (v3x == 0 && v3z == 0)
-            {
-                s = 1.0f / (v3x * v3x + v3y * v3y);
-                v1y = s * v3y;
-                v1x = 0.0f;
-                v1z = s * -v3x;
-            }
-
-            // Calculate v2 as cross product of v3 and v1.
-            // Since v1y is 0, it could be removed from the following calculations. Keeping it for consistency.
-            float v2x = v3y * v1z - v3z * v1y;
-            float v2y = v3z * v1x - v3x * v1z;
-            float v2z = v3x * v1y - v3y * v1x;
-
-            //Debug.Log("s:" + s + "\n" +
-            //        "v3x:" + v3x + "\n" +
-            //        "v3y:" + v3y + "\n" +
-            //        "v3z:" + v3z + "\n" +
-            //        "v1x:" + v1x + "\n" +
-            //        "v1y:" + v1y + "\n" +
-            //        "v1z:" + v1z + "\n" +
-            //        "v2x:" + v2x + "\n" +
-            //        "v2y:" + v2y + "\n" +
-            //        "v2z:" + v2z + "\n" +
-            //        "nx:" + nx + "\n" +
-            //        "ny:" + ny + "\n" +
-            //        "nz:" + nz + "\n" + 
-            //        "mag:" + (nx * nx + ny * ny + nz * nz));
-
-            // For each circle point.
             List<Vector3> points = new List<Vector3>();
             float angleIncrement = 2*Mathf.PI / ((float)numPoints);
             for(float a = 0; a < 2*Mathf.PI; a += angleIncrement)
             {
-                float px = cx + r * (v1x * Mathf.Cos(a) + v2x * Mathf.Sin(a));
-                float py = cy + r * (v1y * Mathf.Cos(a) + v2y * Mathf.Sin(a));
-                float pz = cz + r * (v1z * Mathf.Cos(a) + v2z * Mathf.Sin(a));
-                points.Add(new Vector3(px, py, pz));
-                //Debug.Log(points[points.Count-1]);
+                float px = r * Mathf.Cos(a);
+                float py = r * Mathf.Sin(a);
+                float pz = r * 0;
+                Vector3 basePoint = new Vector3(px, py, pz);
+                Vector3 rotatedPoint = Utils.ApplyRollPitchYaw(roll, pitch, yaw, basePoint);
+                Vector3 finalPoint = rotatedPoint + center;
+                points.Add(finalPoint);
             }
 
             return points;

@@ -10,8 +10,8 @@ namespace LGen.LRender
 
         public Vertex Forwards(float distance)
         {
-            Vector3 dxyz = Utils.PolarToCartesian(distance, this.location.yaw, this.location.pitch);
-            
+            Vector3 dxyz = distance * Utils.ApplyRollPitchYaw(location.roll, location.pitch, location.yaw, Vector3.forward);
+
             this.location.x += dxyz.x;
             this.location.y += dxyz.y;
             this.location.z += dxyz.z;
