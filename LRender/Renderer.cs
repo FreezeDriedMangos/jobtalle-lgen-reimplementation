@@ -70,10 +70,10 @@ namespace LGen.LRender
                 int leafR = agentNum % 256;
                 int leafG = agentNum / 256;
                 int leafB = i % 256;
+
                 Color color = new Color((float)leafR / 256f, (float)leafG / 256f, (float)leafB / 256f);
-                Debug.Log(color);
                 int seed = randomizer.MakeInt_Inclusive(0, int.MaxValue-1);
-                Debug.Log(seed);
+
                 propBlock.SetColor("_Color", color);
                 propBlock.SetInt("_Seed", seed);
                 propBlock.SetFloat("_Opacity", leafOpacity);
