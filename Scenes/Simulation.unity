@@ -1321,9 +1321,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LOG_LEAF_EXPOSURES: 0
   randomizerSeed: 0
-  gridScale: 1
-  gridWidth: 15
-  gridHeight: 15
+  gridScale: 0.5
+  gridWidth: 30
+  gridHeight: 30
+  placeInitialSeedEveryNTiles: 3
   numGrowthIterationsInMaxFertility: 5
   numGrowthIterationsInMinFertility: 2
   quadraticGrowthProfileMultiplier: 1
