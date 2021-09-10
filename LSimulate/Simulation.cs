@@ -140,12 +140,32 @@ namespace LGen.LSimulate
             {
                 if (a.renderData.gameObject == o)
                 {
-                    Debug.Log(a.sentence+"\n\n"+a.system);
+                    Debug.Log(a.sentence+"\n\n"+a.system+"\n\n"+a.viability+"\n\n"+a.renderData.agentData.limitsReport.minimum+"\n"+a.renderData.agentData.limitsReport.maximum+"\n"+a.renderData.agentData.limitsReport.Radius);
                     return;
                 }
             }
 
             Debug.Log("No matching agent found.");
+        }
+
+        public void ShowGridDensity(SimulationState state, GameObject parent, UnityEngine.UI.Text textPrefab)
+        {
+            
+            for(int x = 0; x < this.gridWidth; x++)
+            {
+                for(int y = 0; y < this.gridHeight; y++)
+                {
+                    GameObject g = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                    g.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                    g.transform.position = new Vector3(x*this.gridScale, 0, y*this.gridScale);
+                    g.transform.parent = parent.transform;
+
+                    UnityEngine.UI.Text t = GameObject.Instantiate(textPrefab);
+                    t.transform.position = g.transform.position + new Vector3(0, 0.15f, 0);
+                    t.text = ""+state.grid[x, y].density;
+                    t.gameObject.transform.parent = parent.transform;
+                }
+            }
         }
 
 
@@ -277,7 +297,7 @@ namespace LGen.LSimulate
                 {
                     Seed seed = new Seed();
                     seed.system = mutator.Mutate(agent.system, mutationProfile, this.randomizer);
-                    seed.parentRadius = agentRadius;
+                    seed.parentRadius = Mathf.Max(agentRadius, 0.1f);
                     seed.parentViability = agent.viability;
 
                     seed.locationRelativeToParentRoot = agentData.seedReports[j].location; // TODO: make sure that seedReport.location really is relative to parent root
@@ -334,7 +354,7 @@ namespace LGen.LSimulate
                 Vector2Int gridLocation = new Vector2Int(Mathf.RoundToInt(absoluteLocation.x / gridScale), Mathf.RoundToInt(absoluteLocation.y / gridScale));
                 gridLocation = new Vector2Int(System.Math.Max(System.Math.Min(this.gridWidth-1, gridLocation.x), 0), System.Math.Max(System.Math.Min(this.gridHeight-1, gridLocation.y), 0));
 
-                if (state.grid[gridLocation.x, gridLocation.y].density >= densityThreshold) continue;
+                if (state.grid[gridLocation.x, gridLocation.y].density >= this.densityThreshold) continue;
                 if (state.grid[gridLocation.x, gridLocation.y].occupant != null) continue;
 
                 Agent agent = new Agent();
@@ -349,7 +369,7 @@ namespace LGen.LSimulate
                 //    dx = (int) sqrt(radius * radius - iy * iy)
                 //    for (int ix = - dx  to  dx; ix++)
                 //        doSomething(CX + ix, CY + iy);
-                int radius = Mathf.CeilToInt(seed.parentRadius);
+                int radius = Mathf.CeilToInt(seed.parentRadius/this.gridScale);
                 for (int iy = -radius; iy < radius; iy++)
                 {
                     int dx = Mathf.CeilToInt(Mathf.Sqrt(radius * radius - iy * iy));

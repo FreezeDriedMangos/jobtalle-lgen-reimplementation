@@ -7,6 +7,9 @@ public class ButtonController : MonoBehaviour
 {
     public UnityEngine.UI.InputField advanceIterationsInput;
 
+    public GameObject gridDensityUiParent;
+    public UnityEngine.UI.Text textPrefab;
+
     public void AdvanceIterations()
     {
         int numIterations = int.Parse(advanceIterationsInput.text);
@@ -19,5 +22,10 @@ public class ButtonController : MonoBehaviour
     public void AddColliders()
     {
         Simulation.Instance.AddColliders(Simulation.Instance.state);
+    }
+
+    public void ShowGridDensity()
+    {
+        Simulation.Instance.ShowGridDensity(Simulation.Instance.state, gridDensityUiParent, textPrefab);
     }
 }
