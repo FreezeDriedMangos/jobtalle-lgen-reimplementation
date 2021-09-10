@@ -107,6 +107,7 @@ namespace LGen.LEvolve
 
         private bool InsideLeaf(Sentence sentence, int i)
         {
+            if (sentence.Tokens.Count == 0 || sentence.Tokens.Count <= i) return false;
             if (sentence.Tokens[i] == Legend.LEAF_OPEN) return true;
             if (sentence.Tokens[i] == Legend.BRANCH_CLOSE) return sentence.Tokens[FindMatchingOpenBracket(sentence, i)] == Legend.LEAF_OPEN;
 
