@@ -64,7 +64,14 @@ namespace LGen.LSimulate
         public float leafOpacity = 0.8f;
         public float maxExpectedBranchLoad_displayPurposesOnly = 2f;
 
+        public SimulationState state;
+
         public Simulation() { randomizer = new Randomizer(randomizerSeed); }
+        public void Start()
+        {
+            state = InitializeState(true);
+        }
+
 
         public SimulationState InitializeState(bool startIteration = false)
         {
@@ -95,16 +102,6 @@ namespace LGen.LSimulate
             IterateFirstHalf(state); // I want to end with a bunch of plants rendered and their data stored, IterateFirstHalf erases their data
         }
 
-
-        public void Start()
-        {
-            SimulationState state = InitializeState(true);
-
-            for(int i = 0; i < 3; i++)
-            {
-                Iterate_SecondHalfFirst(state);
-            }
-        }
 
 
 
