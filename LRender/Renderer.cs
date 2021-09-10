@@ -139,9 +139,13 @@ namespace LGen.LRender
                 // prepare to dispatch compute shader 
                 //
 
+                // note: everywhere you see 64*agents64, pretend it says agents.count
+                // I just needed the first multiple of 64 greather than or equal to agents.Count for this all to work nicely
+                int agents64 = (int)Mathf.Ceil((float)agents.Count / 64f);
+
                 // note: max size of agents is 256*256
-                ComputeBuffer histogramBuffer = new ComputeBuffer(256, sizeof(uint) * 4); // I really want agents.Count, sizeof(uint)
-                uint[] histogramData = new uint[256 * 4]; // I need new uint[agents.Count]
+                ComputeBuffer histogramBuffer = new ComputeBuffer(64*agents64, sizeof(uint)); //new ComputeBuffer(256, sizeof(uint) * 4); // I really want agents.Count, sizeof(uint)
+                uint[] histogramData = new uint[64*agents64]; //new uint[256 * 4]; // I need new uint[agents.Count]
       
                 if (handleInitialize < 0 || handleMain < 0 || 
                     null == histogramBuffer || null == histogramData) 
@@ -150,7 +154,7 @@ namespace LGen.LRender
                     return;
                 }
 
-                shader.SetTexture(handleMain, "InputTexture", leafExposure);
+                shader.SetTexture(handleMain, "InputTexture", RendererResources.Instance.testTex);//leafExposure);
                 shader.SetBuffer(handleMain, "HistogramBuffer", histogramBuffer);
                 shader.SetBuffer(handleInitialize, "HistogramBuffer", histogramBuffer);
 
@@ -166,16 +170,19 @@ namespace LGen.LRender
                     return;
                 }
          
-                shader.Dispatch(handleInitialize, 256 / 64, 1, 1);
-                    // divided by 64 in x because of [numthreads(64,1,1)] in the compute shader code
+                //shader.Dispatch(handleInitialize, 256 / 64, 1, 1);
+                shader.Dispatch(handleInitialize, agents64, 1, 1);
+                //    // divided by 64 in x because of [numthreads(64,1,1)] in the compute shader code
+                //shader.Dispatch(handleInitialize, (leafExposure.width + 7) / 8, (leafExposure.height + 7) / 8, 1);
                 shader.Dispatch(handleMain, (leafExposure.width + 7) / 8, (leafExposure.height + 7) / 8, 1);
                     // divided by 8 in x and y because of [numthreads(8,8,1)] in the compute shader code
         
                 histogramBuffer.GetData(histogramData);
+                Debug.Log(string.Join(", ", histogramData));
 
                 foreach(AgentRenderData agent in agents)
                 {
-                    int numPixels = 0; // histogramData[agent.leafIdentityColor.x + agent.leafIdentityColor.y*256]
+                    uint numPixels = histogramData[agent.leafIdentityColor.x + agent.leafIdentityColor.y*256]; //0; // histogramData[agent.leafIdentityColor.x + agent.leafIdentityColor.y*256]
                     agent.agentData.exposureReport.exposure += (float)numPixels/numExposureTests;
                 }
 

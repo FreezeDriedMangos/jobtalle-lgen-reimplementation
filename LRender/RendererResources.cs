@@ -17,5 +17,6 @@ namespace LGen.LRender
         public List<RenderTexture> leafExposures;
         public RenderTexture LeafExposureRenderTexturePrefab;
         public Shader LeafExposureShader;
+        public Texture testTex;
     }
 }

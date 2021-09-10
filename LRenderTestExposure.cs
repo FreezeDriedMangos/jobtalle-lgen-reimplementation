@@ -9,11 +9,15 @@ public class LRenderTestExposure : MonoBehaviour
     public List<string> agents;
     public List<Vector3> agentPositions;
 
+
+    LGen.LRender.Renderer r;
+    List<AgentRenderData> agentData;
+
     // Start is called before the first frame update
     void Start()
     {
-        List<AgentRenderData> agentData = new List<AgentRenderData>();
-        LGen.LRender.Renderer r = new LGen.LRender.Renderer();
+        agentData = new List<AgentRenderData>();
+        r = new LGen.LRender.Renderer();
         Randomizer rand = new Randomizer();
 
         for(int i = 0; i < agents.Count; i++)
@@ -22,16 +26,22 @@ public class LRenderTestExposure : MonoBehaviour
             agentData.Add(d);
             d.gameObject.transform.position = agentPositions[i];
         }
+    }
+
+    bool done = false;
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (done) return;
+        done = true;
+
+    
 
         r.EvaluateExposure(agentData);
         List<float> exposures = agentData.ConvertAll(new System.Converter<AgentRenderData, float>((AgentRenderData d) => d.agentData.exposureReport.exposure));
         Debug.Log(exposures.Count);
         Debug.Log("[" + string.Join(", ", exposures) + "]");
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
