@@ -1563,6 +1563,8 @@ MonoBehaviour:
   fertilityMap: {fileID: 2800000, guid: 0c9f4efcfc5430d4ba5fdb27647f5e50, type: 3}
   leafOpacity: 0.8
   maxExpectedBranchLoad_displayPurposesOnly: 2
+  initialMutability: 10
+  mutabilityFalloff: 0.01
 --- !u!1 &1897152242
 GameObject:
   m_ObjectHideFlags: 0

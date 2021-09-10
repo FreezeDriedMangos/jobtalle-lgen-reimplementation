@@ -107,7 +107,7 @@ namespace LGen.LEvolve
 
         private bool InsideLeaf(Sentence sentence, int i)
         {
-            if (sentence.Tokens.Count == 0 || sentence.Tokens.Count <= i) return false;
+            if (sentence.Tokens.Count <= i || sentence.Tokens.Count <= i) return false;
             if (sentence.Tokens[i] == Legend.LEAF_OPEN) return true;
             if (sentence.Tokens[i] == Legend.BRANCH_CLOSE) return sentence.Tokens[FindMatchingOpenBracket(sentence, i)] == Legend.LEAF_OPEN;
 
@@ -175,6 +175,8 @@ namespace LGen.LEvolve
 
         private void RemoveSymbolAt(Sentence sentence, int i)
         {
+            if (sentence.Tokens.Count <= i) return;
+
             Token t = sentence.Tokens[i];
             if(t == Legend.BRANCH_OPEN) return;
             if(t == Legend.BRANCH_CLOSE) return;
@@ -244,13 +246,13 @@ namespace LGen.LEvolve
 
         private void RemoveBranchAt(Sentence sentence, int i)
         {
-            if (sentence.Tokens[i] != Legend.BRANCH_OPEN) return;
+            if (sentence.Tokens.Count <= i || sentence.Tokens[i] != Legend.BRANCH_OPEN) return;
             RemoveBranchOrLeafAt(sentence, i);
         }
 
         private void RemoveLeafAt(Sentence sentence, int i)
         {
-            if (sentence.Tokens[i] != Legend.LEAF_OPEN) return;
+            if (sentence.Tokens.Count <= i || sentence.Tokens[i] != Legend.LEAF_OPEN) return;
             RemoveBranchOrLeafAt(sentence, i);
         }
         

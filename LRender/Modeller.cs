@@ -38,6 +38,8 @@ namespace LGen.LRender
         public VertexTree VertexTree;
         public List<LeafArmature> leaves;
         public List<Vector3> seeds = new List<Vector3>();
+
+        public Sentence sentence;
     }
 
     public class Modeller
@@ -46,6 +48,7 @@ namespace LGen.LRender
         {
             AgentData agent = new AgentData();
             Armature armature = GenerateTree(sentence);
+            armature.sentence = sentence;
         
             agent.positionReport.centerOfGravity = CalculateCenterOfGravity(armature.VertexTree);
             agent.limitsReport = CalculateLimitsReport(armature.VertexTree, agent.limitsReport);    
@@ -173,7 +176,9 @@ namespace LGen.LRender
 
                 
                 Mesh mesh = new Mesh();
-        
+                
+                try { 
+
                 mesh.vertices = vertices.ToArray();
                 mesh.triangles = triangles.ToArray();
                 mesh.uv = uvs.ToArray();
@@ -181,6 +186,9 @@ namespace LGen.LRender
                 mesh.RecalculateNormals();
                 mesh.RecalculateBounds();
                 mesh.RecalculateTangents();
+                } catch {
+                    Debug.Log(armature.sentence);
+                } 
 
                 leafMeshes.Add(mesh);
             }

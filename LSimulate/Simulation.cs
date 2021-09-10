@@ -26,6 +26,7 @@ namespace LGen.LSimulate
     {
         public Grid grid;
         public List<Agent> agents = new List<Agent>();
+        public int generation;
     }
 
 
@@ -65,6 +66,9 @@ namespace LGen.LSimulate
         public float leafOpacity = 0.8f;
         public float maxExpectedBranchLoad_displayPurposesOnly = 2f;
 
+        public float initialMutability;
+        public float mutabilityFalloff;
+
         public SimulationState state;
 
         //
@@ -96,6 +100,7 @@ namespace LGen.LSimulate
 
         public void IterateSecondHalf(SimulationState state)
         {
+            state.generation++;
             SeedNextState(state);
         }
 
@@ -250,7 +255,7 @@ namespace LGen.LSimulate
         {
             List<Seed> seeds = new List<Seed>(); 
             Mutator mutator = new Mutator();
-            MutationProfile mutationProfile = new MutationProfile();
+            MutationProfile mutationProfile = new MutationProfile(1 + this.initialMutability / (1+state.generation*this.mutabilityFalloff));
             
             //
             // generate seeds
