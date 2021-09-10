@@ -242,7 +242,7 @@ namespace LGen.LRender
             return max;
         }
 
-        public Armature GenerateTree(Sentence sentence, float branchLength = 1, float angleDelta = (float)(Math.PI/9f))
+        public Armature GenerateTree(Sentence sentence, float branchLength = 1, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0.2f)
         {
             Armature armature = new Armature();
 
@@ -269,7 +269,11 @@ namespace LGen.LRender
                 //
                 // misc
                 //
-                if (t == Legend.SEED) armature.seeds.Add(new Vector3(turtle.location.x, turtle.location.y, turtle.location.z));
+
+                // TODO: add seed to location turtle.Sideways, which uses roll
+                // this way seeds aren't embedded in the stem
+                //if (t == Legend.SEED) armature.seeds.Add(new Vector3(turtle.location.x, turtle.location.y, turtle.location.z));
+                if (t == Legend.SEED) armature.seeds.Add(turtle.GetSideways(seedOffset));
 
                 //
                 // branches and leaves
