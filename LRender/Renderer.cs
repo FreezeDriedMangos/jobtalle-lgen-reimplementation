@@ -126,10 +126,13 @@ namespace LGen.LRender
             int handleMain = shader.FindKernel("HistogramMain");
 
             float numExposureTests = RendererResources.Instance.leafExposures.Count;
-            foreach(RenderTexture leafExposure in RendererResources.Instance.leafExposures)
+            //foreach(RenderTexture leafExposure in RendererResources.Instance.leafExposures)
+            foreach(Camera leafExposureCamera in RendererResources.Instance.leafExposureCameras)
             {
+                Texture2D leafExposure = RTImage(leafExposureCamera);
+
                 // count num occurances of each color using a compute shader
-                if (null == leafExposure) 
+                if (null == leafExposureCamera) 
                 {
                     Debug.Log("Shader or input texture missing.");
                     return;
@@ -154,7 +157,7 @@ namespace LGen.LRender
                     return;
                 }
 
-                shader.SetTexture(handleMain, "InputTexture", RendererResources.Instance.testTex);//leafExposure);
+                shader.SetTexture(handleMain, "InputTexture", leafExposure);//RendererResources.Instance.testTex);//leafExposure);
                 shader.SetBuffer(handleMain, "HistogramBuffer", histogramBuffer);
                 shader.SetBuffer(handleInitialize, "HistogramBuffer", histogramBuffer);
 
@@ -190,6 +193,27 @@ namespace LGen.LRender
                  histogramBuffer.Release();
                  histogramBuffer = null;
             }
+        }
+
+        Texture2D RTImage(Camera camera)
+        {
+            // The Render Texture in RenderTexture.active is the one
+            // that will be read by ReadPixels.
+            var currentRT = RenderTexture.active;
+            RenderTexture.active = camera.targetTexture;
+
+            // Render the camera's view.
+            camera.Render();
+
+            // Make a new texture and read the active Render Texture into it.
+            Texture2D image = new Texture2D(camera.targetTexture.width, camera.targetTexture.height);
+            image.filterMode = FilterMode.Point;    
+            image.ReadPixels(new Rect(0, 0, camera.targetTexture.width, camera.targetTexture.height), 0, 0);
+            image.Apply();
+            
+            // Replace the original active Render Texture.
+            RenderTexture.active = currentRT;
+            return image;
         }
     }
 }

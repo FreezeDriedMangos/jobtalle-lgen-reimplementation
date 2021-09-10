@@ -13,6 +13,7 @@ namespace LGen.LRender
         void Start()
         {
             camera = GetComponent<Camera>();
+            RendererResources.Instance.leafExposureCameras.Add(camera);
             
             RenderTexture tex = Instantiate(RendererResources.Instance.LeafExposureRenderTexturePrefab); //new RenderTexture(RendererResources.Instance.LeafExposureTextureWidth, RendererResources.Instance.LeafExposureTextureHeight, 16);
             camera.targetTexture = tex;
