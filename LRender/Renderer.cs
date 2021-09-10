@@ -20,7 +20,7 @@ namespace LGen.LRender
             return Render(m.GenerateAgentData(sentence), randomizer, agentNum);
         }
 
-        public AgentRenderData Render(AgentData agent, Randomizer randomizer, int agentNum = 0, float leafOpacity = 0.8f, float fertility = 1f, float maxExpectedBranchLoad = 5f)
+        public AgentRenderData Render(AgentData agent, Randomizer randomizer, int agentNum = 0, float leafOpacity = 0.8f, float fertility = 1f, float maxExpectedBranchLoad = 2f)
         {
             AgentRenderData data = new AgentRenderData();
             data.agentData = agent;
@@ -48,7 +48,7 @@ namespace LGen.LRender
                 MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
                 meshRenderer.GetPropertyBlock(propBlock);
                 propBlock.SetFloat("_Fertility", fertility);
-                propBlock.SetFloat("_BranchLoad", agent.branchReports[i].branchLoad / maxExpectedBranchLoad);
+                propBlock.SetFloat("_StemLoad", agent.branchReports[i].branchLoad / maxExpectedBranchLoad);
                 propBlock.SetColor("_LeafExposureColor", Color.white);
                 propBlock.SetInt("_Seed", 0);
                 propBlock.SetFloat("_Opacity", 1);
