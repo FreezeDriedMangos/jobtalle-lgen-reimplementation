@@ -12,11 +12,11 @@ namespace LGen.LParse
         // out-of-the-box profiles
         public class Quadratic : GrowthProfile
         {
-            public int initial = 5;
-            public int multiplier = 1;
+            public float initial = 5;
+            public float multiplier = 1;
 
             public Quadratic(int iterations) : base(iterations) { }
-            public Quadratic(int iterations, int initial, int multiplier) : this(iterations)
+            public Quadratic(int iterations, float initial, float multiplier) : this(iterations)
             {
                 this.initial = initial;
                 this.multiplier = multiplier;
@@ -24,7 +24,7 @@ namespace LGen.LParse
 
             public override int GetGrowth(int iteration)
             {
-                return initial + multiplier*iteration*iteration;
+                return (int)(initial + multiplier*iteration*iteration);
             }
         }
 
