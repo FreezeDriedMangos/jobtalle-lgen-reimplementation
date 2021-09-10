@@ -15,4 +15,9 @@ public class ButtonController : MonoBehaviour
             Simulation.Instance.Iterate_SecondHalfFirst(Simulation.Instance.state);
         }
     }
+
+    public void AddColliders()
+    {
+        Simulation.Instance.AddColliders(Simulation.Instance.state);
+    }
 }

@@ -67,12 +67,15 @@ namespace LGen.LSimulate
 
         public SimulationState state;
 
+        //
+        // Top level functions
+        //
+
         public Simulation() { randomizer = new Randomizer(randomizerSeed); }
         public void Start()
         {
             state = InitializeState(true);
         }
-
 
         public SimulationState InitializeState(bool startIteration = false)
         {
@@ -99,13 +102,43 @@ namespace LGen.LSimulate
         public void Iterate_SecondHalfFirst(SimulationState state)
         {
             IterateSecondHalf(state);
-            CleanState(state);
             IterateFirstHalf(state); // I want to end with a bunch of plants rendered and their data stored, IterateFirstHalf erases their data
         }
 
 
+        //
+        // Misc functions
+        //
+
+        public void AddColliders(SimulationState state)
+        {
+            foreach(Agent a in state.agents)
+            {
+                BoxCollider c = a.renderData.gameObject.AddComponent<BoxCollider>();
+                c.size = a.renderData.agentData.limitsReport.maximum - a.renderData.agentData.limitsReport.minimum;
+                c.size = c.size == Vector3.zero ? new Vector3(0.25f, 0.25f, 0.25f) : c.size;
+                c.center = a.renderData.agentData.limitsReport.minimum + 0.5f * c.size;                
+            }
+        }
+
+        public void PrintAgentForGameObject(GameObject o)
+        {
+            foreach(Agent a in state.agents)
+            {
+                if (a.renderData.gameObject == o)
+                {
+                    Debug.Log(a.sentence+"\n\n"+a.system);
+                    return;
+                }
+            }
+
+            Debug.Log("No matching agent found.");
+        }
 
 
+        //
+        // Core functions
+        //
 
         public void InitializeGrid(SimulationState state, Texture2D fertilityMap)
         {
@@ -208,25 +241,22 @@ namespace LGen.LSimulate
             }
         }
 
-        public void CleanState(SimulationState state)
-        {
-            for(int i = 0; i < state.agents.Count; i++)
-            {
-                Agent agent = state.agents[i];
-                if (agent == null || agent.renderData == null || agent.renderData.gameObject == null) continue;
-                Destroy(agent.renderData.gameObject);
-            }
-        }
-
         public void SeedNextState(SimulationState state) 
         {
             List<Seed> seeds = new List<Seed>(); 
             Mutator mutator = new Mutator();
             MutationProfile mutationProfile = new MutationProfile();
             
+            //
+            // generate seeds
+            //
+            
+            Debug.Log(state.agents.Count);
             for(int i = 0; i < state.agents.Count; i++)
             {
                 Agent agent = state.agents[i];
+                if (agent.viability < 0) continue;
+
                 AgentData agentData = agent.renderData.agentData;
                 float agentRadius = agentData.limitsReport.Radius;
                 
@@ -244,14 +274,31 @@ namespace LGen.LSimulate
                     seeds.Add(seed);
                 }
             }
+            
+            //
+            // Remove old agents
+            //
+                        
+            for(int i = 0; i < state.agents.Count; i++)
+            {
+                Agent agent = state.agents[i];
+                Destroy(agent.renderData.gameObject);
+            }
+
+            state.agents.Clear();
 
             for(int x = 0; x < this.gridWidth; x++)
             {
                 for(int y = 0; y < this.gridHeight; y++)
                 {
+                    state.grid[x, y].density = 0;
                     state.grid[x, y].occupant = null;
                 }
             }
+
+            //
+            // place new agents
+            //
 
             // shuffle seeds
             seeds.OrderBy(seed => randomizer.MakeFloat(0, 99));
@@ -270,7 +317,7 @@ namespace LGen.LSimulate
                 float r = randomizer.MakeFloat(0, distributionRadius);
                 float theta = randomizer.MakeFloat(-Mathf.PI, Mathf.PI);
                 
-                Vector2 absoluteLocation = new Vector2(r * Mathf.Cos(theta), r * Mathf.Sin(theta));
+                Vector2 absoluteLocation = new Vector2(r * Mathf.Cos(theta) + seed.parentGridLocation.x*gridScale, r * Mathf.Sin(theta) + seed.parentGridLocation.y*gridScale);
                 Vector2Int gridLocation = new Vector2Int(Mathf.RoundToInt(absoluteLocation.x / gridScale), Mathf.RoundToInt(absoluteLocation.y / gridScale));
                 gridLocation = new Vector2Int(System.Math.Max(System.Math.Min(this.gridWidth-1, gridLocation.x), 0), System.Math.Max(System.Math.Min(this.gridHeight-1, gridLocation.y), 0));
 
@@ -289,14 +336,15 @@ namespace LGen.LSimulate
                 //    dx = (int) sqrt(radius * radius - iy * iy)
                 //    for (int ix = - dx  to  dx; ix++)
                 //        doSomething(CX + ix, CY + iy);
-                float radius = seed.parentRadius;
-                for (float iy = -radius; iy <  radius; iy++)
+                int radius = Mathf.CeilToInt(seed.parentRadius);
+                for (int iy = -radius; iy < radius; iy++)
                 {
-                    float dx = Mathf.Sqrt(radius * radius - iy * iy);
-                    for (float ix = -dx; ix < dx; ix++)
+                    int dx = Mathf.CeilToInt(Mathf.Sqrt(radius * radius - iy * iy));
+                    for (int ix = -dx; ix < dx; ix++)
                     {
-                        int gx = Mathf.CeilToInt(ix + gridLocation.x);
-                        int gy = Mathf.CeilToInt(iy + gridLocation.y);
+                        int gx = ix + gridLocation.x;
+                        int gy = iy + gridLocation.y;
+                        if (gx < 0 || gy < 0 || gx >= gridWidth || gy >= gridHeight) continue;
                         state.grid[gx, gy].density++;
                     }
                 }
