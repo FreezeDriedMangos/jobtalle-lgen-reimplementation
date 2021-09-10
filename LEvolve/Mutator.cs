@@ -187,7 +187,7 @@ namespace LGen.LEvolve
         private void AddBranchAt(Sentence sentence, int i, Token openSymbol)
         { 
             // if i is a branch open, surround whole branch
-            Token t = sentence.Tokens[i];
+            Token t = sentence.Tokens.Count <= i? null : sentence.Tokens[i];
             if(t == Legend.BRANCH_OPEN || t == Legend.LEAF_OPEN)
             {
                 int close = FindMatchingCloseBracket(sentence, i);
@@ -206,10 +206,18 @@ namespace LGen.LEvolve
             }
             else
             {
-                // insert ] at i+1
-                // then insert [ at i
-                sentence.Tokens.Insert(i+1, Legend.BRANCH_CLOSE);
-                sentence.Tokens.Insert(i, openSymbol);
+                if (sentence.Tokens.Count <= 0)
+                {
+                    sentence.Tokens.Add(openSymbol);
+                    sentence.Tokens.Add(Legend.BRANCH_CLOSE);
+                }
+                else
+                { 
+                    // insert ] at i+1
+                    // then insert [ at i
+                    sentence.Tokens.Insert(i+1, Legend.BRANCH_CLOSE);
+                    sentence.Tokens.Insert(i, openSymbol);
+               }
             }
         }
 
