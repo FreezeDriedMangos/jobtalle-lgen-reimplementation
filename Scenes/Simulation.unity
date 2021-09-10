@@ -325,7 +325,7 @@ Transform:
   m_GameObject: {fileID: 610792124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.5, y: 0, z: -0.5}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalScale: {x: 30, y: 1, z: 30}
   m_Children:
   - {fileID: 1027633194}
   m_Father: {fileID: 0}
@@ -641,8 +641,8 @@ MonoBehaviour:
   LOG_LEAF_EXPOSURES: 0
   randomizerSeed: 0
   gridScale: 1
-  gridWidth: 10
-  gridHeight: 10
+  gridWidth: 30
+  gridHeight: 30
   numGrowthIterationsInMaxFertility: 5
   numGrowthIterationsInMinFertility: 2
   quadraticGrowthProfileMultiplier: 1
@@ -657,3 +657,5 @@ MonoBehaviour:
   initialAxiom: '*'
   initialRules: []
   fertilityMap: {fileID: 2800000, guid: 0c9f4efcfc5430d4ba5fdb27647f5e50, type: 3}
+  leafOpacity: 0.8
+  maxExpectedBranchLoad_displayPurposesOnly: 2
