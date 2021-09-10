@@ -26,6 +26,13 @@ public class LRenderTestExposure : MonoBehaviour
             agentData.Add(d);
             d.gameObject.transform.position = agentPositions[i];
         }
+        
+    
+
+        r.EvaluateExposure(agentData);
+        List<float> exposures = agentData.ConvertAll(new System.Converter<AgentRenderData, float>((AgentRenderData d) => d.agentData.exposureReport.exposure));
+        Debug.Log(exposures.Count);
+        Debug.Log("[" + string.Join(", ", exposures) + "]");
     }
 
     bool done = false;
@@ -36,12 +43,6 @@ public class LRenderTestExposure : MonoBehaviour
         if (done) return;
         done = true;
 
-    
-
-        r.EvaluateExposure(agentData);
-        List<float> exposures = agentData.ConvertAll(new System.Converter<AgentRenderData, float>((AgentRenderData d) => d.agentData.exposureReport.exposure));
-        Debug.Log(exposures.Count);
-        Debug.Log("[" + string.Join(", ", exposures) + "]");
 
     }
 }
