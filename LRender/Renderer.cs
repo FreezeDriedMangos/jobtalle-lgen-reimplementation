@@ -20,7 +20,7 @@ namespace LGen.LRender
             return Render(m.GenerateAgentData(sentence), randomizer, agentNum);
         }
 
-        public AgentRenderData Render(AgentData agent, Randomizer randomizer, int agentNum = 0, float leafOpacity = 0.8f)
+        public AgentRenderData Render(AgentData agent, Randomizer randomizer, int agentNum = 0, float leafOpacity = 0.8f, float fertility = 1f, float maxExpectedBranchLoad = 5f)
         {
             AgentRenderData data = new AgentRenderData();
             data.agentData = agent;
@@ -29,6 +29,7 @@ namespace LGen.LRender
             // non-leaves will get an unlit white shader so no need to do the above in the other loops
 
             GameObject go = new GameObject("Agent " + agentNum);
+            go.layer = LayerMask.NameToLayer("Plants");
             data.gameObject = go;
         
             for(int i = 0; i < agent.meshes.stemMeshes.Count; i++)
@@ -36,11 +37,22 @@ namespace LGen.LRender
                 Mesh m = agent.meshes.stemMeshes[i];
                 GameObject g = new GameObject("stem " + i);
                 g.transform.parent = go.transform;
-            
+                g.layer = LayerMask.NameToLayer("Plants");
+
                 MeshRenderer meshRenderer = g.AddComponent<MeshRenderer>();
                 MeshFilter meshFilter = g.AddComponent<MeshFilter>();
                 meshFilter.mesh = m;
-                meshRenderer.material = RendererResources.Instance.stemExposureMaterial;
+                meshRenderer.material = RendererResources.Instance.stemMaterial; //leafExposureMaterial;
+        
+                // below code modified from https://thomasmountainborn.com/2016/05/25/materialpropertyblocks/
+                MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
+                meshRenderer.GetPropertyBlock(propBlock);
+                propBlock.SetFloat("_Fertility", fertility);
+                propBlock.SetFloat("_BranchLoad", agent.branchReports[i].branchLoad / maxExpectedBranchLoad);
+                propBlock.SetColor("_LeafExposureColor", Color.white);
+                propBlock.SetInt("_Seed", 0);
+                propBlock.SetFloat("_Opacity", 1);
+                meshRenderer.SetPropertyBlock(propBlock);
             }
 
             for(int i = 0; i < agent.meshes.seedMeshes.Count; i++)
@@ -48,11 +60,21 @@ namespace LGen.LRender
                 Mesh m = agent.meshes.seedMeshes[i];
                 GameObject g = new GameObject("seed " + i);
                 g.transform.parent = go.transform;
+                g.layer = LayerMask.NameToLayer("Plants");
             
                 MeshRenderer meshRenderer = g.AddComponent<MeshRenderer>();
                 MeshFilter meshFilter = g.AddComponent<MeshFilter>();
                 meshFilter.mesh = m;
-                meshRenderer.material = RendererResources.Instance.seedExposureMaterial;
+                meshRenderer.material = RendererResources.Instance.seedMaterial; //leafExposureMaterial;
+        
+                // below code modified from https://thomasmountainborn.com/2016/05/25/materialpropertyblocks/
+                MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
+                meshRenderer.GetPropertyBlock(propBlock);
+                propBlock.SetFloat("_Fertility", fertility);
+                propBlock.SetColor("_LeafExposureColor", Color.white);
+                propBlock.SetInt("_Seed", 0);
+                propBlock.SetFloat("_Opacity", 1);
+                meshRenderer.SetPropertyBlock(propBlock);
             }
 
             for(int i = 0; i < agent.meshes.leafMeshes.Count; i++)
@@ -60,11 +82,12 @@ namespace LGen.LRender
                 Mesh m = agent.meshes.leafMeshes[i];
                 GameObject g = new GameObject("leaf " + i);
                 g.transform.parent = go.transform;
+                g.layer = LayerMask.NameToLayer("Plants");
             
                 MeshRenderer meshRenderer = g.AddComponent<MeshRenderer>();
                 MeshFilter meshFilter = g.AddComponent<MeshFilter>();
                 meshFilter.mesh = m;
-                meshRenderer.material = RendererResources.Instance.leafExposureMaterial;
+                meshRenderer.material = RendererResources.Instance.leafMaterial; //leafExposureMaterial;
 
                 // below code modified from https://thomasmountainborn.com/2016/05/25/materialpropertyblocks/
                 MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
@@ -76,8 +99,9 @@ namespace LGen.LRender
 
                 Color color = new Color((float)leafR / 256f, (float)leafG / 256f, (float)leafB / 256f);
                 int seed = randomizer.MakeInt_Inclusive(0, int.MaxValue-1);
-
-                propBlock.SetColor("_Color", color);
+        
+                propBlock.SetFloat("_Fertility", fertility);
+                propBlock.SetColor("_LeafExposureColor", color);
                 propBlock.SetInt("_Seed", seed);
                 propBlock.SetFloat("_Opacity", leafOpacity);
                 meshRenderer.SetPropertyBlock(propBlock);

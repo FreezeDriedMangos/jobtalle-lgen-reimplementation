@@ -13,6 +13,7 @@ namespace LGen.LRender
         public LimitsReport limitsReport = new LimitsReport();
         public ExposureReport exposureReport = new ExposureReport();
         public PositionReport positionReport = new PositionReport();
+        public List<BranchReport> branchReports = new List<BranchReport>();
     }
 
     public class AgentMeshes
