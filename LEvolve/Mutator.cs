@@ -215,7 +215,9 @@ namespace LGen.LEvolve
                 { 
                     // insert ] at i+1
                     // then insert [ at i
-                    sentence.Tokens.Insert(i+1, Legend.BRANCH_CLOSE);
+                    if (i+1 >= sentence.Tokens.Count) sentence.Tokens.Add(Legend.BRANCH_CLOSE); 
+                    else sentence.Tokens.Insert(i+1, Legend.BRANCH_CLOSE);
+
                     sentence.Tokens.Insert(i, openSymbol);
                }
             }
