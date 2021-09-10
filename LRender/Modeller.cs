@@ -82,7 +82,7 @@ namespace LGen.LRender
             return agent;
         }
 
-        public AgentMeshes GenerateMeshes(Armature armature, List<BranchReport> branchReports, float stemRadiusFactor = 0.05f, float seedSize = 0.2f)
+        public AgentMeshes GenerateMeshes(Armature armature, List<BranchReport> branchReports, float stemRadiusFactor = 0.02f, float seedSize = 0.2f)
         {
             AgentMeshes agent = new AgentMeshes();
 
