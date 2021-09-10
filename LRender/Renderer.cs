@@ -182,7 +182,6 @@ namespace LGen.LRender
                     // divided by 8 in x and y because of [numthreads(8,8,1)] in the compute shader code
         
                 histogramBuffer.GetData(histogramData);
-                Debug.Log(string.Join(", ", histogramData));
 
                 foreach(AgentRenderData agent in agents)
                 {
