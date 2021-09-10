@@ -9,7 +9,7 @@ namespace LGen.LParse
 
         public Token(char s) { this.Symbol = s; }
         
-        public static bool operator ==(Token t, Token o) => (t is null && o is null) || t.Symbol == o.Symbol;
+        public static bool operator ==(Token t, Token o) => (t is null && o is null) || (!(t is null) && !(o is null) && t.Symbol == o.Symbol);
         public static bool operator !=(Token t, Token o) => ((t is null || o is null) && !object.ReferenceEquals(t, o)) || t.Symbol != o.Symbol;
         public static implicit operator Token(char c) => new Token(c);
 
