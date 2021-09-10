@@ -169,6 +169,7 @@ namespace LGen.LRender
                         triangles.Add(curr+backSide);
                     }
                 }
+                foreach(int v in triangles) if (v >= vertices.Count) Debug.LogError("Error generating leaf mesh for " + armature.sentence);
 
 
                 List<Vector2> uvs = new List<Vector2>();
@@ -177,8 +178,6 @@ namespace LGen.LRender
                 
                 Mesh mesh = new Mesh();
                 
-                try { 
-
                 mesh.vertices = vertices.ToArray();
                 mesh.triangles = triangles.ToArray();
                 mesh.uv = uvs.ToArray();
@@ -186,9 +185,6 @@ namespace LGen.LRender
                 mesh.RecalculateNormals();
                 mesh.RecalculateBounds();
                 mesh.RecalculateTangents();
-                } catch {
-                    Debug.Log(armature.sentence);
-                } 
 
                 leafMeshes.Add(mesh);
             }
