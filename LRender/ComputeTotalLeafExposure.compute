@@ -42,7 +42,7 @@ void HistogramMain(uint3 id : SV_DispatchThreadID)
     float4   sampl = 256.0 * InputTexture[id.xy];
     uint4 col = uint4(sampl.r, sampl.g, sampl.b, sampl.a);
     if (col.b > 0) {
-        InterlockedAdd(HistogramBuffer[5].count, 1);
+        //InterlockedAdd(HistogramBuffer[5].count, 1);
         return;
     }
     InterlockedAdd(HistogramBuffer[col.r+col.g*256].count, 1);

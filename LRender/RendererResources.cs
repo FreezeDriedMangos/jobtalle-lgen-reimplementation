@@ -14,9 +14,10 @@ namespace LGen.LRender
 
 
         public ComputeShader ComputeTotalLeafExposure;
-        public List<RenderTexture> leafExposures;
+        public List<RenderTexture> leafExposures = new List<RenderTexture>();
         public RenderTexture LeafExposureRenderTexturePrefab;
         public Shader LeafExposureShader;
         public Texture testTex;
+        public List<Camera> leafExposureCameras = new List<Camera>();
     }
 }
