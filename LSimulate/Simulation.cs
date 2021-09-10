@@ -38,6 +38,7 @@ namespace LGen.LSimulate
         public float gridScale;
         public int gridWidth;
         public int gridHeight;
+        public int placeInitialSeedEveryNTiles;
 
         public int numGrowthIterationsInMaxFertility;
         public int numGrowthIterationsInMinFertility;
@@ -113,9 +114,9 @@ namespace LGen.LSimulate
 
         public void InitializeAgents(SimulationState state, LSystem templateAgentSystem)
         {
-            for(int x = 0; x < this.gridWidth; x++)
+            for(int x = 0; x < this.gridWidth; x += placeInitialSeedEveryNTiles)
             {
-                for(int y = 0; y < this.gridHeight; y++)
+                for(int y = 0; y < this.gridHeight; y += placeInitialSeedEveryNTiles)
                 {
                     Agent a = new Agent();
                     a.location = new Vector2Int(x, y);
@@ -212,6 +213,7 @@ namespace LGen.LSimulate
             for(int i = 0; i < state.agents.Count; i++)
             {
                 Agent agent = state.agents[i];
+                if (agent == null || agent.renderData == null || agent.renderData.gameObject == null) continue;
                 Destroy(agent.renderData.gameObject);
             }
         }
@@ -239,6 +241,7 @@ namespace LGen.LSimulate
                     seed.parentGridLocation = agent.location;
                     
                     seed.absoluteLocation = this.gridScale*(new Vector3(seed.parentGridLocation.x, 0, seed.parentGridLocation.y)) + seed.locationRelativeToParentRoot;
+                    seeds.Add(seed);
                 }
             }
 
@@ -259,6 +262,7 @@ namespace LGen.LSimulate
 
             // radius of a cone given angle and height
         
+            Debug.Log(seeds[0].system);
             for(int i = 0; i < seeds.Count; i++)
             {
                 Seed seed = seeds[i];
