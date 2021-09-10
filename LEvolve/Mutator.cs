@@ -13,7 +13,7 @@ namespace LGen.LEvolve
             system = new LSystem(system);
             
             GeneratedSymbols E = new GeneratedSymbols(system);
-            Sentence axiom = Mutate(system.Axiom, profile, randomizer, E);
+            Sentence axiom = randomizer.MakeFloat(0, 1) < profile.pAxiomMutate ? Mutate(system.Axiom, profile, randomizer, E) : system.Axiom;
             if (axiom.Tokens.Count <= 0) axiom = system.Axiom;
             
             for(int i = 0; i < system.Rules.Count; i++)
@@ -23,6 +23,12 @@ namespace LGen.LEvolve
                 if (randomizer.MakeFloat(0,1) < profile.pRuleDuplicate) system.Rules.Add(new Rule(system.Rules[i]));
                 if (randomizer.MakeFloat(0,1) < profile.pRuleRemove)    system.Rules.RemoveAt(i--); // the -- is here because otherwise we'd skip over the next rule
                 if (randomizer.MakeFloat(0,1) < profile.pRuleAdd)       system.Rules.Add(new Rule("", ""));
+            }
+
+            if (system.Rules.Count <= 0)
+            {
+                if (randomizer.MakeFloat(0,1) < profile.pRuleAdd)       system.Rules.Add(new Rule("", ""));
+                if (randomizer.MakeFloat(0,1) < profile.pRuleDuplicate) system.Rules.Add(new Rule("", ""));
             }
 
             return new LSystem(axiom, system.Rules);
