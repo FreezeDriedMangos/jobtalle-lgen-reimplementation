@@ -288,7 +288,6 @@ namespace LGen.LSimulate
             // generate seeds
             //
             
-            Debug.Log(state.agents.Count);
             for(int i = 0; i < state.agents.Count; i++)
             {
                 Agent agent = state.agents[i];
@@ -301,7 +300,7 @@ namespace LGen.LSimulate
                 {
                     Seed seed = new Seed();
                     seed.system = mutator.Mutate(agent.system, mutationProfile, this.randomizer);
-                    seed.parentRadius = Mathf.Max(agentRadius, 0.1f);
+                    seed.parentRadius = Mathf.Max(agentRadius, 0.51f);
                     seed.parentViability = agent.viability;
 
                     seed.locationRelativeToParentRoot = agentData.seedReports[j].location; // TODO: make sure that seedReport.location really is relative to parent root
@@ -344,9 +343,6 @@ namespace LGen.LSimulate
 
             // distribute seeds
 
-            // radius of a cone given angle and height
-        
-            Debug.Log(seeds[0].system);
             for(int i = 0; i < seeds.Count; i++)
             {
                 Seed seed = seeds[i];
@@ -361,6 +357,8 @@ namespace LGen.LSimulate
                 if (state.grid[gridLocation.x, gridLocation.y].density >= this.densityThreshold) continue;
                 if (state.grid[gridLocation.x, gridLocation.y].occupant != null) continue;
 
+                Debug.Log(state.grid[gridLocation.x, gridLocation.y].density);
+
                 Agent agent = new Agent();
                 agent.location = gridLocation;
                 agent.system = seed.system;
@@ -373,7 +371,7 @@ namespace LGen.LSimulate
                 //    dx = (int) sqrt(radius * radius - iy * iy)
                 //    for (int ix = - dx  to  dx; ix++)
                 //        doSomething(CX + ix, CY + iy);
-                int radius = Mathf.CeilToInt(seed.parentRadius/this.gridScale);
+                int radius = Mathf.CeilToInt(seed.parentRadius/this.gridScale); // radius in grid coords
                 for (int iy = -radius; iy < radius; iy++)
                 {
                     int dx = Mathf.CeilToInt(Mathf.Sqrt(radius * radius - iy * iy));
