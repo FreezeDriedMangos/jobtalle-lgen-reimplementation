@@ -2,7 +2,6 @@
 {
     public class MutationProfile
     {
-        // misc
         public int sentenceSizeLimit = 32;
 
 		public float pSymbolRemove = 0.005f;
@@ -22,6 +21,8 @@
 		public float pRuleAdd = 0.001f;
 		public float pRuleRemove = 0.004f;
 
+		public float pAxiomMutate = 0.001f;
+
 
 		public MutationProfile()
         {
@@ -34,18 +35,20 @@
 
 		public MutationProfile(float mutabilityFactor) : this()
         {
-			 pSymbolRemove    = 0.005f * mutabilityFactor;
-			 pSymbolAdd       = 0.005f * mutabilityFactor;
-			 pSymbolChanceNew = 0.2f   * mutabilityFactor; // this might make sense to leave out of this, but I think something with higher "mutability" should have a higher chance of creating a brand new symbol 
-			 pAddSymbolBehind = 0.5f   * mutabilityFactor;
-			 pBranchAdd       = 0.002f * mutabilityFactor;
-			 pBranchRemove    = 0.002f * mutabilityFactor;
-			 pLeafAdd         = 0.002f * mutabilityFactor;
-			 pLeafRemove      = 0.002f * mutabilityFactor;
+			 pSymbolRemove    = pSymbolRemove    * mutabilityFactor;
+			 pSymbolAdd       = pSymbolAdd       * mutabilityFactor;
+			 pSymbolChanceNew = pSymbolChanceNew * mutabilityFactor; // this might make sense to leave out of this, but I think something with higher "mutability" should have a higher chance of creating a brand new symbol 
+			 pAddSymbolBehind = pAddSymbolBehind * mutabilityFactor;
+			 pBranchAdd       = pBranchAdd       * mutabilityFactor;
+			 pBranchRemove    = pBranchRemove    * mutabilityFactor;
+			 pLeafAdd         = pLeafAdd         * mutabilityFactor;
+			 pLeafRemove      = pLeafRemove      * mutabilityFactor;
 
-			 pRuleDuplicate   = 0.003f * mutabilityFactor;
-			 pRuleAdd         = 0.001f * mutabilityFactor;
-			 pRuleRemove      = 0.004f * mutabilityFactor;
+			 pRuleDuplicate   = pRuleDuplicate   * mutabilityFactor;
+			 pRuleAdd         = pRuleAdd         * mutabilityFactor;
+			 pRuleRemove      = pRuleRemove      * mutabilityFactor;
+
+			 pAxiomMutate     = pAxiomMutate     * mutabilityFactor; 
         }
     }
 }
