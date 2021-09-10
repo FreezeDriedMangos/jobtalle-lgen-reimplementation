@@ -140,7 +140,11 @@ namespace LGen.LSimulate
             {
                 if (a.renderData.gameObject == o)
                 {
-                    Debug.Log(a.sentence+"\n\n"+a.system+"\n\n"+a.viability+"\n\n"+a.renderData.agentData.limitsReport.minimum+"\n"+a.renderData.agentData.limitsReport.maximum+"\n"+a.renderData.agentData.limitsReport.Radius);
+                    string s = "Sentence: "+a.sentence+"\n\nSystem:\n"+a.system+
+                            "\n\nViability: "+a.viability+"\nViability Sunlight: "+a.viability_sunlightExposure+"\nViability Stability: "+a.viability_stability+"\nViability Efficiency: "+a.viability_stability+
+                            "\n\nLimits Minimum: "+a.renderData.agentData.limitsReport.minimum+"\nLimitsMaximum: "+a.renderData.agentData.limitsReport.maximum+"\nRadius: "+a.renderData.agentData.limitsReport.Radius
+                            ;
+                    Debug.Log(s);
                     return;
                 }
             }
