@@ -69,6 +69,9 @@ namespace LGen.LSimulate
         public float initialMutability;
         public float mutabilityFalloff;
 
+        public float stemRadiusFactor = 0.02f;
+        public float seedSize = 0.2f;
+
         public SimulationState state;
 
         //
@@ -193,7 +196,7 @@ namespace LGen.LSimulate
             for(int i = 0; i < state.agents.Count; i++)
             {
                 Agent agent = state.agents[i];
-                agent.renderData = renderer.Render(agent.sentence, this.randomizer, i, this.transform, this.leafOpacity, state.grid[agent.location.x, agent.location.y].fertility, this.maxExpectedBranchLoad_displayPurposesOnly);
+                agent.renderData = renderer.Render(agent.sentence, this.randomizer, i, this.transform, this.leafOpacity, state.grid[agent.location.x, agent.location.y].fertility, this.maxExpectedBranchLoad_displayPurposesOnly, this.stemRadiusFactor, this.seedSize);
                 agent.renderData.gameObject.transform.position = new Vector3(agent.location.x * this.gridScale, 0, agent.location.y * this.gridScale);
             }
 

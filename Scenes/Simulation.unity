@@ -1555,9 +1555,9 @@ MonoBehaviour:
   instabilityPenaltyFactor: 1
   ruleCountPenaltyFactor: 1
   seedCountPenaltyFactor: 1
-  maxNumSeedsPerAgent: 20
-  seedDistributionAlpha: 20
-  densityThreshold: 7
+  maxNumSeedsPerAgent: 4
+  seedDistributionAlpha: 0.5
+  densityThreshold: 2
   initialAxiom: '*'
   initialRules: []
   fertilityMap: {fileID: 2800000, guid: 0c9f4efcfc5430d4ba5fdb27647f5e50, type: 3}

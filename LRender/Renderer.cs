@@ -14,10 +14,10 @@ namespace LGen.LRender
 
     public class Renderer
     {
-        public AgentRenderData Render(Sentence sentence, Randomizer randomizer, int agentNum = 0, Transform parent = null, float leafOpacity = 0.8f, float fertility = 1f, float maxExpectedBranchLoad = 2f)
+        public AgentRenderData Render(Sentence sentence, Randomizer randomizer, int agentNum = 0, Transform parent = null, float leafOpacity = 0.8f, float fertility = 1f, float maxExpectedBranchLoad = 2f, float stemRadiusFactor = 0.02f, float seedSize = 0.2f)
         {
             Modeller m = new Modeller();
-            return Render(m.GenerateAgentData(sentence), randomizer, agentNum, parent, leafOpacity, fertility, maxExpectedBranchLoad);
+            return Render(m.GenerateAgentData(sentence, stemRadiusFactor, seedSize), randomizer, agentNum, parent, leafOpacity, fertility, maxExpectedBranchLoad);
         }
 
         public AgentRenderData Render(AgentData agent, Randomizer randomizer, int agentNum = 0, Transform parent = null, float leafOpacity = 0.8f, float fertility = 1f, float maxExpectedBranchLoad = 2f)
