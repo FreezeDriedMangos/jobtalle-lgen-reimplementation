@@ -25,7 +25,7 @@ namespace LGen.LSimulate
     public class SimulationState
     {
         public Grid grid;
-        public List<Agent> agents;
+        public List<Agent> agents = new List<Agent>();
     }
 
 
@@ -60,6 +60,9 @@ namespace LGen.LSimulate
         public string[] initialRules;
 
         public Texture2D fertilityMap;
+
+        public float leafOpacity = 0.8f;
+        public float maxExpectedBranchLoad_displayPurposesOnly = 2f;
 
         public Simulation() { randomizer = new Randomizer(randomizerSeed); }
 
@@ -144,7 +147,7 @@ namespace LGen.LSimulate
             for(int i = 0; i < state.agents.Count; i++)
             {
                 Agent agent = state.agents[i];
-                agent.renderData = renderer.Render(agent.sentence, this.randomizer, i);
+                agent.renderData = renderer.Render(agent.sentence, this.randomizer, i, this.transform, this.leafOpacity, state.grid[agent.location.x, agent.location.y].fertility, this.maxExpectedBranchLoad_displayPurposesOnly);
                 agent.renderData.gameObject.transform.position = new Vector3(agent.location.x * this.gridScale, 0, agent.location.y * this.gridScale);
             }
 
@@ -230,7 +233,7 @@ namespace LGen.LSimulate
                     seed.parentRadius = agentRadius;
                     seed.parentViability = agent.viability;
 
-                    seed.locationRelativeToParentRoot = agentData.seedReports[i].location; // TODO: make sure that seedReport.location really is relative to parent root
+                    seed.locationRelativeToParentRoot = agentData.seedReports[j].location; // TODO: make sure that seedReport.location really is relative to parent root
                     seed.parentGridLocation = agent.location;
                     
                     seed.absoluteLocation = this.gridScale*(new Vector3(seed.parentGridLocation.x, 0, seed.parentGridLocation.y)) + seed.locationRelativeToParentRoot;

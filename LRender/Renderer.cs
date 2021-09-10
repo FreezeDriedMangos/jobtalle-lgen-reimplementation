@@ -14,13 +14,13 @@ namespace LGen.LRender
 
     public class Renderer
     {
-        public AgentRenderData Render(Sentence sentence, Randomizer randomizer, int agentNum = 0)
+        public AgentRenderData Render(Sentence sentence, Randomizer randomizer, int agentNum = 0, Transform parent = null, float leafOpacity = 0.8f, float fertility = 1f, float maxExpectedBranchLoad = 2f)
         {
             Modeller m = new Modeller();
-            return Render(m.GenerateAgentData(sentence), randomizer, agentNum);
+            return Render(m.GenerateAgentData(sentence), randomizer, agentNum, parent, leafOpacity, fertility, maxExpectedBranchLoad);
         }
 
-        public AgentRenderData Render(AgentData agent, Randomizer randomizer, int agentNum = 0, float leafOpacity = 0.8f, float fertility = 1f, float maxExpectedBranchLoad = 2f)
+        public AgentRenderData Render(AgentData agent, Randomizer randomizer, int agentNum = 0, Transform parent = null, float leafOpacity = 0.8f, float fertility = 1f, float maxExpectedBranchLoad = 2f)
         {
             AgentRenderData data = new AgentRenderData();
             data.agentData = agent;
@@ -29,6 +29,7 @@ namespace LGen.LRender
             // non-leaves will get an unlit white shader so no need to do the above in the other loops
 
             GameObject go = new GameObject("Agent " + agentNum);
+            go.transform.parent = parent;
             go.layer = LayerMask.NameToLayer("Plants");
             data.gameObject = go;
         
