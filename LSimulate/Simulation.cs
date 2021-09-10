@@ -88,6 +88,13 @@ namespace LGen.LSimulate
             SeedNextState(state);
         }
 
+        public void Iterate_SecondHalfFirst(SimulationState state)
+        {
+            IterateSecondHalf(state);
+            CleanState(state);
+            IterateFirstHalf(state); // I want to end with a bunch of plants rendered and their data stored, IterateFirstHalf erases their data
+        }
+
 
         public void Start()
         {
@@ -95,9 +102,7 @@ namespace LGen.LSimulate
 
             for(int i = 0; i < 3; i++)
             {
-                IterateSecondHalf(state);
-                CleanState(state);
-                IterateFirstHalf(state); // I want to end with a bunch of plants rendered and their data stored, IterateFirstHalf erases their data
+                Iterate_SecondHalfFirst(state);
             }
         }
 
@@ -266,6 +271,7 @@ namespace LGen.LSimulate
                 
                 Vector2 absoluteLocation = new Vector2(r * Mathf.Cos(theta), r * Mathf.Sin(theta));
                 Vector2Int gridLocation = new Vector2Int(Mathf.RoundToInt(absoluteLocation.x / gridScale), Mathf.RoundToInt(absoluteLocation.y / gridScale));
+                gridLocation = new Vector2Int(System.Math.Max(System.Math.Min(this.gridWidth-1, gridLocation.x), 0), System.Math.Max(System.Math.Min(this.gridHeight-1, gridLocation.y), 0));
 
                 if (state.grid[gridLocation.x, gridLocation.y].density >= densityThreshold) continue;
                 if (state.grid[gridLocation.x, gridLocation.y].occupant != null) continue;
