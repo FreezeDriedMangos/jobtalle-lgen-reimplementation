@@ -117,6 +117,11 @@ namespace LGen.LRender
             List<Mesh> leafMeshes = new List<Mesh>();
             foreach (LeafArmature leaf in armature.leaves)
             {
+                if (leaf.side1.Count == 0 && leaf.side2.Count == 0) continue; 
+                
+                if (leaf.side2.Count == 0) leaf.side2.Add(leaf.side1[0]);
+                if (leaf.side1.Count == 0) leaf.side2.Add(leaf.side2[0]);
+
                 List<Vector3> vertices = new List<Vector3>();
                 for(int i = 0; i < leaf.side1.Count; i++)
                 {
@@ -128,6 +133,9 @@ namespace LGen.LRender
                     Vertex v = leaf.side2[i].vertex;
                     vertices.Add(new Vector3(v.x, v.y, v.z));
                 }
+
+                if (vertices.Count <= 2) continue;
+
                 vertices.AddRange(vertices); // duplicate every entry to the vertices array so that the front and back sides of the leaf don't share vertices
 
                 // Strategy for generating leaf meshes
@@ -169,8 +177,6 @@ namespace LGen.LRender
                         triangles.Add(curr+backSide);
                     }
                 }
-                foreach(int v in triangles) if (v >= vertices.Count) Debug.LogError("Error generating leaf mesh for " + armature.sentence);
-
 
                 List<Vector2> uvs = new List<Vector2>();
                 for (int i = 0; i < vertices.Count; i++) uvs.Add(new Vector2());

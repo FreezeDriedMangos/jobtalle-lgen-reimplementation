@@ -156,6 +156,7 @@ Transform:
   - {fileID: 280299883}
   - {fileID: 494505695}
   - {fileID: 1322373485}
+  - {fileID: 1848911778}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -769,7 +770,6 @@ MonoBehaviour:
   LeafExposureRenderTexturePrefab: {fileID: 8400000, guid: 5d0d7a646ba1c3948b5986bbf738a740,
     type: 2}
   LeafExposureShader: {fileID: 4800000, guid: 8febc77907d936a43b9f468395d625bf, type: 3}
-  testTex: {fileID: 2800000, guid: a6aab30365d3ff147a0db8228ebbf075, type: 3}
   leafExposureCameras: []
 --- !u!4 &774888883
 Transform:
@@ -1024,7 +1024,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1322373485
 Transform:
   m_ObjectHideFlags: 0
@@ -1059,6 +1059,52 @@ MonoBehaviour:
   - {x: 1, y: 0, z: 1}
   - {x: 5, y: 0, z: 5}
   - {x: 2, y: 0, z: 8}
+--- !u!1 &1848911777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1848911778}
+  - component: {fileID: 1848911779}
+  m_Layer: 0
+  m_Name: Test 2 (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1848911778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848911777}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2214831}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1848911779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848911777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f8dc80e6a4003541be4f6736102f2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  s: <[*JJ]]
+  num: 200
+  leafRenderer: {fileID: 0}
 --- !u!1 &1906591227
 GameObject:
   m_ObjectHideFlags: 0
