@@ -22,6 +22,7 @@
 		public float pRuleAdd = 0.001f;
 		public float pRuleRemove = 0.004f;
 
+
 		public MutationProfile()
         {
 			float sum = pSymbolChanceRotation + pSymbolChanceSeed + pSymbolChanceStep + pSymbolChanceConstant;
@@ -30,5 +31,21 @@
 			pSymbolChanceStep 	  /= sum;
 			pSymbolChanceConstant /= sum;
 		}
+
+		public MutationProfile(float mutabilityFactor) : this()
+        {
+			 pSymbolRemove    = 0.005f * mutabilityFactor;
+			 pSymbolAdd       = 0.005f * mutabilityFactor;
+			 pSymbolChanceNew = 0.2f   * mutabilityFactor; // this might make sense to leave out of this, but I think something with higher "mutability" should have a higher chance of creating a brand new symbol 
+			 pAddSymbolBehind = 0.5f   * mutabilityFactor;
+			 pBranchAdd       = 0.002f * mutabilityFactor;
+			 pBranchRemove    = 0.002f * mutabilityFactor;
+			 pLeafAdd         = 0.002f * mutabilityFactor;
+			 pLeafRemove      = 0.002f * mutabilityFactor;
+
+			 pRuleDuplicate   = 0.003f * mutabilityFactor;
+			 pRuleAdd         = 0.001f * mutabilityFactor;
+			 pRuleRemove      = 0.004f * mutabilityFactor;
+        }
     }
 }
