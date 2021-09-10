@@ -643,17 +643,17 @@ MonoBehaviour:
   gridScale: 10
   gridWidth: 10
   gridHeight: 10
-  numGrowthIterationsInMaxFertility: 0
-  numGrowthIterationsInMinFertility: 0
-  quadraticGrowthProfileMultiplier: 0
-  quadraticGrowthProfileAddition: 0
-  leafSizePenaltyFactor: 0
-  instabilityPenaltyFactor: 0
-  ruleCountPenaltyFactor: 0
-  seedCountPenaltyFactor: 0
-  maxNumSeedsPerAgent: 0
-  seedDistributionAlpha: 0
-  densityThreshold: 0
-  initialAxiom: 
+  numGrowthIterationsInMaxFertility: 5
+  numGrowthIterationsInMinFertility: 2
+  quadraticGrowthProfileMultiplier: 1
+  quadraticGrowthProfileAddition: 5
+  leafSizePenaltyFactor: 1
+  instabilityPenaltyFactor: 1
+  ruleCountPenaltyFactor: 1
+  seedCountPenaltyFactor: 1
+  maxNumSeedsPerAgent: 20
+  seedDistributionAlpha: 20
+  densityThreshold: 7
+  initialAxiom: '*'
   initialRules: []
-  fertilityMap: {fileID: 0}
+  fertilityMap: {fileID: 2800000, guid: 0c9f4efcfc5430d4ba5fdb27647f5e50, type: 3}
