@@ -769,6 +769,7 @@ MonoBehaviour:
   LeafExposureRenderTexturePrefab: {fileID: 8400000, guid: 5d0d7a646ba1c3948b5986bbf738a740,
     type: 2}
   LeafExposureShader: {fileID: 4800000, guid: 8febc77907d936a43b9f468395d625bf, type: 3}
+  testTex: {fileID: 2800000, guid: a6aab30365d3ff147a0db8228ebbf075, type: 3}
 --- !u!4 &774888883
 Transform:
   m_ObjectHideFlags: 0
