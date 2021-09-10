@@ -114,10 +114,15 @@ namespace LGen.LSimulate
         {
             foreach(Agent a in state.agents)
             {
-                BoxCollider c = a.renderData.gameObject.AddComponent<BoxCollider>();
-                c.size = a.renderData.agentData.limitsReport.maximum - a.renderData.agentData.limitsReport.minimum;
-                c.size = c.size == Vector3.zero ? new Vector3(0.25f, 0.25f, 0.25f) : c.size;
-                c.center = a.renderData.agentData.limitsReport.minimum + 0.5f * c.size;                
+                //BoxCollider c = a.renderData.gameObject.AddComponent<BoxCollider>();
+                //Vector3 size = a.renderData.agentData.limitsReport.maximum - a.renderData.agentData.limitsReport.minimum;
+                //c.size = size == Vector3.zero ? new Vector3(0.25f, 0.25f, 0.25f) : size;
+                //c.center = size == Vector3.zero ? new Vector3(0.125f, 0, 0) : a.renderData.agentData.limitsReport.minimum + 0.5f * c.size;                
+                foreach(MeshFilter f in a.renderData.gameObject.GetComponentsInChildren<MeshFilter>())
+                {
+                    MeshCollider c = f.gameObject.AddComponent<MeshCollider>();
+                    c.sharedMesh = f.sharedMesh;
+                }
             }
         }
 
