@@ -6,7 +6,7 @@
 //    {
 //        _MainTex ("Texture", 2D) = "white" {}
 //        [PerRendererData] 
-//        _Color("Color", Color) = (1,1,1,1)
+//        _LeafExposureColor("Color", Color) = (1,1,1,1)
 //        [PerRendererData] 
 //        _Seed("Seed", Int) = 0
 //        [PerRendererData] 
@@ -70,7 +70,7 @@
 
 Shader "Unlit/LeafExposure" {
     Properties{
-        [PerRendererData] _Color("Color", Color) = (1,1,1,1)
+        [PerRendererData] _LeafExposureColor("Color", Color) = (1,1,1,1)
         [PerRendererData] _Seed("Seed", Int) = 0
         [PerRendererData] _Opacity("Opacity", Range(0,1)) = 0
     }
@@ -92,7 +92,7 @@ Shader "Unlit/LeafExposure" {
                 #pragma fragment frag
                 #pragma fragmentoption ARB_precision_hint_fastest
 
-                fixed4 _Color;
+                fixed4 _LeafExposureColor;
                 float _Opacity;
                 int _Seed;
 
@@ -121,7 +121,7 @@ Shader "Unlit/LeafExposure" {
 
                 fixed4 frag(v2f i) : COLOR{
                     if (hash(i.vertex + _Seed/ 0x00FFFFFE) > _Opacity) discard;
-                    return _Color;
+                    return _LeafExposureColor;
                 }
             ENDCG
 

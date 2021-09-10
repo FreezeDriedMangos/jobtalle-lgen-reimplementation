@@ -51,7 +51,7 @@ namespace LGen.LRender
             agent.limitsReport = CalculateLimitsReport(armature.VertexTree, agent.limitsReport);    
             agent.seedReports = armature.seeds.ConvertAll(new Converter<Vector3, SeedReport>((Vector3 v) => new SeedReport(v) ));
 
-            agent.meshes = GenerateMeshes(armature);
+            agent.meshes = GenerateMeshes(armature, agent.branchReports);
 
             foreach(Mesh m in agent.meshes.leafMeshes)
             {
@@ -79,7 +79,7 @@ namespace LGen.LRender
             return agent;
         }
 
-        public AgentMeshes GenerateMeshes(Armature armature, float stemRadiusFactor = 0.05f, float seedSize = 0.2f)
+        public AgentMeshes GenerateMeshes(Armature armature, List<BranchReport> branchReports, float stemRadiusFactor = 0.05f, float seedSize = 0.2f)
         {
             AgentMeshes agent = new AgentMeshes();
 
@@ -105,6 +105,10 @@ namespace LGen.LRender
                 
                 //UnityEngine.Debug.Log(start + " to " + end + " - " + bottomRadius + ", " + topRadius);
                 branchMeshes.Add(CreateCylinder(upper.vertex.roll, upper.vertex.pitch, upper.vertex.yaw, start, end, bottomRadius, topRadius));
+
+                BranchReport b = new BranchReport();
+                b.branchLoad = topLoad;
+                branchReports.Add(b);
             }
 
             List<Mesh> leafMeshes = new List<Mesh>();

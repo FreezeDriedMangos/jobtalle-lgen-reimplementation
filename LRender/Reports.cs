@@ -45,4 +45,9 @@ namespace LGen.LRender
         public Vector3 rootPosition;
         public Vector3 centerOfGravity;
     }
+
+    public class BranchReport
+    {
+        public int branchLoad;
+    }
 }
