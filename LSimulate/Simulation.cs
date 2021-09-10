@@ -357,8 +357,6 @@ namespace LGen.LSimulate
                 if (state.grid[gridLocation.x, gridLocation.y].density >= this.densityThreshold) continue;
                 if (state.grid[gridLocation.x, gridLocation.y].occupant != null) continue;
 
-                Debug.Log(state.grid[gridLocation.x, gridLocation.y].density);
-
                 Agent agent = new Agent();
                 agent.location = gridLocation;
                 agent.system = seed.system;
