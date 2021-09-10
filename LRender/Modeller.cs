@@ -44,7 +44,7 @@ namespace LGen.LRender
 
     public class Modeller
     {
-        public AgentData GenerateAgentData(Sentence sentence)
+        public AgentData GenerateAgentData(Sentence sentence, float stemRadiusFactor = 0.02f, float seedSize = 0.2f)
         {
             AgentData agent = new AgentData();
             Armature armature = GenerateTree(sentence);
@@ -54,7 +54,7 @@ namespace LGen.LRender
             agent.limitsReport = CalculateLimitsReport(armature.VertexTree, agent.limitsReport);    
             agent.seedReports = armature.seeds.ConvertAll(new Converter<Vector3, SeedReport>((Vector3 v) => new SeedReport(v) ));
 
-            agent.meshes = GenerateMeshes(armature, agent.branchReports);
+            agent.meshes = GenerateMeshes(armature, agent.branchReports, stemRadiusFactor, seedSize);
 
             foreach(Mesh m in agent.meshes.leafMeshes)
             {
@@ -252,7 +252,7 @@ namespace LGen.LRender
             return max;
         }
 
-        public Armature GenerateTree(Sentence sentence, float branchLength = 1, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0.2f)
+        public Armature GenerateTree(Sentence sentence, float branchLength = 1, float angleDelta = (float)(Math.PI/9f), float seedOffset = /*0.2f*/)
         {
             Armature armature = new Armature();
 
