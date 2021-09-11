@@ -18,10 +18,10 @@
 		public float pLeafRemove = 0.002f * 2f;
 		 
 		public float pRuleDuplicate = 0.003f;
-		public float pRuleAdd = 0.001f;
+		public float pRuleAdd = 0.001f*2;
 		public float pRuleRemove = 0.004f;
 
-		public float pAxiomMutate = 1;//0.1f;
+		public float pAxiomMutate = 0.1f;
 
 
 		public MutationProfile()
