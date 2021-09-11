@@ -1712,7 +1712,7 @@ MonoBehaviour:
   quadraticGrowthProfileAddition: 10
   leafSizePenaltyFactor: 1
   instabilityPenaltyFactor: 1
-  ruleCountPenaltyFactor: 0
+  ruleCountPenaltyFactor: 0.01
   seedCountPenaltyFactor: 1
   maxNumSeedsPerAgent: 8
   seedDistributionAlpha: 0.5
