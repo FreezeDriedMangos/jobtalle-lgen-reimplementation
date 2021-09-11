@@ -25,7 +25,8 @@ namespace LGen.LParse
         {
             int[] seedArray = seedArrayInfo.GetValue(random) as int[];
 
-            return seedArray.ToString();    
+            string s = string.Join(", ", seedArray);    
+            return "[" + s + "]";
         }
         public void LoadStateFromJSON(int[] seedArray)
         {
