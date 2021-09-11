@@ -16,6 +16,11 @@ public class ButtonController : Singleton<ButtonController>
         for (int i = 0; i < numIterations; i++)
         {
             Simulation.Instance.Iterate_SecondHalfFirst(Simulation.Instance.state);
+
+            if (Simulation.Instance.state.generation % 50 == 0)
+            {
+                Debug.Log(Simulation.Instance.toJSON(Simulation.Instance.state));
+            }
         }
 
         SimInfoReporter.Instance.UpdateInfo();
