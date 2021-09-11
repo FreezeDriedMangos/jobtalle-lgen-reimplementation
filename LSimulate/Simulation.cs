@@ -118,6 +118,31 @@ namespace LGen.LSimulate
         // Misc functions
         //
 
+        public string toJSON(SimulationState state)
+        {
+            string s = "";
+            
+            s += "{";
+            
+            s += "\"agents\":[";
+            foreach(Agent a in state.agents) 
+            {
+                s += "{";
+                s += $"\"location\": [{a.location.x}, {a.location.y}],";
+                s += $"\"system\": \"{a.system.ToString()}\"";
+                s += "},";
+                
+            }
+            s = s.Substring(0, s.Length-1); // remove trailing comma
+            
+            s += "],";
+
+            s += "\"randomizerState\": " + randomizer.GetStateAsJSON();
+
+            s += "}";
+            return s;
+        }
+
         public void AddColliders(SimulationState state)
         {
             foreach(Agent a in state.agents)
