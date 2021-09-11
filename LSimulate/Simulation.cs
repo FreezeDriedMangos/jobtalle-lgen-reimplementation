@@ -141,7 +141,7 @@ namespace LGen.LSimulate
                 if (a.renderData.gameObject == o)
                 {
                     string s = "Sentence: "+a.sentence+"\n\nSystem:\n"+a.system+
-                            "\n\nInvalid?" + a.invalid + " Viability: "+a.viability+"\nViability Sunlight: "+a.viability_sunlightExposure+"\nViability Stability: "+a.viability_stability+"\nViability Efficiency: "+a.viability_efficiency+ "\n product: " + (a.viability_sunlightExposure * a.viability_stability * a.viability_efficiency) +
+                            "\n\nInvalid?" + a.invalid + "\nViability: "+a.viability+"\nViability Sunlight: "+a.viability_sunlightExposure+"\nViability Stability: "+a.viability_stability+"\nViability Efficiency: "+a.viability_efficiency+ 
                             "\n\nLimits Minimum: "+a.renderData.agentData.limitsReport.minimum+"\nLimitsMaximum: "+a.renderData.agentData.limitsReport.maximum+"\nRadius: "+a.renderData.agentData.limitsReport.Radius+
                             "\n\nSystem E Set: " + (new GeneratedSymbols(a.system)).ToString() +
                             "\n\n"+a.renderData.agentData.exposureReport.exposure;
