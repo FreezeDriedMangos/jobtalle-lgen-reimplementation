@@ -122,24 +122,27 @@ namespace LGen.LSimulate
         {
             string s = "";
             
-            s += "{";
+            s += "{\n";
+
+            s += "    \"generation\":" + state.generation + ",\n";
             
-            s += "\"agents\":[";
+            s += "    \"agents\":[";
             foreach(Agent a in state.agents) 
             {
-                s += "{";
-                s += $"\"location\": [{a.location.x}, {a.location.y}],";
-                s += $"\"system\": \"{a.system.ToString()}\"";
-                s += "},";
+                s += "\n";
+                s += "        {\n";
+                s += $"            \"location\": [{a.location.x}, {a.location.y}],\n";
+                s += $"            \"system\": \"{a.system.ToString()}\"\n";
+                s += "        },";
                 
             }
             s = s.Substring(0, s.Length-1); // remove trailing comma
             
-            s += "],";
+            s += "    \n],\n";
 
-            s += "\"randomizerState\": " + randomizer.GetStateAsJSON();
+            s += "    \"randomizerState\": " + randomizer.GetStateAsJSON() + "\n";
 
-            s += "}";
+            s += "}\n";
             return s;
         }
 
