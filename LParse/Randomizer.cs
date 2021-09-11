@@ -18,5 +18,18 @@ namespace LGen.LParse
 
         public static Random FromJSON(string json) { throw new NotImplementedException(); }
         public static string ToJSON(Randomizer r) { throw new NotImplementedException(); }
+
+        // below two state-related functions from https://stackoverflow.com/a/19513099/9643841
+        System.Reflection.FieldInfo seedArrayInfo = typeof(Random).GetField("SeedArray", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        public string GetStateAsJSON()
+        {
+            int[] seedArray = seedArrayInfo.GetValue(random) as int[];
+
+            return seedArray.ToString();    
+        }
+        public void LoadStateFromJSON(int[] seedArray)
+        {
+            seedArrayInfo.SetValue(random, seedArray);
+        }
     }
 }
