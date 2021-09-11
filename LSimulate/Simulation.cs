@@ -141,9 +141,10 @@ namespace LGen.LSimulate
                 if (a.renderData.gameObject == o)
                 {
                     string s = "Sentence: "+a.sentence+"\n\nSystem:\n"+a.system+
-                            "\n\nViability: "+a.viability+"\nViability Sunlight: "+a.viability_sunlightExposure+"\nViability Stability: "+a.viability_stability+"\nViability Efficiency: "+a.viability_stability+
+                            "\n\nInvalid?" + a.invalid + " Viability: "+a.viability+"\nViability Sunlight: "+a.viability_sunlightExposure+"\nViability Stability: "+a.viability_stability+"\nViability Efficiency: "+a.viability_efficiency+ "\n product: " + (a.viability_sunlightExposure * a.viability_stability * a.viability_efficiency) +
                             "\n\nLimits Minimum: "+a.renderData.agentData.limitsReport.minimum+"\nLimitsMaximum: "+a.renderData.agentData.limitsReport.maximum+"\nRadius: "+a.renderData.agentData.limitsReport.Radius+
-                            "\n\nSystem E Set: " + (new GeneratedSymbols(a.system)).ToString();
+                            "\n\nSystem E Set: " + (new GeneratedSymbols(a.system)).ToString() +
+                            "\n\n"+a.renderData.agentData.exposureReport.exposure;
                             ;
                     return s;
                 }
@@ -274,7 +275,15 @@ namespace LGen.LSimulate
                 // efficiency
                 //
                 if (agent.system.Rules.Count == 0 || agentData.seedReports.Count == 0) agent.viability_efficiency = 1;
-                else agent.viability_efficiency = 1f / (ruleCountPenaltyFactor * (float)agent.system.Rules.Count * seedCountPenaltyFactor * (float)agentData.seedReports.Count);
+                else 
+                {
+                    float ruleEfficiency = ruleCountPenaltyFactor * (float)agent.system.Rules.Count;
+                    ruleEfficiency = ruleEfficiency == 0 ? 1 : ruleEfficiency;
+                    float seedEfficiency = seedCountPenaltyFactor * (float)agentData.seedReports.Count;
+                    seedEfficiency = seedEfficiency == 0 ? 1 : seedEfficiency;
+
+                    agent.viability_efficiency = 1f / (ruleEfficiency*seedEfficiency);
+                }   
             }
         }
 
