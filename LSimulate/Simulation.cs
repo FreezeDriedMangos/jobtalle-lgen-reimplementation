@@ -348,12 +348,9 @@ namespace LGen.LSimulate
             // shuffle seeds
             seeds = seeds.OrderBy(seed => randomizer.MakeFloat(0, 99)).ToList<Seed>();
             // sort seeds by parentViability
-            seeds = seeds.OrderBy(seed => seed.parentViability).ToList<Seed>();
+            seeds = seeds.OrderBy(seed => -seed.parentViability).ToList<Seed>(); // orderby sorts things in ascending order, I want descending, so I make parent viabiilty negative
             
-            if (seeds[0].parentViability > 0) Debug.Log("Parent viability " + seeds[0].parentViability);
-
             // distribute seeds
-
             for(int i = 0; i < seeds.Count; i++)
             {
                 Seed seed = seeds[i];
