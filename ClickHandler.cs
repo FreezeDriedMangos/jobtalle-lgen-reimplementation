@@ -6,6 +6,7 @@ using UnityEngine;
 public class ClickHandler : MonoBehaviour
 {
     Camera camera;
+    public UnityEngine.UI.Text debugText;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,8 @@ public class ClickHandler : MonoBehaviour
             {
                 GameObject hitObject = hit.collider.gameObject;
                 
-                Simulation.Instance.PrintAgentForGameObject(hitObject.transform.parent.gameObject);
+                string s = Simulation.Instance.PrintAgentForGameObject(hitObject.transform.parent.gameObject);
+                debugText.text = s;
             }
         }
     }
