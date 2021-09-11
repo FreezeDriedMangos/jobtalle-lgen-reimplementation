@@ -134,7 +134,7 @@ namespace LGen.LSimulate
             }
         }
 
-        public void PrintAgentForGameObject(GameObject o)
+        public string PrintAgentForGameObject(GameObject o)
         {
             foreach(Agent a in state.agents)
             {
@@ -145,12 +145,11 @@ namespace LGen.LSimulate
                             "\n\nLimits Minimum: "+a.renderData.agentData.limitsReport.minimum+"\nLimitsMaximum: "+a.renderData.agentData.limitsReport.maximum+"\nRadius: "+a.renderData.agentData.limitsReport.Radius+
                             "\n\nSystem E Set: " + (new GeneratedSymbols(a.system)).ToString();
                             ;
-                    Debug.Log(s);
-                    return;
+                    return s;
                 }
             }
 
-            Debug.Log("No matching agent found.");
+            return "No matching agent found.";
         }
 
         public void ShowGridDensity(SimulationState state, GameObject parent, UnityEngine.UI.Text textPrefab)

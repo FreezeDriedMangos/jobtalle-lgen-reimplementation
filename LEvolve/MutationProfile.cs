@@ -13,9 +13,9 @@
 		public       float pSymbolChanceStep = 0.4f;      // their total probability
 		public       float pSymbolChanceConstant = 0.2f;  // is 100%.
 		public float pBranchAdd = 0.002f;
-		public float pBranchRemove = 0.002f;
+		public float pBranchRemove = 0.002f * 2f;
 		public float pLeafAdd = 0.002f;
-		public float pLeafRemove = 0.002f;
+		public float pLeafRemove = 0.002f * 2f;
 		 
 		public float pRuleDuplicate = 0.003f;
 		public float pRuleAdd = 0.001f;
