@@ -27,8 +27,8 @@ namespace LGen.LEvolve
 
             if (system.Rules.Count <= 0)
             {
-                if (randomizer.MakeFloat(0,1) < profile.pRuleAdd)       system.Rules.Add(new Rule("", ""));
-                if (randomizer.MakeFloat(0,1) < profile.pRuleDuplicate) system.Rules.Add(new Rule("", ""));
+                if (randomizer.MakeFloat(0,1) < profile.pRuleAdd)       system.Rules.Add(new Rule("", ""));  
+                if (randomizer.MakeFloat(0,1) < profile.pRuleDuplicate) system.Rules.Add(new Rule("", "")); 
             }
 
             return new LSystem(axiom, system.Rules);
@@ -95,11 +95,14 @@ namespace LGen.LEvolve
                 ;
             rand -= profile.pSymbolChanceSeed;
             
-            if (rand < profile.pSymbolChanceStep)
+
+            if (rand < profile.pSymbolChanceStep) {  if(E!=null) UnityEngine.Debug.Log("Picking from E: " + string.Join(", ", E.steps));
                 return E == null
                     ? (char)randomizer.MakeInt_Inclusive(Legend.STEP_MIN, Legend.STEP_MAX)
                     : E.steps.Count == 0 ? null : E.steps[randomizer.MakeInt_Exclusive(0, E.steps.Count)]
                 ;
+            }
+                
             rand -= profile.pSymbolChanceStep;
 
             if (true)
@@ -281,8 +284,8 @@ namespace LGen.LEvolve
             foreach (Token t in allTokens)
             {
                 if (t == Legend.BRANCH_OPEN) continue;
-                if (t != Legend.BRANCH_CLOSE) continue;
-                if (t != Legend.LEAF_OPEN) continue;
+                if (t == Legend.BRANCH_CLOSE) continue;
+                if (t == Legend.LEAF_OPEN) continue;
 
                 if (t.OnRangeInclusive(Legend.CONST_MIN, Legend.CONST_MAX)) this.constants.Add(t);
                 if (t.OnRangeInclusive(Legend.STEP_MIN, Legend.STEP_MAX)) this.steps.Add(t);
@@ -297,6 +300,11 @@ namespace LGen.LEvolve
                     t == Legend.YAW_DECREMENT
                 ) this.rotations.Add(t);
             }
+        }
+
+        public override string ToString()
+        {
+            return $"{{ {string.Join(", ", rotations)} }} {{ {string.Join(", ", seeds)} }} {{ {string.Join(", ", steps)} }} {{ {string.Join(", ", constants)} }}";
         }
     }
 }

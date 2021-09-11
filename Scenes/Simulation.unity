@@ -1630,7 +1630,7 @@ MonoBehaviour:
   leafOpacity: 0.8
   maxExpectedBranchLoad_displayPurposesOnly: 2
   initialMutability: 10
-  mutabilityFalloff: 0.01
+  mutabilityFalloff: 0.1
   stemRadiusFactor: 0.02
   seedSize: 0.2
 --- !u!1 &1741344239
