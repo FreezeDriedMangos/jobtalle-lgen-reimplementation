@@ -132,7 +132,7 @@ namespace LGen.LSimulate
                 s += "\n";
                 s += "        {\n";
                 s += $"            \"location\": [{a.location.x}, {a.location.y}],\n";
-                s += $"            \"system\": \"{a.system.ToString()}\"\n";
+                s += $"            \"system\": \"{a.system.ToString().Replace("\\", "\\\\").Replace("\n", "\\n")}\"\n";
                 s += "        },";
                 
             }
