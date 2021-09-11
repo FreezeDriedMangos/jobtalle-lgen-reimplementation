@@ -337,9 +337,11 @@ namespace LGen.LSimulate
             //
 
             // shuffle seeds
-            seeds.OrderBy(seed => randomizer.MakeFloat(0, 99));
+            seeds = seeds.OrderBy(seed => randomizer.MakeFloat(0, 99)).ToList<Seed>();
             // sort seeds by parentViability
-            seeds.OrderBy(seed => seed.parentViability);
+            seeds = seeds.OrderBy(seed => seed.parentViability).ToList<Seed>();
+            
+            if (seeds[0].parentViability > 0) Debug.Log("Parent viability " + seeds[0].parentViability);
 
             // distribute seeds
 
