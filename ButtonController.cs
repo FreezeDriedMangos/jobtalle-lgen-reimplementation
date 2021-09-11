@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonController : MonoBehaviour
+public class ButtonController : Singleton<ButtonController>
 {
     public UnityEngine.UI.InputField advanceIterationsInput;
 
@@ -17,6 +17,8 @@ public class ButtonController : MonoBehaviour
         {
             Simulation.Instance.Iterate_SecondHalfFirst(Simulation.Instance.state);
         }
+
+        SimInfoReporter.Instance.UpdateInfo();
     }
 
     public void AddColliders()

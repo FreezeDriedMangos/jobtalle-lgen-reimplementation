@@ -262,7 +262,7 @@ namespace LGen.LSimulate
                     leafEfficiencyFactor += (1 - areaFactor*areaFactor) / ((float)numLeaves);
                 }
 
-                if (numLeaves == 0) leafEfficiencyFactor = 1;
+                //if (numLeaves == 0) leafEfficiencyFactor = 1;
                 agent.viability_sunlightExposure = leafEfficiencyFactor * agentData.exposureReport.exposure / (float)agent.sentence.Tokens.Count;
 
                 //

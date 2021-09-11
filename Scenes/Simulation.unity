@@ -1712,12 +1712,12 @@ MonoBehaviour:
   quadraticGrowthProfileAddition: 10
   leafSizePenaltyFactor: 1
   instabilityPenaltyFactor: 1
-  ruleCountPenaltyFactor: 0.01
+  ruleCountPenaltyFactor: 0.001
   seedCountPenaltyFactor: 1
-  maxNumSeedsPerAgent: 8
-  seedDistributionAlpha: 0.5
-  densityThreshold: 2
-  initialAxiom: '*<A[A[--A]A]]'
+  maxNumSeedsPerAgent: 999
+  seedDistributionAlpha: 10
+  densityThreshold: 4
+  initialAxiom: '*'
   initialRules: []
   fertilityMap: {fileID: 2800000, guid: 0c9f4efcfc5430d4ba5fdb27647f5e50, type: 3}
   leafOpacity: 0.8
