@@ -142,7 +142,8 @@ namespace LGen.LSimulate
                 {
                     string s = "Sentence: "+a.sentence+"\n\nSystem:\n"+a.system+
                             "\n\nViability: "+a.viability+"\nViability Sunlight: "+a.viability_sunlightExposure+"\nViability Stability: "+a.viability_stability+"\nViability Efficiency: "+a.viability_stability+
-                            "\n\nLimits Minimum: "+a.renderData.agentData.limitsReport.minimum+"\nLimitsMaximum: "+a.renderData.agentData.limitsReport.maximum+"\nRadius: "+a.renderData.agentData.limitsReport.Radius
+                            "\n\nLimits Minimum: "+a.renderData.agentData.limitsReport.minimum+"\nLimitsMaximum: "+a.renderData.agentData.limitsReport.maximum+"\nRadius: "+a.renderData.agentData.limitsReport.Radius+
+                            "\n\nSystem E Set: " + (new GeneratedSymbols(a.system)).ToString();
                             ;
                     Debug.Log(s);
                     return;
