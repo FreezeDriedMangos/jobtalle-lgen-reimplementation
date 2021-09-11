@@ -96,13 +96,11 @@ namespace LGen.LEvolve
             rand -= profile.pSymbolChanceSeed;
             
 
-            if (rand < profile.pSymbolChanceStep) {  if(E!=null) UnityEngine.Debug.Log("Picking from E: " + string.Join(", ", E.steps));
+            if (rand < profile.pSymbolChanceStep)
                 return E == null
                     ? (char)randomizer.MakeInt_Inclusive(Legend.STEP_MIN, Legend.STEP_MAX)
                     : E.steps.Count == 0 ? null : E.steps[randomizer.MakeInt_Exclusive(0, E.steps.Count)]
                 ;
-            }
-                
             rand -= profile.pSymbolChanceStep;
 
             if (true)
