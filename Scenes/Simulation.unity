@@ -1810,7 +1810,7 @@ MonoBehaviour:
   initialMutability: 10
   mutabilityFalloff: 0.1
   stemRadiusFactor: 0.02
-  seedSize: 0.2
+  seedSize: 0.05
   GROWTH_PROFILE_RESOLUTION: 10
   DEFAULT_SPREAD: 0.05
 --- !u!1 &1741344239
