@@ -44,10 +44,10 @@ namespace LGen.LRender
 
     public class Modeller
     {
-        public AgentData GenerateAgentData(Sentence sentence, float stemRadiusFactor = 0.02f, float seedSize = 0.2f)
+        public AgentData GenerateAgentData(Sentence sentence, float stemRadiusFactor = 0.02f, float seedSize = 0.2f, float branchLength = 0.5f, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0/*0.2f*/)
         {
             AgentData agent = new AgentData();
-            Armature armature = GenerateTree(sentence);
+            Armature armature = GenerateTree(sentence, branchLength, angleDelta, seedOffset);
             armature.sentence = sentence;
         
             agent.positionReport.centerOfGravity = CalculateCenterOfGravity(armature.VertexTree);
