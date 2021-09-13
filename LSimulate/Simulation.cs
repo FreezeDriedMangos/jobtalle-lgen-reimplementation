@@ -279,12 +279,25 @@ namespace LGen.LSimulate
                 sw.Start();
 
             LRender.Renderer renderer = new LRender.Renderer();
+            //for(int i = 0; i < state.agents.Count; i++)
+            //{
+            //    Agent agent = state.agents[i];
+            //    agent.renderData = renderer.Render(agent.sentence, this.randomizer, i, this.transform, this.leafOpacity, state.grid[agent.location.x, agent.location.y].fertility, this.maxExpectedBranchLoad_displayPurposesOnly, this.stemRadiusFactor, this.seedSize, this.branchLength, TURTLE_ANGLE_DELTA, this.seedOffset);
+            //    agent.renderData.gameObject.transform.position = new Vector3(agent.location.x * this.gridScale, 0, agent.location.y * this.gridScale);
+            //}
+
+            List<Sentence> sentences = state.agents.ConvertAll(new System.Converter<Agent, Sentence>((agent) => agent.sentence));
+            List<float> fertilities = state.agents.ConvertAll(new System.Converter<Agent, float>((agent) => state.grid[agent.location.x, agent.location.y].fertility ));
+            List<AgentRenderData> agentRenderData = renderer.Render(sentences, this.randomizer, this.transform, this.leafOpacity, fertilities, this.maxExpectedBranchLoad_displayPurposesOnly, this.stemRadiusFactor, this.seedSize, this.branchLength, TURTLE_ANGLE_DELTA, this.seedOffset);
             for(int i = 0; i < state.agents.Count; i++)
             {
                 Agent agent = state.agents[i];
-                agent.renderData = renderer.Render(agent.sentence, this.randomizer, i, this.transform, this.leafOpacity, state.grid[agent.location.x, agent.location.y].fertility, this.maxExpectedBranchLoad_displayPurposesOnly, this.stemRadiusFactor, this.seedSize, this.branchLength, TURTLE_ANGLE_DELTA, this.seedOffset);
+                agent.renderData = agentRenderData[i];
                 agent.renderData.gameObject.transform.position = new Vector3(agent.location.x * this.gridScale, 0, agent.location.y * this.gridScale);
             }
+
+
+
 
                 sw.Stop();
                 TimeKeeper.Instance.RenderAgents = sw.Elapsed.ToString();
