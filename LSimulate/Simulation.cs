@@ -76,6 +76,11 @@ namespace LGen.LSimulate
 
         public float DEFAULT_SPREAD = 0.05f;
 
+        public const float TURTLE_ANGLE_DELTA = (float)(Mathf.PI/9f);
+        public float branchLength = 0.5f;
+        public float seedOffset = 0;
+
+
         //
         // Top level functions
         //
@@ -256,7 +261,7 @@ namespace LGen.LSimulate
             for(int i = 0; i < state.agents.Count; i++)
             {
                 Agent agent = state.agents[i];
-                agent.renderData = renderer.Render(agent.sentence, this.randomizer, i, this.transform, this.leafOpacity, state.grid[agent.location.x, agent.location.y].fertility, this.maxExpectedBranchLoad_displayPurposesOnly, this.stemRadiusFactor, this.seedSize);
+                agent.renderData = renderer.Render(agent.sentence, this.randomizer, i, this.transform, this.leafOpacity, state.grid[agent.location.x, agent.location.y].fertility, this.maxExpectedBranchLoad_displayPurposesOnly, this.stemRadiusFactor, this.seedSize, this.branchLength, TURTLE_ANGLE_DELTA, this.seedOffset);
                 agent.renderData.gameObject.transform.position = new Vector3(agent.location.x * this.gridScale, 0, agent.location.y * this.gridScale);
             }
 
