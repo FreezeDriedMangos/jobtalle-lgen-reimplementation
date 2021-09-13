@@ -17,9 +17,13 @@ namespace LGen.LSimulate
 
         public float viability_sunlightExposure;
         public float viability_stability;
-        public float viability_efficiency;
+        public float viability_seeds;
+        public float viability_rules;
+        public float viability_leaves;
+
+
         public bool invalid;
-        public float viability { get { return invalid? -1 : viability_sunlightExposure * viability_stability * viability_efficiency; } }
+        public float viability { get { return invalid? -1 : viability_sunlightExposure * viability_stability * viability_seeds * viability_rules * viability_leaves; } }
     }
 
     public class SimulationState
@@ -41,18 +45,12 @@ namespace LGen.LSimulate
         public int gridHeight;
         public int placeInitialSeedEveryNTiles;
 
-        public int numGrowthIterationsInMaxFertility;
-        public int numGrowthIterationsInMinFertility;
-
-        public float quadraticGrowthProfileMultiplier;
-        public float quadraticGrowthProfileAddition;
-
         public Randomizer randomizer;
 
-        public float leafSizePenaltyFactor;
-        public float instabilityPenaltyFactor;
-        public float ruleCountPenaltyFactor;
-        public float seedCountPenaltyFactor;
+        //public float leafSizePenaltyFactor;
+        //public float instabilityPenaltyFactor;
+        //public float ruleCountPenaltyFactor;
+        //public float seedCountPenaltyFactor;
 
         public int maxNumSeedsPerAgent;
         public float seedDistributionAlpha;
@@ -72,7 +70,11 @@ namespace LGen.LSimulate
         public float stemRadiusFactor = 0.02f;
         public float seedSize = 0.2f;
 
+        public float GROWTH_PROFILE_RESOLUTION = 10;
+
         public SimulationState state;
+
+        public float DEFAULT_SPREAD = 0.05f;
 
         //
         // Top level functions
@@ -169,7 +171,7 @@ namespace LGen.LSimulate
                 if (a.renderData.gameObject == o)
                 {
                     string s = "Sentence: "+a.sentence+"\n\nSystem:\n"+a.system+
-                            "\n\nInvalid?" + a.invalid + "\nViability: "+a.viability+"\nViability Sunlight: "+a.viability_sunlightExposure+"\nViability Stability: "+a.viability_stability+"\nViability Efficiency: "+a.viability_efficiency+ 
+                            "\n\nInvalid?" + a.invalid + "\nViability: "+a.viability+"\nViability Sunlight: "+a.viability_sunlightExposure+"\nViability Stability: "+a.viability_stability+"\nViability Seeds: "+a.viability_seeds+"\nViability Rules: "+a.viability_rules+"\nViability Leaves: "+a.viability_leaves+ 
                             "\n\nLimits Minimum: "+a.renderData.agentData.limitsReport.minimum+"\nLimitsMaximum: "+a.renderData.agentData.limitsReport.maximum+"\nRadius: "+a.renderData.agentData.limitsReport.Radius+
                             "\n\nSystem E Set: " + (new GeneratedSymbols(a.system)).ToString() +
                             "\n\n"+a.renderData.agentData.exposureReport.exposure;
@@ -234,9 +236,14 @@ namespace LGen.LSimulate
             {
                 Agent agent = state.agents[i];
                 
-                float fertility = state.grid[agent.location.x, agent.location.y].fertility;
-                int iterations = (int)Mathf.Ceil((numGrowthIterationsInMaxFertility-numGrowthIterationsInMinFertility)*fertility + numGrowthIterationsInMinFertility);
-                GrowthProfile growthProfile = new GrowthProfile.Quadratic(iterations, quadraticGrowthProfileMultiplier, quadraticGrowthProfileAddition);        
+                float fertility = 1 - state.grid[agent.location.x, agent.location.y].fertility;
+                
+                int x = Mathf.FloorToInt(fertility * GROWTH_PROFILE_RESOLUTION);
+                int iterations = 1 + Mathf.CeilToInt(4*(1-x/GROWTH_PROFILE_RESOLUTION));
+                int initial = 24;
+                float multiplier = (GROWTH_PROFILE_RESOLUTION - x)*10f;
+
+                GrowthProfile growthProfile = new GrowthProfile.Quadratic(iterations, initial, multiplier);        
 
                 agent.sentence = agent.system.Generate(growthProfile, this.randomizer);
             }
@@ -281,37 +288,42 @@ namespace LGen.LSimulate
                 // sunlight exposure
                 //
 
+                agent.viability_sunlightExposure = agentData.exposureReport.exposure * agentData.exposureReport.exposure / (float)agent.sentence.Tokens.Count;
+
+                //
+                // seeds
+                //
+
+                agent.viability_seeds = 1f / (agentData.seedReports.Count * 0.05f + 1);
+        
+                //
+                // Rules
+                //
+
+                agent.viability_rules = 1f / (agent.system.Rules.Count * 0.05f + 1);        
+
+                //
+                // stability
+                //
+
+                float lean = Vector3.Distance(agentData.positionReport.centerOfGravity, agentData.positionReport.rootPosition);
+                agent.viability_stability = 1f / (lean * lean * 0.3f + 1);
+
+                //
+                // leaves
+                //
+                
                 float leafEfficiencyFactor = 0;
                 int numLeaves = agentData.leafReports.Count;
                 for(int l = 0; l < numLeaves; l++)
                 {
                     LeafReport r = agentData.leafReports[l];
-                    float areaFactor = r.area * this.leafSizePenaltyFactor;
-                    leafEfficiencyFactor += (1 - areaFactor*areaFactor) / ((float)numLeaves);
+                    float areaFactor = r.area * 8f;
+                    leafEfficiencyFactor += 1 - areaFactor*areaFactor;
                 }
-
-                //if (numLeaves == 0) leafEfficiencyFactor = 1;
-                agent.viability_sunlightExposure = leafEfficiencyFactor * agentData.exposureReport.exposure / (float)agent.sentence.Tokens.Count;
-
-                //
-                // stability
-                //
-                float lean = Vector3.Distance(agentData.positionReport.centerOfGravity, agentData.positionReport.rootPosition);
-                agent.viability_stability = 1f / (1 + instabilityPenaltyFactor * lean * lean);
-
-                //
-                // efficiency
-                //
-                if (agent.system.Rules.Count == 0 || agentData.seedReports.Count == 0) agent.viability_efficiency = 1;
-                else 
-                {
-                    float ruleEfficiency = ruleCountPenaltyFactor * (float)agent.system.Rules.Count;
-                    ruleEfficiency = ruleEfficiency == 0 ? 1 : ruleEfficiency;
-                    float seedEfficiency = seedCountPenaltyFactor * (float)agentData.seedReports.Count;
-                    seedEfficiency = seedEfficiency == 0 ? 1 : seedEfficiency;
-
-                    agent.viability_efficiency = 1f / (ruleEfficiency*seedEfficiency);
-                }   
+                leafEfficiencyFactor /= (float)numLeaves;
+                
+                agent.viability_leaves = leafEfficiencyFactor;
             }
         }
 
@@ -382,8 +394,8 @@ namespace LGen.LSimulate
             for(int i = 0; i < seeds.Count; i++)
             {
                 Seed seed = seeds[i];
-                float distributionRadius = Mathf.Tan(seedDistributionAlpha) * seed.absoluteLocation.y; // a cone has a right triangle as its sillhouette
-                float r = randomizer.MakeFloat(0, distributionRadius);
+                //float distributionRadius = Mathf.Tan(seedDistributionAlpha) * seed.absoluteLocation.y; // a cone has a right triangle as its sillhouette
+                float r = Mathf.Sqrt(randomizer.MakeFloat(0, 1)) * (seed.locationRelativeToParentRoot.y) + DEFAULT_SPREAD; //randomizer.MakeFloat(0, distributionRadius);
                 float theta = randomizer.MakeFloat(-Mathf.PI, Mathf.PI);
                 
                 Vector2 absoluteLocation = new Vector2(r * Mathf.Cos(theta) + seed.parentGridLocation.x*gridScale, r * Mathf.Sin(theta) + seed.parentGridLocation.y*gridScale);
