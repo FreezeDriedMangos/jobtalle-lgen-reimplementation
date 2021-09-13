@@ -252,7 +252,7 @@ namespace LGen.LRender
             return max;
         }
 
-        public Armature GenerateTree(Sentence sentence, float branchLength = 1, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0/*0.2f*/)
+        public Armature GenerateTree(Sentence sentence, float branchLength = 0.5f, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0/*0.2f*/)
         {
             Armature armature = new Armature();
 
