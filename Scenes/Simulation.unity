@@ -1813,6 +1813,8 @@ MonoBehaviour:
   seedSize: 0.05
   GROWTH_PROFILE_RESOLUTION: 10
   DEFAULT_SPREAD: 0.05
+  branchLength: 0.5
+  seedOffset: 0
 --- !u!1 &1741344239
 GameObject:
   m_ObjectHideFlags: 0

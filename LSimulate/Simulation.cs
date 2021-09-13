@@ -5,6 +5,7 @@ using LGen.LRender;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.Diagnostics;
 
 namespace LGen.LSimulate
 {
@@ -103,15 +104,32 @@ namespace LGen.LSimulate
 
         public void IterateFirstHalf(SimulationState state)
         {
-            BuildAgentSentences(state);
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+                BuildAgentSentences(state);
+            sw.Stop();
+            TimeKeeper.Instance.BuildSentences = sw.Elapsed.ToString();
+
+            
             RenderAgents_AndEvaluateLeafExposure(state);
-            EvaluateAgentsViability(state);
+
+            sw = new Stopwatch();
+            sw.Start();
+                EvaluateAgentsViability(state);
+            sw.Stop();
+            TimeKeeper.Instance.EvaluateViability = sw.Elapsed.ToString();
         }
 
         public void IterateSecondHalf(SimulationState state)
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
             state.generation++;
             SeedNextState(state);
+
+            sw.Stop();
+            TimeKeeper.Instance.SeedNextState = sw.Elapsed.ToString();
         }
 
         public void Iterate_SecondHalfFirst(SimulationState state)
@@ -257,6 +275,9 @@ namespace LGen.LSimulate
         
         public void RenderAgents_AndEvaluateLeafExposure(SimulationState state)
         {
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+
             LRender.Renderer renderer = new LRender.Renderer();
             for(int i = 0; i < state.agents.Count; i++)
             {
@@ -265,13 +286,21 @@ namespace LGen.LSimulate
                 agent.renderData.gameObject.transform.position = new Vector3(agent.location.x * this.gridScale, 0, agent.location.y * this.gridScale);
             }
 
-            
+                sw.Stop();
+                TimeKeeper.Instance.RenderAgents = sw.Elapsed.ToString();
+
+                sw = new Stopwatch();
+                sw.Start();
+
             renderer.EvaluateExposure(state.agents.ConvertAll(new System.Converter<Agent, AgentRenderData>((Agent agent) => agent.renderData)));
+
+                sw.Stop();
+                TimeKeeper.Instance.EvaluateLeafExposure = sw.Elapsed.ToString();
 
             if (LOG_LEAF_EXPOSURES)
             { 
                 List<float> exposures = state.agents.ConvertAll(new System.Converter<Agent, float>((Agent agent) => agent.renderData.agentData.exposureReport.exposure));
-                Debug.Log("[" + string.Join(", ", exposures) + "]");
+                UnityEngine.Debug.Log("[" + string.Join(", ", exposures) + "]");
             }
         }
 

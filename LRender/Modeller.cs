@@ -198,7 +198,7 @@ namespace LGen.LRender
             List<Mesh> seedMeshes = new List<Mesh>();
             foreach(Vector3 seedCenter in armature.seeds)
             {
-                seedMeshes.Add(CreateIcosphere.Create(seedSize, seedCenter));
+                seedMeshes.Add(CreateCube(seedSize, seedCenter));//CreateIcosphere.Create(seedSize, seedCenter));
             }
 
             agent.stemMeshes = branchMeshes;
@@ -426,5 +426,42 @@ namespace LGen.LRender
 
             return points;
         }
+
+        private Mesh CreateCube (float radius, Vector3 center) {
+            Vector3 offset = new Vector3(0.5f, 0.5f, 0.5f);
+            // function modified from http://ilkinulas.github.io/development/unity/2016/04/30/cube-mesh-in-unity3d.html
+		    Vector3[] vertices = {
+			    (new Vector3 (0, 0, 0) - offset)*radius + center,
+			    (new Vector3 (1, 0, 0) - offset)*radius + center,
+			    (new Vector3 (1, 1, 0) - offset)*radius + center,
+			    (new Vector3 (0, 1, 0) - offset)*radius + center,
+			    (new Vector3 (0, 1, 1) - offset)*radius + center,
+			    (new Vector3 (1, 1, 1) - offset)*radius + center,
+			    (new Vector3 (1, 0, 1) - offset)*radius + center,
+			    (new Vector3 (0, 0, 1) - offset)*radius + center,
+		    };
+
+		    int[] triangles = {
+			    0, 2, 1, //face front
+			    0, 3, 2,
+			    2, 3, 4, //face top
+			    2, 4, 5,
+			    1, 2, 5, //face right
+			    1, 5, 6,
+			    0, 7, 4, //face left
+			    0, 4, 3,
+			    5, 4, 7, //face back
+			    5, 7, 6,
+			    0, 6, 7, //face bottom
+			    0, 1, 6
+		    };
+			
+		    Mesh mesh = new Mesh();
+		    mesh.vertices = vertices;
+		    mesh.triangles = triangles;
+		    //mesh.Optimize ();
+		    mesh.RecalculateNormals ();
+            return mesh;
+	    }
     }
 }
