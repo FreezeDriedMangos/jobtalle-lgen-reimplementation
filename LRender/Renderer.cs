@@ -14,6 +14,25 @@ namespace LGen.LRender
 
     public class Renderer
     {
+        public List<AgentRenderData> Render(List<Sentence> sentences, Randomizer randomizer, Transform parent = null, float leafOpacity = 0.8f, List<float> fertilities = null, float maxExpectedBranchLoad = 2f, float stemRadiusFactor = 0.02f, float seedSize = 0.2f, float branchLength = 0.5f, float angleDelta = (float)(Mathf.PI/9f), float seedOffset = 0/*0.2f*/)
+        {
+            List<AgentRenderData> agentRenderData = new List<AgentRenderData>();
+            List<AgentData> agentData = new List<AgentData>();    
+
+            Modeller m = new Modeller();
+            for(int i = 0; i < sentences.Count; i++)
+            {
+                agentData.Add(m.GenerateAgentData(sentences[i], stemRadiusFactor, seedSize, branchLength, angleDelta, seedOffset));
+            }
+
+            for(int i = 0; i < sentences.Count; i++)
+            {
+                agentRenderData.Add(Render(agentData[i], randomizer, i, parent, leafOpacity, fertilities == null ? 1f : fertilities[i], maxExpectedBranchLoad));
+            }
+
+            return agentRenderData;
+        }
+
         public AgentRenderData Render(Sentence sentence, Randomizer randomizer, int agentNum = 0, Transform parent = null, float leafOpacity = 0.8f, float fertility = 1f, float maxExpectedBranchLoad = 2f, float stemRadiusFactor = 0.02f, float seedSize = 0.2f, float branchLength = 0.5f, float angleDelta = (float)(Mathf.PI/9f), float seedOffset = 0/*0.2f*/)
         {
             Modeller m = new Modeller();
