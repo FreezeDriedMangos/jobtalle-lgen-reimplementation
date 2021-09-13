@@ -1809,7 +1809,7 @@ MonoBehaviour:
   maxExpectedBranchLoad_displayPurposesOnly: 2
   initialMutability: 10
   mutabilityFalloff: 0.1
-  stemRadiusFactor: 0.02
+  stemRadiusFactor: 0.01
   seedSize: 0.05
   GROWTH_PROFILE_RESOLUTION: 10
   DEFAULT_SPREAD: 0.05
