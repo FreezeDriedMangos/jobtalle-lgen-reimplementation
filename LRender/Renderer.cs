@@ -27,7 +27,7 @@ namespace LGen.LRender
 
             for(int i = 0; i < sentences.Count; i++)
             {
-                agentRenderData.Add(Render(agentData[i], randomizer, i, parent, leafOpacity, fertilities == null ? 1f : fertilities[i], maxExpectedBranchLoad));
+                agentRenderData.Add(Render(agentData[i], randomizer, i, parent, leafOpacity, (fertilities == null || fertilities.Count <= i) ? 1f : fertilities[i], maxExpectedBranchLoad));
             }
 
             return agentRenderData;
