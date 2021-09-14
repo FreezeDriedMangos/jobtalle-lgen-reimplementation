@@ -29,10 +29,10 @@ namespace LGen.LRender
             {
                 foreach(MeshData d in agentData[i].meshes.uncompiledLeafMeshes) agentData[i].meshes.leafMeshes.Add(d.CreateMesh());
                 foreach(MeshData d in agentData[i].meshes.uncompiledSeedMeshes) agentData[i].meshes.seedMeshes.Add(d.CreateMesh());
-                foreach(MeshData d in agentData[i].meshes.uncompiledStemMeshes) agentData[i].meshes.stemMeshes.Add(d.CreateMesh());
+                //foreach(MeshData d in agentData[i].meshes.uncompiledStemMeshes) agentData[i].meshes.stemMeshes.Add(d.CreateMesh());
                 agentData[i].meshes.uncompiledLeafMeshes = null;
                 agentData[i].meshes.uncompiledSeedMeshes = null;
-                agentData[i].meshes.uncompiledStemMeshes = null;
+                //agentData[i].meshes.uncompiledStemMeshes = null;
 
                 agentRenderData.Add(Render(agentData[i], randomizer, i, parent, leafOpacity, (fertilities == null || fertilities.Count <= i) ? 1f : fertilities[i], maxExpectedBranchLoad));
             }
@@ -60,7 +60,8 @@ namespace LGen.LRender
         
             for(int i = 0; i < agent.meshes.stemMeshes.Count; i++)
             {
-                Mesh m = agent.meshes.stemMeshes[i];
+                MeshData uncompiledMesh = agent.meshes.uncompiledStemMeshes[i];
+                Mesh m = Modeller.unitCylinder; //agent.meshes.stemMeshes[i];
                 GameObject g = new GameObject("stem " + i);
                 g.transform.parent = go.transform;
                 g.layer = LayerMask.NameToLayer("Plants");
@@ -78,6 +79,14 @@ namespace LGen.LRender
                 propBlock.SetColor("_LeafExposureColor", Color.white);
                 propBlock.SetInt("_Seed", 0);
                 propBlock.SetFloat("_Opacity", 1);
+                propBlock.SetFloat("topRadius", uncompiledMesh.branch_topRadius);
+                propBlock.SetFloat("bottomRadius", uncompiledMesh.branch_bottomRadius);
+                propBlock.SetFloat("length", uncompiledMesh.branch_length);
+                propBlock.SetVector("position", uncompiledMesh.branch_topLocation); // TODO: this actually takes a Vector4. if any issues come up, this is the first thing to check
+
+                Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, uncompiledMesh.branch_rotation, Vector3.one);
+                propBlock.SetMatrix("_Rotation", matrix);
+                
                 meshRenderer.SetPropertyBlock(propBlock);
             }
 

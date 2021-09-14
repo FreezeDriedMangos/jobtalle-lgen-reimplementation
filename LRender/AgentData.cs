@@ -32,6 +32,17 @@ namespace LGen.LRender
         public Vector3[] vertices;
         public int[] triangles;
         public Vector2[] uvs;
+
+        // optional stuff - branches
+        public float branch_topRadius;
+        public float branch_bottomRadius;
+        public Quaternion branch_rotation;
+        public Vector3 branch_topLocation;
+        public float branch_length;
+
+        // optional stuff - seeds
+        public Vector3 seed_location;
+        public float seed_size;
         
         public Mesh CreateMesh()
         {
