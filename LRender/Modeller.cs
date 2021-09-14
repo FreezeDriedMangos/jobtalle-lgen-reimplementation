@@ -94,7 +94,7 @@ namespace LGen.LRender
             makeBranches(branches, tree);
             calculateVertexLoad(vertexLoad, tree);
             
-            List<Mesh> branchMeshes = new List<Mesh>();
+            List<MeshData> branchMeshes = new List<MeshData>();
             foreach(VertexTree[] branch in branches)
             {
                 VertexTree lower = branch[0];
@@ -114,7 +114,7 @@ namespace LGen.LRender
                 branchReports.Add(b);
             }
 
-            List<Mesh> leafMeshes = new List<Mesh>();
+            List<MeshData> leafMeshes = new List<MeshData>();
             foreach (LeafArmature leaf in armature.leaves)
             {
                 if (leaf.side1.Count == 0 && leaf.side2.Count == 0) continue; 
@@ -182,28 +182,28 @@ namespace LGen.LRender
                 for (int i = 0; i < vertices.Count; i++) uvs.Add(new Vector2());
 
                 
-                Mesh mesh = new Mesh();
+                //Mesh mesh = new Mesh();
                 
-                mesh.vertices = vertices.ToArray();
-                mesh.triangles = triangles.ToArray();
-                mesh.uv = uvs.ToArray();
-                //mesh.normals = normals.ToArray();
-                mesh.RecalculateNormals();
-                mesh.RecalculateBounds();
-                mesh.RecalculateTangents();
+                //mesh.vertices = vertices.ToArray();
+                //mesh.triangles = triangles.ToArray();
+                //mesh.uv = uvs.ToArray();
+                ////mesh.normals = normals.ToArray();
+                //mesh.RecalculateNormals();
+                //mesh.RecalculateBounds();
+                //mesh.RecalculateTangents();
 
-                leafMeshes.Add(mesh);
+                leafMeshes.Add(new MeshData() { vertices = vertices.ToArray(), triangles = triangles.ToArray(), uvs = uvs.ToArray() });
             }
 
-            List<Mesh> seedMeshes = new List<Mesh>();
+            List<MeshData> seedMeshes = new List<MeshData>();
             foreach(Vector3 seedCenter in armature.seeds)
             {
                 seedMeshes.Add(CreateCube(seedSize, seedCenter));//CreateIcosphere.Create(seedSize, seedCenter));
             }
 
-            agent.stemMeshes = branchMeshes;
-            agent.seedMeshes = seedMeshes;
-            agent.leafMeshes = leafMeshes;
+            agent.uncompiledStemMeshes = branchMeshes;
+            agent.uncompiledSeedMeshes = seedMeshes;
+            agent.uncompiledLeafMeshes = leafMeshes;
 
             return agent;
         }
@@ -350,7 +350,7 @@ namespace LGen.LRender
             return armature;
         }
 
-        public static Mesh CreateCylinder(float roll, float pitch, float yaw, Vector3 start, Vector3 end, float firstRadius, float secondRadius, int vertexCountPerEnd = 5)
+        public static MeshData CreateCylinder(float roll, float pitch, float yaw, Vector3 start, Vector3 end, float firstRadius, float secondRadius, int vertexCountPerEnd = 5)
         {
             firstRadius = Mathf.Max(firstRadius, 0.001f);
             secondRadius = Mathf.Max(secondRadius, 0.001f);
@@ -399,14 +399,16 @@ namespace LGen.LRender
                 normals.Add(vertices[i] - end);
             }
 
-            Mesh mesh = new Mesh();
+            //Mesh mesh = new Mesh();
         
-            mesh.vertices = vertices.ToArray();
-            mesh.triangles = triangles.ToArray();
-            mesh.uv = uvs.ToArray();
-            mesh.normals = normals.ToArray();
+            //mesh.vertices = vertices.ToArray();
+            //mesh.triangles = triangles.ToArray();
+            //mesh.uv = uvs.ToArray();
+            //mesh.normals = normals.ToArray();
 
-            return mesh;
+            //return mesh;
+
+            return new MeshData() { vertices = vertices.ToArray(), triangles = triangles.ToArray(), uvs = uvs.ToArray() };
         }
 
         public static List<Vector3> GenerateCircle(float roll, float pitch, float yaw, Vector3 center, float r, int numPoints)
@@ -427,7 +429,7 @@ namespace LGen.LRender
             return points;
         }
 
-        private static Mesh CreateCube (float radius, Vector3 center) {
+        private static MeshData CreateCube (float radius, Vector3 center) {
             Vector3 offset = new Vector3(0.5f, 0.5f, 0.5f);
             // function modified from http://ilkinulas.github.io/development/unity/2016/04/30/cube-mesh-in-unity3d.html
 		    Vector3[] vertices = {
@@ -456,12 +458,15 @@ namespace LGen.LRender
 			    0, 1, 6
 		    };
 			
-		    Mesh mesh = new Mesh();
-		    mesh.vertices = vertices;
-		    mesh.triangles = triangles;
-		    //mesh.Optimize ();
-		    mesh.RecalculateNormals ();
-            return mesh;
+		    //Mesh mesh = new Mesh();
+		    //mesh.vertices = vertices;
+		    //mesh.triangles = triangles;
+		    ////mesh.Optimize ();
+		    //mesh.RecalculateNormals ();
+      //      return mesh;
+
+            
+            return new MeshData() { vertices = vertices, triangles = triangles };
 	    }
     }
 }
