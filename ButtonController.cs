@@ -1,6 +1,7 @@
 ﻿using LGen.LSimulate;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class ButtonController : Singleton<ButtonController>
@@ -19,7 +20,7 @@ public class ButtonController : Singleton<ButtonController>
 
             if (Simulation.Instance.state.generation % 50 == 0)
             {
-                Debug.Log(Simulation.Instance.toJSON(Simulation.Instance.state));
+                WriteSimState();
             }
         }
 
@@ -34,5 +35,11 @@ public class ButtonController : Singleton<ButtonController>
     public void ShowGridDensity()
     {
         Simulation.Instance.ShowGridDensity(Simulation.Instance.state, gridDensityUiParent, textPrefab);
+    }
+
+    public void WriteSimState()
+    {
+         StreamWriter writer = new StreamWriter($"Assets/JSON/{Simulation.Instance.state.simulationID}_gen{Simulation.Instance.state.generation}.json", true);
+         Simulation.Instance.JSONtoFile(Simulation.Instance.state, writer);
     }
 }

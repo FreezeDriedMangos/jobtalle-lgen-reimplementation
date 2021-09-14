@@ -18,7 +18,6 @@ namespace LGen.LRender
         public List<AgentRenderData> Render(List<Sentence> sentences, Randomizer randomizer, Transform parent = null, float leafOpacity = 0.8f, List<float> fertilities = null, float maxExpectedBranchLoad = 2f, float stemRadiusFactor = 0.02f, float seedSize = 0.2f, float branchLength = 0.5f, float angleDelta = (float)(Mathf.PI/9f), float seedOffset = 0/*0.2f*/)
         {
             List<AgentRenderData> agentRenderData = new List<AgentRenderData>();
-            //List<AgentData> agentData = new List<AgentData>();    
             AgentData[] agentData = new AgentData[sentences.Count];
 
             for(int i = 0; i < sentences.Count; i++)

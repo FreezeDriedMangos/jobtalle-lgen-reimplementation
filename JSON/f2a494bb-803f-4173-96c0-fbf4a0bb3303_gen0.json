@@ -1,0 +1,6395 @@
+{
+	"uuid": "f2a494bb-803f-4173-96c0-fbf4a0bb3303",
+    "generation":0,
+    "agents":[
+        {
+            "location": [0, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [0, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [5, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [15, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [20, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [25, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [30, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [35, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [40, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [45, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [50, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [55, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [60, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [65, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [70, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [75, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [80, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [85, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [90, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [95, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [100, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [105, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [110, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [115, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [120, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [125, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [130, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [135, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [140, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [145, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [150, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [155, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [160, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [165, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [170, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [175, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [180, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [185, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 185],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 190],
+            "system": "*\n"
+        },
+        {
+            "location": [190, 195],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 0],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 5],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 15],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 20],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 25],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 30],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 35],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 40],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 45],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 50],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 55],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 60],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 65],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 70],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 75],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 80],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 85],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 90],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 95],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 100],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 105],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 110],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 115],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 120],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 125],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 130],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 135],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 140],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 145],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 150],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 155],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 160],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 165],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 170],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 175],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 180],
+            "system": "*\n"
+        },
+        {
+            "location": [195, 185],
+            "system": "*\n"

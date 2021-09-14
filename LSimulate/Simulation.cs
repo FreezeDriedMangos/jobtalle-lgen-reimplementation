@@ -29,6 +29,7 @@ namespace LGen.LSimulate
 
     public class SimulationState
     {
+        public string simulationID = System.Guid.NewGuid().ToString();
         public Grid grid;
         public List<Agent> agents = new List<Agent>();
         public int generation;
@@ -143,32 +144,40 @@ namespace LGen.LSimulate
         // Misc functions
         //
 
-        public string toJSON(SimulationState state)
+        public void JSONtoFile(SimulationState state, System.IO.StreamWriter writer)
         {
             string s = "";
             
             s += "{\n";
+            s += $"\t\"uuid\": \"{state.simulationID}\",\n";
 
             s += "    \"generation\":" + state.generation + ",\n";
             
             s += "    \"agents\":[";
-            foreach(Agent a in state.agents) 
+            writer.Write(s);
+            s = "";    
+
+            for(int i = 0; i < state.agents.Count; i++) 
             {
+                Agent a = state.agents[i];
                 s += "\n";
                 s += "        {\n";
                 s += $"            \"location\": [{a.location.x}, {a.location.y}],\n";
                 s += $"            \"system\": \"{a.system.ToString().Replace("\\", "\\\\").Replace("\n", "\\n")}\"\n";
-                s += "        },";
+                s += "        }";
                 
+                if (i < state.agents.Count-1) s += ",";
+
+                writer.Write(s);
+                s = "";
             }
-            s = s.Substring(0, s.Length-1); // remove trailing comma
             
             s += "    \n],\n";
-
             s += "    \"randomizerState\": " + randomizer.GetStateAsJSON() + "\n";
-
             s += "}\n";
-            return s;
+        
+            writer.Write(s);
+            s = "";
         }
 
         public void AddColliders(SimulationState state)

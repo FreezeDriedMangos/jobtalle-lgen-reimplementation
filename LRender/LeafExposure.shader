@@ -96,6 +96,8 @@ Shader "Unlit/LeafExposure" {
                 float _Opacity;
                 int _Seed;
 
+                #pragma multi_compile_instancing
+
                 struct appdata {
                     float4 vertex : POSITION;
                 };
