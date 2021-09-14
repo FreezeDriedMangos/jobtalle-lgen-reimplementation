@@ -1,6 +1,7 @@
 ﻿
 using LGen.LParse;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 namespace LGen.LRender
@@ -17,16 +18,40 @@ namespace LGen.LRender
         public List<AgentRenderData> Render(List<Sentence> sentences, Randomizer randomizer, Transform parent = null, float leafOpacity = 0.8f, List<float> fertilities = null, float maxExpectedBranchLoad = 2f, float stemRadiusFactor = 0.02f, float seedSize = 0.2f, float branchLength = 0.5f, float angleDelta = (float)(Mathf.PI/9f), float seedOffset = 0/*0.2f*/)
         {
             List<AgentRenderData> agentRenderData = new List<AgentRenderData>();
-            List<AgentData> agentData = new List<AgentData>();    
+            //List<AgentData> agentData = new List<AgentData>();    
+            AgentData[] agentData = new AgentData[sentences.Count];
 
+            List<Thread> threads = new List<Thread>();
             for(int i = 0; i < sentences.Count; i++)
             {
-                agentData.Add(Modeller.GenerateAgentData(sentences[i], stemRadiusFactor, seedSize, branchLength, angleDelta, seedOffset));
+                int idx = i;
+                threads.Add(new Thread(
+                    () => 
+                    { 
+                        agentData[idx] = Modeller.GenerateAgentData(sentences[idx], stemRadiusFactor, seedSize, branchLength, angleDelta, seedOffset); 
+                    }
+                ));
+                threads[i].Start();
             }
 
+            //for(int i = 0; i < sentences.Count; i++) threads[i].Start();
+            for(int i = 0; i < sentences.Count; i++) threads[i].Join();
+
+
             for(int i = 0; i < sentences.Count; i++)
             {
+                try {         
+
+                foreach(MeshData d in agentData[i].meshes.uncompiledLeafMeshes) agentData[i].meshes.leafMeshes.Add(d.CreateMesh());
+                foreach(MeshData d in agentData[i].meshes.uncompiledSeedMeshes) agentData[i].meshes.seedMeshes.Add(d.CreateMesh());
+                foreach(MeshData d in agentData[i].meshes.uncompiledStemMeshes) agentData[i].meshes.stemMeshes.Add(d.CreateMesh());
+                agentData[i].meshes.uncompiledLeafMeshes = null;
+                agentData[i].meshes.uncompiledSeedMeshes = null;
+                agentData[i].meshes.uncompiledStemMeshes = null;
+
                 agentRenderData.Add(Render(agentData[i], randomizer, i, parent, leafOpacity, (fertilities == null || fertilities.Count <= i) ? 1f : fertilities[i], maxExpectedBranchLoad));
+
+                } catch { }
             }
 
             return agentRenderData;

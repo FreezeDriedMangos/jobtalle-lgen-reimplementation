@@ -21,5 +21,28 @@ namespace LGen.LRender
         public List<Mesh> stemMeshes = new List<Mesh>();
         public List<Mesh> seedMeshes = new List<Mesh>();
         public List<Mesh> leafMeshes = new List<Mesh>();
+
+        public List<MeshData> uncompiledStemMeshes = new List<MeshData>();
+        public List<MeshData> uncompiledSeedMeshes = new List<MeshData>();
+        public List<MeshData> uncompiledLeafMeshes = new List<MeshData>();
+    }
+
+    public class MeshData
+    {
+        public Vector3[] vertices;
+        public int[] triangles;
+        public Vector2[] uvs;
+        
+        public Mesh CreateMesh()
+        {
+            Mesh mesh = new Mesh();
+        
+            mesh.vertices = vertices;
+            mesh.triangles = triangles;
+           if (mesh != null) mesh.uv = uvs;
+           mesh.RecalculateNormals();
+
+            return mesh;
+        }
     }
 }
