@@ -44,7 +44,7 @@ namespace LGen.LRender
 
     public class Modeller
     {
-        public AgentData GenerateAgentData(Sentence sentence, float stemRadiusFactor = 0.02f, float seedSize = 0.2f, float branchLength = 0.5f, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0/*0.2f*/)
+        public static AgentData GenerateAgentData(Sentence sentence, float stemRadiusFactor = 0.02f, float seedSize = 0.2f, float branchLength = 0.5f, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0/*0.2f*/)
         {
             AgentData agent = new AgentData();
             Armature armature = GenerateTree(sentence, branchLength, angleDelta, seedOffset);
@@ -82,7 +82,7 @@ namespace LGen.LRender
             return agent;
         }
 
-        public AgentMeshes GenerateMeshes(Armature armature, List<BranchReport> branchReports, float stemRadiusFactor = 0.02f, float seedSize = 0.2f)
+        public static AgentMeshes GenerateMeshes(Armature armature, List<BranchReport> branchReports, float stemRadiusFactor = 0.02f, float seedSize = 0.2f)
         {
             AgentMeshes agent = new AgentMeshes();
 
@@ -208,33 +208,33 @@ namespace LGen.LRender
             return agent;
         }
 
-        private Vector3 CalculateCenterOfGravity(VertexTree tree, bool topLevel = true)
+        private static Vector3 CalculateCenterOfGravity(VertexTree tree, bool topLevel = true)
         {
             Vector3 v = new Vector3(tree.vertex.x, tree.vertex.y, tree.vertex.z);
             foreach(VertexTree child in tree.children) v += CalculateCenterOfGravity(child, false);
             return topLevel? v/((float)CountVertices(tree)) : v;
         }
-        private int CountVertices(VertexTree tree)
+        private static int CountVertices(VertexTree tree)
         {
             int n = 1;
             foreach(VertexTree child in tree.children) n += CountVertices(child);
             return n;
         }
-        private LimitsReport CalculateLimitsReport(VertexTree tree, LimitsReport report)
+        private static LimitsReport CalculateLimitsReport(VertexTree tree, LimitsReport report)
         {
             report.Add(new Vector3(tree.vertex.x, tree.vertex.y, tree.vertex.z));
             foreach(VertexTree child in tree.children) CalculateLimitsReport(child, report);
             return report;
         }
 
-        private void makeBranches(List<VertexTree[]> branches, VertexTree tree, VertexTree parent = null) 
+        private static void makeBranches(List<VertexTree[]> branches, VertexTree tree, VertexTree parent = null) 
         { 
             if (parent != null) branches.Add(new VertexTree[]{ parent, tree });
 
             foreach(VertexTree child in tree.children) makeBranches(branches, child, tree);
         } 
 
-        private int calculateVertexLoad(Dictionary<VertexTree, int> result, VertexTree tree)
+        private static int calculateVertexLoad(Dictionary<VertexTree, int> result, VertexTree tree)
         {
             if (tree.children == null || tree.children.Count <= 0) 
             {
@@ -252,7 +252,7 @@ namespace LGen.LRender
             return max;
         }
 
-        public Armature GenerateTree(Sentence sentence, float branchLength = 0.5f, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0/*0.2f*/)
+        public static Armature GenerateTree(Sentence sentence, float branchLength = 0.5f, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0/*0.2f*/)
         {
             Armature armature = new Armature();
 
@@ -350,7 +350,7 @@ namespace LGen.LRender
             return armature;
         }
 
-        public Mesh CreateCylinder(float roll, float pitch, float yaw, Vector3 start, Vector3 end, float firstRadius, float secondRadius, int vertexCountPerEnd = 5)
+        public static Mesh CreateCylinder(float roll, float pitch, float yaw, Vector3 start, Vector3 end, float firstRadius, float secondRadius, int vertexCountPerEnd = 5)
         {
             firstRadius = Mathf.Max(firstRadius, 0.001f);
             secondRadius = Mathf.Max(secondRadius, 0.001f);
@@ -409,7 +409,7 @@ namespace LGen.LRender
             return mesh;
         }
 
-        public List<Vector3> GenerateCircle(float roll, float pitch, float yaw, Vector3 center, float r, int numPoints)
+        public static List<Vector3> GenerateCircle(float roll, float pitch, float yaw, Vector3 center, float r, int numPoints)
         {
             List<Vector3> points = new List<Vector3>();
             float angleIncrement = 2*Mathf.PI / ((float)numPoints);
@@ -427,7 +427,7 @@ namespace LGen.LRender
             return points;
         }
 
-        private Mesh CreateCube (float radius, Vector3 center) {
+        private static Mesh CreateCube (float radius, Vector3 center) {
             Vector3 offset = new Vector3(0.5f, 0.5f, 0.5f);
             // function modified from http://ilkinulas.github.io/development/unity/2016/04/30/cube-mesh-in-unity3d.html
 		    Vector3[] vertices = {
