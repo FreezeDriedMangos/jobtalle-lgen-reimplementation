@@ -29,10 +29,15 @@ namespace LGen.LRender
         //    );
         //}
 
+        public static Quaternion GetQuaternion(float roll, float pitch, float yaw)
+        {
+            return Quaternion.Euler(new Vector3(Mathf.Rad2Deg*pitch, 1, 1)) * Quaternion.Euler(new Vector3(1, Mathf.Rad2Deg*yaw, 1)) * Quaternion.Euler(new Vector3(1, 1, Mathf.Rad2Deg*roll));
+        }
+
         public static Vector3 ApplyRollPitchYaw(float roll, float pitch, float yaw, Vector3 vec)
         {
             //return Quaternion.Euler(new Vector3(Mathf.Rad2Deg*pitch, Mathf.Rad2Deg*yaw, Mathf.Rad2Deg*roll)) * vec;
-            return Quaternion.Euler(new Vector3(Mathf.Rad2Deg*pitch, 1, 1)) * Quaternion.Euler(new Vector3(1, Mathf.Rad2Deg*yaw, 1)) * Quaternion.Euler(new Vector3(1, 1, Mathf.Rad2Deg*roll)) * vec;
+            return GetQuaternion(roll, pitch, yaw) * vec;
         }
     }
 }

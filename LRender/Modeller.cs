@@ -44,6 +44,8 @@ namespace LGen.LRender
 
     public class Modeller
     {
+        public static Mesh unitCylinder = CreateCylinder(0, 0, 0, new Vector3(0, -1, 0), Vector3.zero, 1, 1).CreateMesh();
+
         public static AgentData GenerateAgentData(Sentence sentence, float stemRadiusFactor = 0.02f, float seedSize = 0.2f, float branchLength = 0.5f, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0/*0.2f*/)
         {
             AgentData agent = new AgentData();
@@ -107,7 +109,14 @@ namespace LGen.LRender
                 Vector3 end = new Vector3(upper.vertex.x, upper.vertex.y, upper.vertex.z);
                 
                 //UnityEngine.Debug.Log(start + " to " + end + " - " + bottomRadius + ", " + topRadius);
-                branchMeshes.Add(CreateCylinder(upper.vertex.roll, upper.vertex.pitch, upper.vertex.yaw, start, end, bottomRadius, topRadius));
+                MeshData meshData = CreateCylinder(upper.vertex.roll, upper.vertex.pitch, upper.vertex.yaw, start, end, bottomRadius, topRadius);
+                branchMeshes.Add(meshData);
+                
+                meshData.branch_topRadius = topRadius;
+                meshData.branch_bottomRadius = bottomRadius;
+                meshData.branch_rotation = Utils.GetQuaternion(upper.vertex.roll, upper.vertex.pitch, upper.vertex.yaw);
+                meshData.branch_topLocation = new Vector3(upper.vertex.x, upper.vertex.y, upper.vertex.z);
+                meshData.branch_length = Vector3.Distance(start, end);
 
                 BranchReport b = new BranchReport();
                 b.branchLoad = topLoad;
