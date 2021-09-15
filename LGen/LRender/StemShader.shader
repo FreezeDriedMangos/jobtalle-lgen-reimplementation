@@ -16,7 +16,7 @@
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows
+        #pragma surface surf Standard vertex:vert fullforwardshadows
 
         #pragma multi_compile_instancing
 
@@ -51,9 +51,9 @@
         //UNITY_INSTANCING_BUFFER_END(Props)
 
         void vert(inout appdata_full v) {
-            // this shader should be applied to a cylinder with radius 1 and height 1, with its top at the origin and its bottom at (0, -1, 0)
-            v.vertex.xz *= lerp(-v.vertex.y, topRadius, bottomRadius);
-            v.vertex.y *= length;
+            // this shader should be applied to a cylinder with radius 1 and height 1, with its top at the origin and its bottom at (0, 0, -1)
+            v.vertex.xy *= lerp(topRadius, bottomRadius, -v.vertex.z);
+            v.vertex.z *= length;
 
             // https://docs.unity3d.com/ScriptReference/Material.SetMatrix.html
             v.vertex.xyz = mul(_Rotation, float4(v.vertex.xyz, 1)).xyz;
