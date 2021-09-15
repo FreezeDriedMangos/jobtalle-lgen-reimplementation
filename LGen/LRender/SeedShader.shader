@@ -16,6 +16,8 @@
         // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf Standard vertex:vert fullforwardshadows addshadow 
 
+        #pragma multi_compile_instancing
+
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
 
@@ -42,7 +44,7 @@
         //UNITY_INSTANCING_BUFFER_END(Props)
 
         void vert(inout appdata_full v) {
-            // this shader should be applied to a cylinder with radius 1 and height 1, with its top at the origin and its bottom at (0, 0, -1)
+            // this shader should be applied to a sphere approximation with radius 1, with its center at the origin
             v.vertex.xyz *= radius;
 
             // https://docs.unity3d.com/ScriptReference/Material.SetMatrix.html
