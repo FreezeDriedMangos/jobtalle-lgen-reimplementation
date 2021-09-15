@@ -79,9 +79,9 @@ namespace LGen.LRender
                 propBlock.SetColor("_LeafExposureColor", Color.white);
                 propBlock.SetInt("_Seed", 0);
                 propBlock.SetFloat("_Opacity", 1);
-                propBlock.SetFloat("topRadius", 1);//uncompiledMesh.branch_topRadius);
-                propBlock.SetFloat("bottomRadius", 1);//uncompiledMesh.branch_bottomRadius);
-                propBlock.SetFloat("length", 1);//uncompiledMesh.branch_length);
+                propBlock.SetFloat("topRadius", uncompiledMesh.branch_topRadius);
+                propBlock.SetFloat("bottomRadius", uncompiledMesh.branch_bottomRadius);
+                propBlock.SetFloat("length", uncompiledMesh.branch_length);
                 propBlock.SetVector("position", uncompiledMesh.branch_topLocation); // TODO: this actually takes a Vector4. if any issues come up, this is the first thing to check
 
                 Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, uncompiledMesh.branch_rotation, Vector3.one);
