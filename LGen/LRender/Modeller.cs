@@ -44,7 +44,7 @@ namespace LGen.LRender
 
     public class Modeller
     {
-        public static Mesh unitCylinder = CreateCylinder(0, 0, 0, new Vector3(0, -1, 0), Vector3.zero, 1, 1).CreateMesh();
+        public static Mesh unitCylinder = CreateCylinder(0, Mathf.PI/2f, 0, Vector3.zero, new Vector3(0, -1, 0), 1, 1).CreateMesh();
 
         public static AgentData GenerateAgentData(Sentence sentence, float stemRadiusFactor = 0.02f, float seedSize = 0.2f, float branchLength = 0.5f, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0/*0.2f*/)
         {
