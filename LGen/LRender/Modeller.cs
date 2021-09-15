@@ -45,8 +45,9 @@ namespace LGen.LRender
     public class Modeller
     {
         public static Mesh unitCylinder = CreateCylinder(0, 0, 0, new Vector3(0, 0, -1), Vector3.zero, 1, 1).CreateMesh();
+        public static Mesh unitIcosahedron = CreateIcosphere.Create(1, Vector3.zero, 0);
 
-        public static AgentData GenerateAgentData(Sentence sentence, float stemRadiusFactor = 0.02f, float seedSize = 0.2f, float branchLength = 0.5f, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0/*0.2f*/)
+        public static AgentData GenerateAgentData(Sentence sentence, float stemRadiusFactor = 0.02f, float seedSize = 0.1f, float branchLength = 0.5f, float angleDelta = (float)(Math.PI/9f), float seedOffset = 0/*0.2f*/)
         {
             AgentData agent = new AgentData();
             Armature armature = GenerateTree(sentence, branchLength, angleDelta, seedOffset);
@@ -121,6 +122,17 @@ namespace LGen.LRender
                 BranchReport b = new BranchReport();
                 b.branchLoad = topLoad;
                 branchReports.Add(b);
+            }
+            
+            List<MeshData> seedMeshes = new List<MeshData>();
+            foreach(Vector3 seedCenter in armature.seeds)
+            {
+                //seedMeshes.Add(CreateCube(seedSize, seedCenter));//CreateIcosphere.Create(seedSize, seedCenter));
+
+                MeshData data = new MeshData();
+                data.seed_size = seedSize;
+                data.seed_location = seedCenter;
+                seedMeshes.Add(data);
             }
 
             List<MeshData> leafMeshes = new List<MeshData>();
@@ -202,12 +214,6 @@ namespace LGen.LRender
                 //mesh.RecalculateTangents();
 
                 leafMeshes.Add(new MeshData() { vertices = vertices.ToArray(), triangles = triangles.ToArray(), uvs = uvs.ToArray() });
-            }
-
-            List<MeshData> seedMeshes = new List<MeshData>();
-            foreach(Vector3 seedCenter in armature.seeds)
-            {
-                seedMeshes.Add(CreateCube(seedSize, seedCenter));//CreateIcosphere.Create(seedSize, seedCenter));
             }
 
             agent.uncompiledStemMeshes = branchMeshes;

@@ -1,4 +1,33 @@
-﻿// file modified from https://gamedev.stackexchange.com/a/166469
+﻿// beautiful diagram by https://superhedral.com/2020/05/17/building-the-unit-icosahedron/
+
+//////////////////////////////////////////////////////////
+// GENERATE UNIT VERTICES using 3 Orthogonal Rectangles //
+//                                                      //
+//                    /|  - R1                          //
+//                   / |                                //
+//                  /  |                                //
+//                 /   |                                //
+//                |    |                                //
+//               _|    |_______                         //
+//      ________/_|   _|______/__                       //
+//     |          |  |           |                      //
+//     |      ____|  |______     |                      //
+//     |     /    | /      /     |                      //
+//     |____/     |/      /______|  - R2                //
+//         /             /                              //
+//        /_____________/                               //
+//                |    |                                //
+//         ^      |    /                                //
+//        R3      |   /                                 //
+//                |  /                                  //
+//                | /                                   //
+//                |/                                    //
+//                                                      //
+//////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////
+
+
+// file modified from https://gamedev.stackexchange.com/a/166469
 
 using System.Collections;
 using System.Collections.Generic;
@@ -58,15 +87,13 @@ namespace LGen.LRender
             return i;
         }
 
-        public static Mesh Create(float radius, Vector3 center)
+        public static Mesh Create(float radius, Vector3 center, int recursionLevel = 3)
         {
             Mesh mesh = new Mesh();
             //Vector3[] vertices = new Vector3[1];
             List<Vector3> vertList = new List<Vector3>();
             Dictionary<long, int> middlePointIndexCache = new Dictionary<long, int>();
             int index = 0;
-
-            int recursionLevel = 3;
 
             // create 12 vertices of a icosahedron
             float t = (1f + Mathf.Sqrt(5f)) / 2f;

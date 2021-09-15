@@ -27,11 +27,11 @@ namespace LGen.LRender
 
             for(int i = 0; i < sentences.Count; i++)
             {
-                foreach(MeshData d in agentData[i].meshes.uncompiledLeafMeshes) agentData[i].meshes.leafMeshes.Add(d.CreateMesh());
-                foreach(MeshData d in agentData[i].meshes.uncompiledSeedMeshes) agentData[i].meshes.seedMeshes.Add(d.CreateMesh());
+                //foreach(MeshData d in agentData[i].meshes.uncompiledLeafMeshes) agentData[i].meshes.leafMeshes.Add(d.CreateMesh());
+                //foreach(MeshData d in agentData[i].meshes.uncompiledSeedMeshes) agentData[i].meshes.seedMeshes.Add(d.CreateMesh());
                 //foreach(MeshData d in agentData[i].meshes.uncompiledStemMeshes) agentData[i].meshes.stemMeshes.Add(d.CreateMesh());
-                agentData[i].meshes.uncompiledLeafMeshes = null;
-                agentData[i].meshes.uncompiledSeedMeshes = null;
+                //agentData[i].meshes.uncompiledLeafMeshes = null;
+                //agentData[i].meshes.uncompiledSeedMeshes = null;
                 //agentData[i].meshes.uncompiledStemMeshes = null;
 
                 agentRenderData.Add(Render(agentData[i], randomizer, i, parent, leafOpacity, (fertilities == null || fertilities.Count <= i) ? 1f : fertilities[i], maxExpectedBranchLoad));
@@ -82,7 +82,7 @@ namespace LGen.LRender
                 propBlock.SetFloat("topRadius", uncompiledMesh.branch_topRadius);
                 propBlock.SetFloat("bottomRadius", uncompiledMesh.branch_bottomRadius);
                 propBlock.SetFloat("length", uncompiledMesh.branch_length);
-                propBlock.SetVector("position", uncompiledMesh.branch_topLocation); // TODO: this actually takes a Vector4. if any issues come up, this is the first thing to check
+                propBlock.SetVector("position", uncompiledMesh.branch_topLocation); 
 
                 Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, uncompiledMesh.branch_rotation, Vector3.one);
                 propBlock.SetMatrix("_Rotation", matrix);
@@ -90,9 +90,10 @@ namespace LGen.LRender
                 meshRenderer.SetPropertyBlock(propBlock);
             }
 
-            for(int i = 0; i < agent.meshes.seedMeshes.Count; i++)
+            for(int i = 0; i < agent.meshes.uncompiledSeedMeshes.Count; i++)
             {
-                Mesh m = agent.meshes.seedMeshes[i];
+                MeshData uncompiledMesh = agent.meshes.uncompiledSeedMeshes[i];
+                Mesh m = Modeller.unitIcosahedron; //agent.meshes.uncompiledSeedMeshes[i].CreateMesh();
                 GameObject g = new GameObject("seed " + i);
                 g.transform.parent = go.transform;
                 g.layer = LayerMask.NameToLayer("Plants");
@@ -109,12 +110,17 @@ namespace LGen.LRender
                 propBlock.SetColor("_LeafExposureColor", Color.white);
                 propBlock.SetInt("_Seed", 0);
                 propBlock.SetFloat("_Opacity", 1);
+                propBlock.SetVector("position", uncompiledMesh.seed_location); 
+                propBlock.SetFloat("radius", uncompiledMesh.seed_size); 
+
+                Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, uncompiledMesh.branch_rotation, Vector3.one);
+                propBlock.SetMatrix("_Rotation", matrix);
                 meshRenderer.SetPropertyBlock(propBlock);
             }
 
-            for(int i = 0; i < agent.meshes.leafMeshes.Count; i++)
+            for(int i = 0; i < agent.meshes.uncompiledLeafMeshes.Count; i++)
             {
-                Mesh m = agent.meshes.leafMeshes[i];
+                Mesh m = agent.meshes.uncompiledLeafMeshes[i].CreateMesh();
                 GameObject g = new GameObject("leaf " + i);
                 g.transform.parent = go.transform;
                 g.layer = LayerMask.NameToLayer("Plants");
