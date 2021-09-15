@@ -11,7 +11,7 @@
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" "ReplaceWithExposureMaterial"="True" }
+        Tags { "RenderType"="Opaque" "ExposureReplace"="stem" }
         LOD 200
 
         CGPROGRAM

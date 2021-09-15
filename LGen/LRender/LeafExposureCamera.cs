@@ -23,7 +23,7 @@ namespace LGen.LRender
             camera.backgroundColor = Color.white;
             camera.clearFlags = CameraClearFlags.Color;
             camera.orthographic = true;
-            camera.SetReplacementShader(RendererResources.Instance.LeafExposureShader, "");
+            camera.SetReplacementShader(RendererResources.Instance.ExposureShader, "ExposureReplace");
         }
 
         // Update is called once per frame

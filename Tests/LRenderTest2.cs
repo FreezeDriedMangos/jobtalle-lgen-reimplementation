@@ -17,13 +17,10 @@ public class LRenderTest2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LGen.LRender.Renderer.initialize();
         LGen.LRender.Renderer r = new LGen.LRender.Renderer();
         AgentRenderData d = r.Render(s, randomizer, num);
         AgentRenderData d2 = r.Render(s, randomizer, num/2);
-
-        GameObject g = new GameObject("ico test");
-        g.AddComponent<MeshFilter>().sharedMesh = Modeller.unitIcosahedron;
-        g.AddComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
