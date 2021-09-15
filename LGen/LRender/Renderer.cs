@@ -113,8 +113,8 @@ namespace LGen.LRender
                 propBlock.SetVector("position", uncompiledMesh.seed_location); 
                 propBlock.SetFloat("radius", uncompiledMesh.seed_size); 
 
-                Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, uncompiledMesh.branch_rotation, Vector3.one);
-                propBlock.SetMatrix("_Rotation", matrix);
+                //Matrix4x4 matrix = Matrix4x4.TRS(Vector3.zero, uncompiledMesh.seed_rotation, Vector3.one);
+                //propBlock.SetMatrix("_Rotation", matrix);
                 meshRenderer.SetPropertyBlock(propBlock);
             }
 
