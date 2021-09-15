@@ -110,7 +110,7 @@ namespace LGen.LRender
                 Vector3 end = new Vector3(upper.vertex.x, upper.vertex.y, upper.vertex.z);
                 
                 //UnityEngine.Debug.Log(start + " to " + end + " - " + bottomRadius + ", " + topRadius);
-                MeshData meshData = CreateCylinder(upper.vertex.roll, upper.vertex.pitch, upper.vertex.yaw, start, end, bottomRadius, topRadius);
+                MeshData meshData = new MeshData(); //CreateCylinder(upper.vertex.roll, upper.vertex.pitch, upper.vertex.yaw, start, end, bottomRadius, topRadius);
                 branchMeshes.Add(meshData);
                 
                 meshData.branch_topRadius = topRadius;
