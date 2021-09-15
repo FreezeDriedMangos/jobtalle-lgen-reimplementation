@@ -22,7 +22,7 @@ namespace LGen.LRender
         public static GameObject inactiveObjects;
 
         private static bool initialized = false;
-        static void initialize()
+        internal static void initialize()
         {
             if (initialized) return;
             initialized = true;

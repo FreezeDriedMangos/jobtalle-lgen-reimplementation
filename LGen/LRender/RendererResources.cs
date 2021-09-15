@@ -6,8 +6,6 @@ namespace LGen.LRender
     public class RendererResources : Singleton<RendererResources>
     {
         public Material leafExposureMaterial;
-        //public Material stemExposureMaterial;
-        //public Material seedExposureMaterial;
         public Material leafMaterial;
         public Material stemMaterial;
         public Material seedMaterial;
@@ -16,7 +14,12 @@ namespace LGen.LRender
         public ComputeShader ComputeTotalLeafExposure;
         public List<RenderTexture> leafExposures = new List<RenderTexture>();
         public RenderTexture LeafExposureRenderTexturePrefab;
-        public Shader LeafExposureShader;
+        public Shader ExposureShader;
         public List<Camera> leafExposureCameras = new List<Camera>();
+
+        void Start()
+        {
+            Renderer.initialize();    
+        }
     }
 }

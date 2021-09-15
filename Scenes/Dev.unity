@@ -201,7 +201,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
+  m_BackGroundColor: {r: 0.21813813, g: 0.435701, b: 0.5377358, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -218,7 +218,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -242,7 +242,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65425518}
   m_LocalRotation: {x: 0.06932122, y: 0, z: 0, w: 0.9975944}
-  m_LocalPosition: {x: 4.84, y: 19, z: -100}
+  m_LocalPosition: {x: 0.2, y: 14.77, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -770,7 +770,7 @@ MonoBehaviour:
   leafExposures: []
   LeafExposureRenderTexturePrefab: {fileID: 8400000, guid: 5d0d7a646ba1c3948b5986bbf738a740,
     type: 2}
-  LeafExposureShader: {fileID: 4800000, guid: 8febc77907d936a43b9f468395d625bf, type: 3}
+  ExposureShader: {fileID: 4800000, guid: 8febc77907d936a43b9f468395d625bf, type: 3}
   leafExposureCameras: []
 --- !u!4 &774888883
 Transform:
