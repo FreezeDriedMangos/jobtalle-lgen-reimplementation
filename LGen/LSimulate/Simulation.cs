@@ -423,7 +423,12 @@ namespace LGen.LSimulate
             for(int i = 0; i < state.agents.Count; i++)
             {
                 Agent agent = state.agents[i];
-                Destroy(agent.renderData.gameObject);
+                //Destroy(agent.renderData.gameObject);
+                foreach(Transform child in agent.renderData.gameObject.transform)
+                {
+                    LGen.LRender.Renderer.ReturnObjectToPool(child.gameObject);
+                }
+                LGen.LRender.Renderer.ReturnObjectToPool(gameObject);
             }
 
             state.agents.Clear();

@@ -15,8 +15,58 @@ namespace LGen.LRender
 
     public class Renderer
     {
+        public static GameObjectPool stemObjects;
+        public static GameObjectPool seedObjects;
+        public static GameObjectPool leafObjects;
+        public static GameObjectPool parentObjects;
+        public static GameObject inactiveObjects;
+
+        private static bool initialized = false;
+        static void initialize()
+        {
+            if (initialized) return;
+            initialized = true;
+        
+            // TODO: add gpu instancing to leafexposure material, and add a stem exposure material and a seed exposure material, do GPU instancing on them too
+
+            inactiveObjects = new GameObject("ObjectPool");
+            stemObjects = new GameObjectPool(inactiveObjects.transform);
+            seedObjects = new GameObjectPool(inactiveObjects.transform);
+            leafObjects = new GameObjectPool(inactiveObjects.transform);
+            parentObjects = new GameObjectPool(inactiveObjects.transform);
+
+            stemObjects.create = () => Renderer.createObject("stem", RendererResources.Instance.stemMaterial, Modeller.unitCylinder);
+            seedObjects.create = () => Renderer.createObject("seed", RendererResources.Instance.seedMaterial, Modeller.unitIcosahedron);
+            leafObjects.create = () => Renderer.createObject("leaf", RendererResources.Instance.leafMaterial, null);
+            parentObjects.create = () => new GameObject("agent");
+        }
+        static GameObject createObject(string name, Material mat, Mesh m)
+        {
+            GameObject g = new GameObject(name);
+            g.layer = LayerMask.NameToLayer("Plants");
+
+            MeshRenderer meshRenderer = g.AddComponent<MeshRenderer>();
+            MeshFilter meshFilter = g.AddComponent<MeshFilter>();
+            meshFilter.mesh = m;
+            meshRenderer.material = mat;
+
+            return g;
+        }
+
+        public static void ReturnObjectToPool(GameObject g)
+        {
+            if (g.name.StartsWith("stem")) { stemObjects.Return(g); return; }
+            if (g.name.StartsWith("seed")) { seedObjects.Return(g); return; }
+            if (g.name.StartsWith("leaf")) { leafObjects.Return(g); return; }
+            if (g.name.StartsWith("agent")) { parentObjects.Return(g); return; }
+        }
+
+
+
         public List<AgentRenderData> Render(List<Sentence> sentences, Randomizer randomizer, Transform parent = null, float leafOpacity = 0.8f, List<float> fertilities = null, float maxExpectedBranchLoad = 2f, float stemRadiusFactor = 0.02f, float seedSize = 0.2f, float branchLength = 0.5f, float angleDelta = (float)(Mathf.PI/9f), float seedOffset = 0/*0.2f*/)
         {
+            initialize();
+
             List<AgentRenderData> agentRenderData = new List<AgentRenderData>();
             AgentData[] agentData = new AgentData[sentences.Count];
 
@@ -53,7 +103,7 @@ namespace LGen.LRender
 
             // non-leaves will get an unlit white shader so no need to do the above in the other loops
 
-            GameObject go = new GameObject("Agent " + agentNum);
+            GameObject go = parentObjects.GetOrCreate(); //new GameObject("Agent " + agentNum);
             go.transform.parent = parent;
             go.layer = LayerMask.NameToLayer("Plants");
             data.gameObject = go;
@@ -61,15 +111,9 @@ namespace LGen.LRender
             for(int i = 0; i < agent.meshes.uncompiledStemMeshes.Count; i++)
             {
                 MeshData uncompiledMesh = agent.meshes.uncompiledStemMeshes[i];
-                Mesh m = Modeller.unitCylinder; //agent.meshes.stemMeshes[i];
-                GameObject g = new GameObject("stem " + i);
+                GameObject g = stemObjects.GetOrCreate();
                 g.transform.parent = go.transform;
-                g.layer = LayerMask.NameToLayer("Plants");
-
-                MeshRenderer meshRenderer = g.AddComponent<MeshRenderer>();
-                MeshFilter meshFilter = g.AddComponent<MeshFilter>();
-                meshFilter.mesh = m;
-                meshRenderer.material = RendererResources.Instance.stemMaterial; //leafExposureMaterial;
+                MeshRenderer meshRenderer = g.GetComponent<MeshRenderer>();
         
                 // below code modified from https://thomasmountainborn.com/2016/05/25/materialpropertyblocks/
                 MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
