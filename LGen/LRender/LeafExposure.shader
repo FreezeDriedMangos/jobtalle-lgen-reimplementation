@@ -138,7 +138,7 @@ Shader "Unlit/LeafExposure" {
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf NoLighting noambient vertex:vert fullforwardshadows addshadow 
+        #pragma surface surf NoLighting noambient vertex:vert 
 
         #pragma multi_compile_instancing
 
@@ -197,7 +197,7 @@ Shader "Unlit/LeafExposure" {
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf NoLighting noambient vertex:vert fullforwardshadows addshadow
+        #pragma surface surf NoLighting noambient vertex:vert
 
         #pragma multi_compile_instancing
 

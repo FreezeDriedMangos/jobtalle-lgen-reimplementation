@@ -252,7 +252,7 @@ MonoBehaviour:
   leafExposures: []
   LeafExposureRenderTexturePrefab: {fileID: 8400000, guid: 5d0d7a646ba1c3948b5986bbf738a740,
     type: 2}
-  LeafExposureShader: {fileID: 4800000, guid: 8febc77907d936a43b9f468395d625bf, type: 3}
+  ExposureShader: {fileID: 4800000, guid: 8febc77907d936a43b9f468395d625bf, type: 3}
   leafExposureCameras: []
 --- !u!4 &322345576
 Transform:
