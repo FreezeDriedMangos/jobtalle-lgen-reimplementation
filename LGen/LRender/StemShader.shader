@@ -16,7 +16,7 @@
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard vertex:vert fullforwardshadows
+        #pragma surface surf Standard vertex:vert fullforwardshadows addshadow
 
         #pragma multi_compile_instancing
 
