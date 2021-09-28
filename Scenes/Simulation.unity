@@ -2005,18 +2005,18 @@ MonoBehaviour:
   LOG_LEAF_EXPOSURES: 0
   randomizerSeed: 0
   gridScale: 0.1
-  gridWidth: 200
-  gridHeight: 200
+  gridWidth: 50
+  gridHeight: 50
   placeInitialSeedEveryNTiles: 5
   maxNumSeedsPerAgent: 999
   seedDistributionAlpha: 10
-  densityThreshold: 25
+  densityThreshold: 5
   initialAxiom: '*'
   initialRules: []
   fertilityMap: {fileID: 2800000, guid: 0c9f4efcfc5430d4ba5fdb27647f5e50, type: 3}
   leafOpacity: 0.8
   maxExpectedBranchLoad_displayPurposesOnly: 2
-  initialMutability: 10
+  initialMutability: 20
   mutabilityFalloff: 0.1
   stemRadiusFactor: 0.01
   seedSize: 0.05
