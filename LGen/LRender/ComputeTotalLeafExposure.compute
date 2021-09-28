@@ -1,0 +1,29 @@
+﻿// compute shader modified from https://en.wikibooks.org/wiki/Cg_Programming/Unity/Computing_Color_Histograms
+
+#pragma kernel HistogramInitialize
+#pragma kernel HistogramMain
+
+Texture2D<float4> InputTexture; // input texture
+
+struct histStruct {
+    uint count;
+};
+RWStructuredBuffer<histStruct> HistogramBuffer; 
+
+[numthreads(64, 1, 1)]
+void HistogramInitialize(uint3 id : SV_DispatchThreadID)
+{
+    HistogramBuffer[id.x].count = 0;
+}
+
+[numthreads(8, 8, 1)]
+void HistogramMain(uint3 id : SV_DispatchThreadID)
+{
+    float4   sampl = 256.0 * InputTexture[id.xy];
+    uint4 col = uint4(sampl.r, sampl.g, sampl.b, sampl.a);
+    if (col.b > 0) 
+    {
+        return;
+    }
+    InterlockedAdd(HistogramBuffer[col.r+col.g*256].count, 1);
+}

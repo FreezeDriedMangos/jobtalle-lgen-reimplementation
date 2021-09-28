@@ -1,0 +1,38 @@
+{
+	"uuid": "6edf7aeb-9163-48d4-8b11-48a592aa455d",
+    "generation":200,
+    "agents":[
+        {
+            "location": [0, 0],
+            "system": "*\n[<_]] => \n => "
+        },
+        {
+            "location": [10, 10],
+            "system": "*\n"
+        },
+        {
+            "location": [10, 15],
+            "system": "*\n => \n => "
+        },
+        {
+            "location": [5, 10],
+            "system": "*\n[] => "
+        },
+        {
+            "location": [0, 5],
+            "system": "*\n<] => [X+]y[[+[[^]]\\[C]]U]+^yC+[[XC]]G\n<<[C]]]C[]^C => w+CyT+<+]<<[w<]+]y]CXG]\n => "
+        },
+        {
+            "location": [0, 18],
+            "system": "<*Wr]^*\n<] => <]\nr => J\nr => [^<]]\nW => <]\n<[J<]]] => <]\nW => [<]]\n[J<^]] => <]\n[<<r]]] => <]\n<W] => [<]]"
+        },
+        {
+            "location": [0, 13],
+            "system": "X*\n"
+        },
+        {
+            "location": [5, 0],
+            "system": "*\n"
+        }    
+],
+    "randomizerState": [0, 2118315290, 4588836
