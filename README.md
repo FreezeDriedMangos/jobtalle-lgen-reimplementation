@@ -1,4 +1,4 @@
-# jobtalle-lgen-reimplementation
+# Jobtalle-LGen-Reimplementation
 A reimplementation in Unity of Job Talle's LGen: https://github.com/jobtalle/LGen
 
 ### Usage
