@@ -427,12 +427,12 @@ namespace LGen.LSimulate
             for(int i = 0; i < state.agents.Count; i++)
             {
                 Agent agent = state.agents[i];
-                //Destroy(agent.renderData.gameObject);
-                foreach(Transform child in agent.renderData.gameObject.transform)
+
+                // https://stackoverflow.com/a/48976123/9643841
+                List<GameObject> children = new List<GameObject>();
+                foreach(Transform child in agent.renderData.gameObject.transform) children.Add(child.gameObject);
+                foreach(GameObject child in children)
                 {
-                    // TODO: I found the source of the floating stems bug - it's right here, in this loop.
-                    // the issue is that only some children of "agent" objects get returned to the pool - not all of them
-                    // https://stackoverflow.com/a/48976123/9643841
                     UnityEngine.Debug.Log("returning to pool " + child.gameObject.name + ", child of " + agent.renderData.gameObject.name);
                     LGen.LRender.Renderer.ReturnObjectToPool(child.gameObject);
                 }
