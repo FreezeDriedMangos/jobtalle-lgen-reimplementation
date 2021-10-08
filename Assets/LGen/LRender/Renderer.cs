@@ -35,10 +35,13 @@ namespace LGen.LRender
             leafObjects = new GameObjectPool(inactiveObjects.transform);
             parentObjects = new GameObjectPool(inactiveObjects.transform);
 
-            stemObjects.create = () => Renderer.createObject("stem", RendererResources.Instance.stemMaterial, Modeller.unitCylinder);
-            seedObjects.create = () => Renderer.createObject("seed", RendererResources.Instance.seedMaterial, Modeller.unitIcosahedron);
+            int numSeeds = 0;
+            int numStems = 0;
+            int numagents = 0;
+            stemObjects.create = () => Renderer.createObject("stem " + (numStems++), RendererResources.Instance.stemMaterial, Modeller.unitCylinder);
+            seedObjects.create = () => Renderer.createObject("seed " + (numSeeds++), RendererResources.Instance.seedMaterial, Modeller.unitIcosahedron);
             leafObjects.create = () => Renderer.createObject("leaf", RendererResources.Instance.leafMaterial, null);
-            parentObjects.create = () => new GameObject("agent");
+            parentObjects.create = () => new GameObject("agent " + (numagents++));
         }
         static GameObject createObject(string name, Material mat, Mesh m)
         {
@@ -138,12 +141,12 @@ namespace LGen.LRender
             {
                 MeshData uncompiledMesh = agent.meshes.uncompiledSeedMeshes[i];
                 Mesh m = Modeller.unitIcosahedron; //agent.meshes.uncompiledSeedMeshes[i].CreateMesh();
-                GameObject g = new GameObject("seed " + i);
+                GameObject g = seedObjects.GetOrCreate();
                 g.transform.parent = go.transform;
                 g.layer = LayerMask.NameToLayer("Plants");
             
-                MeshRenderer meshRenderer = g.AddComponent<MeshRenderer>();
-                MeshFilter meshFilter = g.AddComponent<MeshFilter>();
+                MeshRenderer meshRenderer = g.GetComponent<MeshRenderer>();
+                MeshFilter meshFilter = g.GetComponent<MeshFilter>();
                 meshFilter.mesh = m;
                 meshRenderer.material = RendererResources.Instance.seedMaterial; //leafExposureMaterial;
         
@@ -165,12 +168,12 @@ namespace LGen.LRender
             for(int i = 0; i < agent.meshes.uncompiledLeafMeshes.Count; i++)
             {
                 Mesh m = agent.meshes.uncompiledLeafMeshes[i].CreateMesh();
-                GameObject g = new GameObject("leaf " + i);
+                GameObject g = leafObjects.GetOrCreate();
                 g.transform.parent = go.transform;
                 g.layer = LayerMask.NameToLayer("Plants");
             
-                MeshRenderer meshRenderer = g.AddComponent<MeshRenderer>();
-                MeshFilter meshFilter = g.AddComponent<MeshFilter>();
+                MeshRenderer meshRenderer = g.GetComponent<MeshRenderer>();
+                MeshFilter meshFilter = g.GetComponent<MeshFilter>();
                 meshFilter.mesh = m;
                 meshRenderer.material = RendererResources.Instance.leafMaterial; //leafExposureMaterial;
 

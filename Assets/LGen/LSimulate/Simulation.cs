@@ -82,6 +82,8 @@ namespace LGen.LSimulate
         public float branchLength = 0.5f;
         public float seedOffset = 0;
 
+        public bool limitAgentCount = false;
+        public int maxNumAgents = 50;
 
         //
         // Top level functions
@@ -251,6 +253,8 @@ namespace LGen.LSimulate
             {
                 for(int y = 0; y < this.gridHeight; y += placeInitialSeedEveryNTiles)
                 {
+                    if (this.limitAgentCount && x*this.gridHeight+y >= this.maxNumAgents) break;
+
                     Agent a = new Agent();
                     a.location = new Vector2Int(x, y);
                     a.system = new LSystem(templateAgentSystem);
@@ -426,9 +430,14 @@ namespace LGen.LSimulate
                 //Destroy(agent.renderData.gameObject);
                 foreach(Transform child in agent.renderData.gameObject.transform)
                 {
+                    // TODO: I found the source of the floating stems bug - it's right here, in this loop.
+                    // the issue is that only some children of "agent" objects get returned to the pool - not all of them
+                    // https://stackoverflow.com/a/48976123/9643841
+                    UnityEngine.Debug.Log("returning to pool " + child.gameObject.name + ", child of " + agent.renderData.gameObject.name);
                     LGen.LRender.Renderer.ReturnObjectToPool(child.gameObject);
                 }
-                LGen.LRender.Renderer.ReturnObjectToPool(gameObject);
+                UnityEngine.Debug.Log("returning to pool " + agent.renderData.gameObject.name);
+                LGen.LRender.Renderer.ReturnObjectToPool(agent.renderData.gameObject);
             }
 
             state.agents.Clear();
@@ -454,6 +463,8 @@ namespace LGen.LSimulate
             // distribute seeds
             for(int i = 0; i < seeds.Count; i++)
             {
+                if (this.limitAgentCount && i >= this.maxNumAgents) break;
+
                 Seed seed = seeds[i];
                 //float distributionRadius = Mathf.Tan(seedDistributionAlpha) * seed.absoluteLocation.y; // a cone has a right triangle as its sillhouette
                 float r = Mathf.Sqrt(randomizer.MakeFloat(0, 1)) * (seed.locationRelativeToParentRoot.y) + DEFAULT_SPREAD; //randomizer.MakeFloat(0, distributionRadius);
@@ -463,6 +474,7 @@ namespace LGen.LSimulate
                 Vector2Int gridLocation = new Vector2Int(Mathf.RoundToInt(absoluteLocation.x / gridScale), Mathf.RoundToInt(absoluteLocation.y / gridScale));
                 gridLocation = new Vector2Int(System.Math.Max(System.Math.Min(this.gridWidth-1, gridLocation.x), 0), System.Math.Max(System.Math.Min(this.gridHeight-1, gridLocation.y), 0));
 
+                UnityEngine.Debug.Log("placing seed at " + gridLocation.x + ", " + gridLocation.y);
                 if (state.grid[gridLocation.x, gridLocation.y].density >= this.densityThreshold) continue;
                 if (state.grid[gridLocation.x, gridLocation.y].occupant != null) continue;
 

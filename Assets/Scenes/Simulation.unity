@@ -2024,6 +2024,8 @@ MonoBehaviour:
   DEFAULT_SPREAD: 0.05
   branchLength: 0.5
   seedOffset: 0
+  limitAgentCount: 1
+  maxNumAgents: 10
 --- !u!1 &1741344239
 GameObject:
   m_ObjectHideFlags: 0
