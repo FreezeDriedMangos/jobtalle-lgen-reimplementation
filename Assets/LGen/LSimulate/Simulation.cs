@@ -433,10 +433,8 @@ namespace LGen.LSimulate
                 foreach(Transform child in agent.renderData.gameObject.transform) children.Add(child.gameObject);
                 foreach(GameObject child in children)
                 {
-                    UnityEngine.Debug.Log("returning to pool " + child.gameObject.name + ", child of " + agent.renderData.gameObject.name);
                     LGen.LRender.Renderer.ReturnObjectToPool(child.gameObject);
                 }
-                UnityEngine.Debug.Log("returning to pool " + agent.renderData.gameObject.name);
                 LGen.LRender.Renderer.ReturnObjectToPool(agent.renderData.gameObject);
             }
 
