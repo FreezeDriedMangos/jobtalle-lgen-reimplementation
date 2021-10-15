@@ -59,8 +59,6 @@ namespace LGen.LRender
 
             agent.meshes = GenerateMeshes(armature, agent.branchReports, stemRadiusFactor, seedSize);
 
-            Debug.Log("leaf meshes count: " + agent.meshes.leafMeshes.Count + " leaf armature count: " + armature.leaves.Count);
-
             foreach(MeshData m in agent.meshes.uncompiledLeafMeshes)
             {
                 LeafReport r = new LeafReport();

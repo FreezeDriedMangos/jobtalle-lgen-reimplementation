@@ -582,7 +582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &651376577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,7 +604,7 @@ MonoBehaviour:
   maxNumSeedsPerAgent: 999
   seedDistributionAlpha: 10
   densityThreshold: 5
-  initialAxiom: '*AA<+++A[^^AAAAA]AAAA]'
+  initialAxiom: '*A<I]A<X+[+]A[^^^AAAA]AAA]'
   initialRules: []
   fertilityMap: {fileID: 2800000, guid: 0c9f4efcfc5430d4ba5fdb27647f5e50, type: 3}
   leafOpacity: 0.8
@@ -2042,7 +2042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1698078069
 Transform:
   m_ObjectHideFlags: 0
