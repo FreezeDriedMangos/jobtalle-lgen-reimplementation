@@ -604,6 +604,7 @@ MonoBehaviour:
   maxNumSeedsPerAgent: 999
   seedDistributionAlpha: 10
   densityThreshold: 5
+  sentenceLengthLimit: 0
   initialAxiom: '*A<I]A<X+[+]A[^^^AAAA]AAA]'
   initialRules: []
   fertilityMap: {fileID: 2800000, guid: 0c9f4efcfc5430d4ba5fdb27647f5e50, type: 3}
@@ -2078,6 +2079,7 @@ MonoBehaviour:
   maxNumSeedsPerAgent: 999
   seedDistributionAlpha: 10
   densityThreshold: 5
+  sentenceLengthLimit: 10
   initialAxiom: '*'
   initialRules: []
   fertilityMap: {fileID: 2800000, guid: 0c9f4efcfc5430d4ba5fdb27647f5e50, type: 3}

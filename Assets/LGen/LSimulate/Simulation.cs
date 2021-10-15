@@ -57,6 +57,7 @@ namespace LGen.LSimulate
         public int maxNumSeedsPerAgent;
         public float seedDistributionAlpha;
         public int densityThreshold;
+        public int sentenceLengthLimit;
 
         public string initialAxiom;
         public string[] initialRules;

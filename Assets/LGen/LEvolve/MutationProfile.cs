@@ -2,7 +2,7 @@
 {
     public class MutationProfile
     {
-        public int sentenceSizeLimit = 32;
+        public int sentenceSizeLimit = LSimulate.Simulation.Instance.sentenceLengthLimit;
 
 		public float pSymbolRemove = 0.005f;
 		public float pSymbolAdd = 0.005f;
