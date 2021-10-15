@@ -566,6 +566,73 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &651376576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 651376578}
+  - component: {fileID: 651376577}
+  m_Layer: 0
+  m_Name: Simulation (1) - DEBUG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &651376577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651376576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97f889d5f10b0d469284bb504b77447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LOG_LEAF_EXPOSURES: 0
+  randomizerSeed: 0
+  gridScale: 0.1
+  gridWidth: 50
+  gridHeight: 50
+  placeInitialSeedEveryNTiles: 5
+  maxNumSeedsPerAgent: 999
+  seedDistributionAlpha: 10
+  densityThreshold: 5
+  initialAxiom: '*AA<+++A[^^AAAAA]AAAA]'
+  initialRules: []
+  fertilityMap: {fileID: 2800000, guid: 0c9f4efcfc5430d4ba5fdb27647f5e50, type: 3}
+  leafOpacity: 0.8
+  maxExpectedBranchLoad_displayPurposesOnly: 2
+  initialMutability: 20
+  mutabilityFalloff: 0.1
+  stemRadiusFactor: 0.01
+  seedSize: 0.05
+  GROWTH_PROFILE_RESOLUTION: 10
+  DEFAULT_SPREAD: 0.05
+  branchLength: 0.5
+  seedOffset: 0
+  limitAgentCount: 1
+  maxNumAgents: 1
+--- !u!4 &651376578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651376576}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &675138083
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +802,7 @@ GameObject:
   - component: {fileID: 905235732}
   m_Layer: 0
   m_Name: Exposure Camera (2)
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1885,7 +1952,7 @@ GameObject:
   - component: {fileID: 1573622592}
   m_Layer: 0
   m_Name: Exposure Camera (1)
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1975,7 +2042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1698078069
 Transform:
   m_ObjectHideFlags: 0

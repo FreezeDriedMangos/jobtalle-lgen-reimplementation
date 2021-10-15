@@ -253,7 +253,7 @@ namespace LGen.LSimulate
             {
                 for(int y = 0; y < this.gridHeight; y += placeInitialSeedEveryNTiles)
                 {
-                    if (this.limitAgentCount && x*this.gridHeight+y >= this.maxNumAgents) break;
+                    if (this.limitAgentCount && state.agents.Count >= this.maxNumAgents) break;
 
                     Agent a = new Agent();
                     a.location = new Vector2Int(x, y);
@@ -373,17 +373,20 @@ namespace LGen.LSimulate
                 // leaves
                 //
                 
-                float leafEfficiencyFactor = 0;
                 int numLeaves = agentData.leafReports.Count;
-                for(int l = 0; l < numLeaves; l++)
-                {
-                    LeafReport r = agentData.leafReports[l];
-                    float areaFactor = r.area * 8f;
-                    leafEfficiencyFactor += 1 - areaFactor*areaFactor;
-                }
-                leafEfficiencyFactor /= (float)numLeaves;
+                if (numLeaves == 0) agent.viability_leaves = 0;
+                else { 
+                    float leafEfficiencyFactor = 0;
+                    for(int l = 0; l < numLeaves; l++)
+                    {
+                        LeafReport r = agentData.leafReports[l];
+                        float areaFactor = r.area * 8f;
+                        leafEfficiencyFactor += 1 - areaFactor*areaFactor;
+                    }
+                    leafEfficiencyFactor /= (float)numLeaves;
                 
-                agent.viability_leaves = leafEfficiencyFactor;
+                    agent.viability_leaves = leafEfficiencyFactor;
+                }
             }
         }
 
@@ -472,7 +475,6 @@ namespace LGen.LSimulate
                 Vector2Int gridLocation = new Vector2Int(Mathf.RoundToInt(absoluteLocation.x / gridScale), Mathf.RoundToInt(absoluteLocation.y / gridScale));
                 gridLocation = new Vector2Int(System.Math.Max(System.Math.Min(this.gridWidth-1, gridLocation.x), 0), System.Math.Max(System.Math.Min(this.gridHeight-1, gridLocation.y), 0));
 
-                UnityEngine.Debug.Log("placing seed at " + gridLocation.x + ", " + gridLocation.y);
                 if (state.grid[gridLocation.x, gridLocation.y].density >= this.densityThreshold) continue;
                 if (state.grid[gridLocation.x, gridLocation.y].occupant != null) continue;
 

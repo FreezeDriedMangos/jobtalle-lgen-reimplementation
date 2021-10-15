@@ -213,7 +213,7 @@ namespace LGen.LRender
             int handleInitialize = shader.FindKernel("HistogramInitialize");
             int handleMain = shader.FindKernel("HistogramMain");
 
-            float numExposureTests = RendererResources.Instance.leafExposures.Count;
+            float numExposureTests = RendererResources.Instance.leafExposureCameras.Count;
             //foreach(RenderTexture leafExposure in RendererResources.Instance.leafExposures)
             foreach(Camera leafExposureCamera in RendererResources.Instance.leafExposureCameras)
             {
