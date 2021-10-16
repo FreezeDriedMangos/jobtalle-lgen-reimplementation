@@ -5,14 +5,16 @@ namespace LGen.LParse
 { 
     public class Rule
     {
-        
+        private static uint ID_COUNTER;
+        public uint id = ID_COUNTER++;
+
         public const string CONNECTIVE = " => ";
 
         public Sentence LHS { get; private set; }
         public Sentence RHS { get; private set; }
 
         public Rule(Sentence LHS, Sentence RHS) { this.LHS = LHS; this.RHS = RHS; }
-        public Rule(Rule r) { this.LHS = new Sentence(r.LHS); this.RHS = new Sentence(r.RHS); }
+        public Rule(Rule r) { this.LHS = new Sentence(r.LHS); this.RHS = new Sentence(r.RHS); this.id = r.id; }
 
         public Rule(string s)
         {

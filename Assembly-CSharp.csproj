@@ -90,6 +90,8 @@
     <Compile Include="Assets\LGen\LRender\Vertex.cs" />
     <Compile Include="Assets\LGen\LSimulate\Grid.cs" />
     <Compile Include="Assets\LGen\LSimulate\Simulation.cs" />
+    <Compile Include="Assets\LGen\LSimulate\Speciation.cs" />
+    <Compile Include="Assets\LGen\LSimulate\Species.cs" />
     <Compile Include="Assets\LGen\SimInfoReporter.cs" />
     <Compile Include="Assets\Tests\LEvolveTest.cs" />
     <Compile Include="Assets\Tests\LParseTest.cs" />

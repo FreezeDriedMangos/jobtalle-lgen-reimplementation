@@ -11,6 +11,12 @@ namespace LGen.LSimulate
 {
     public class Agent
     {
+        private static uint ID_COUNTER = 0;
+        public uint id = ID_COUNTER++;
+        private static uint SPECIES_COUNTER = 1;
+        public uint speciesID = 0;
+
+
         public Vector2Int location;
         public Sentence sentence;
         public LSystem system;
@@ -163,10 +169,20 @@ namespace LGen.LSimulate
             for(int i = 0; i < state.agents.Count; i++) 
             {
                 Agent a = state.agents[i];
+
+                string ruleIds = "[";
+                foreach(Rule r in a.system.Rules) ruleIds += r.id + ", ";
+
+                if (a.system.Rules.Count > 0) ruleIds = ruleIds.Substring(0, ruleIds.Length-2)+"]";
+                else ruleIds += "]";
+
                 s += "\n";
                 s += "        {\n";
-                s += $"            \"location\": [{a.location.x}, {a.location.y}],\n";
+                s += $"            \"location\": [{a.location.x}, {a.location.y}],\n"; // this and below used for calculation / simulation
                 s += $"            \"system\": \"{a.system.ToString().Replace("\\", "\\\\").Replace("\n", "\\n")}\"\n";
+                s += $"            \"id\": {a.id},\n"; // this and below not used for calculation / simulation
+                s += $"            \"species\": {a.speciesID},\n";
+                s += $"            \"rule_ids\": {ruleIds}\n";
                 s += "        }";
                 
                 if (i < state.agents.Count-1) s += ",";
@@ -175,12 +191,14 @@ namespace LGen.LSimulate
                 s = "";
             }
             
-            s += "    \n],\n";
+            s += "\n    ],\n";
             s += "    \"randomizerState\": " + randomizer.GetStateAsJSON() + "\n";
             s += "}\n";
         
             writer.Write(s);
             s = "";
+
+            writer.Close();
         }
 
         public void AddColliders(SimulationState state)
