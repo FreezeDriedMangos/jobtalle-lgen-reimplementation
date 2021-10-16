@@ -39,7 +39,9 @@ public class ButtonController : Singleton<ButtonController>
 
     public void WriteSimState()
     {
-         StreamWriter writer = new StreamWriter($"Assets/JSON/{Simulation.Instance.state.simulationID}_gen{Simulation.Instance.state.generation}.json", true);
-         Simulation.Instance.JSONtoFile(Simulation.Instance.state, writer);
+        string directory = $"Assets/JSON/{Simulation.Instance.state.simulationID}/generations";
+        System.IO.Directory.CreateDirectory(directory);
+        StreamWriter writer = new StreamWriter($"{directory}/gen_{Simulation.Instance.state.generation}.json", true);
+        Simulation.Instance.JSONtoFile(Simulation.Instance.state, writer);
     }
 }

@@ -212,7 +212,7 @@ namespace LGen.LSimulate
 
         public static void WriteSpeciesToJSON(SimulationState state, Species sp)
         {
-            string directory = $"Assets/JSON/{state.simulationID}";
+            string directory = $"Assets/JSON/{state.simulationID}/species";
             System.IO.Directory.CreateDirectory(directory);
             System.IO.StreamWriter writer = new System.IO.StreamWriter($"{directory}/species_{sp.id}.json", true);
             string s = "";
@@ -221,7 +221,7 @@ namespace LGen.LSimulate
             s += $"    \"simulation_uuid\": \"{state.simulationID}\",\n";
             s +=  "    \"generation\":" + state.generation + ",\n";
             s += $"    \"speciesId\":{sp.id},\n";
-            s += $"    \"representative\":{sp.representative.system.ToString()},\n";
+            s += $"    \"representative\": \"{sp.representative.system.ToString().Replace("\\", "\\\\").Replace("\n", "\\n")}\",\n";
             s += $"    \"parent_species_id\":{sp.parentSpeciesID}\n";
             s +=  "}\n";
             writer.Write(s);
