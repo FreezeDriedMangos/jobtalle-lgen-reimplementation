@@ -83,13 +83,13 @@ namespace LGen.LSimulate {
 			return c1*numExcess/n + c2*numDisjoint/n + c3*totalSentenceDifference;
         }
 
-		public int Difference(Rule ra, Rule rb)
+		public static int Difference(Rule ra, Rule rb)
         {
 			string ras = ra.ToString();
 			string rbs = rb.ToString();
 			return Mathf.Max(ras.Length, rbs.Length) - LongestCommonSubsequence(ras, rbs);
         }
-		public int Difference(Sentence ra, Sentence rb)
+		public static int Difference(Sentence ra, Sentence rb)
         {
 			string ras = ra.ToString();
 			string rbs = rb.ToString();
