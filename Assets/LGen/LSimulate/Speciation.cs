@@ -30,6 +30,14 @@ namespace LGen.LSimulate {
 		
 			int aSize = a.system.Rules.Count;
 			int bSize = b.system.Rules.Count;
+			float n = Mathf.Max(aSize, bSize) + 1; // +1 for axiom
+
+			if (aSize <= 0 || bSize <= 0)
+			{
+				numExcess = Mathf.Max(aSize, bSize);
+				return c1*numExcess/n + c2*numDisjoint/n + c3*totalSentenceDifference;
+			}
+
 			int i;
 			int j;
 			for(i = j = 0; i < aSize || j < bSize; ) {
@@ -77,8 +85,6 @@ namespace LGen.LSimulate {
 		
 			//System.out.printf("numDisjoint: %d, numExcess: %d\n", numDisjoint, numExcess);
 			//System.out.printf("g1Size: %d, g2Size: %d\n", g1Size, g2Size);
-		
-			float n = Mathf.Max(aSize, bSize) + 1; // +1 for axiom
 			
 			return c1*numExcess/n + c2*numDisjoint/n + c3*totalSentenceDifference;
         }

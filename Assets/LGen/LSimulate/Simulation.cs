@@ -210,10 +210,11 @@ namespace LGen.LSimulate
             writer.Close();
         }
 
-        public static void WriteSpeciesToJSON(Species sp)
+        public static void WriteSpeciesToJSON(SimulationState state, Species sp)
         {
-            SimulationState state = Simulation.Instance.state;
-            System.IO.StreamWriter writer = new System.IO.StreamWriter($"Assets/JSON/{state.simulationID}/species_{sp.id}.json", true);
+            string directory = $"Assets/JSON/{state.simulationID}";
+            System.IO.Directory.CreateDirectory(directory);
+            System.IO.StreamWriter writer = new System.IO.StreamWriter($"{directory}/species_{sp.id}.json", true);
             string s = "";
             
             s += "{\n";
@@ -584,7 +585,7 @@ namespace LGen.LSimulate
             a.speciesID = Species.ID_COUNTER++;
             
             state.species.Add(sp);
-            WriteSpeciesToJSON(sp);
+            WriteSpeciesToJSON(state, sp);
         }
 
         class Seed
