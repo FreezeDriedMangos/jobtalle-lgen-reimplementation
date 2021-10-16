@@ -39,6 +39,10 @@ namespace LGen.LSimulate
         public Grid grid;
         public List<Agent> agents = new List<Agent>();
         public int generation;
+
+        // when a new species is created, record it to disk under {simulationID}/species_{speciesID}.JSON
+        // remove species with 0 members
+        public List<Species> species = new List<Species>();
     }
 
 
@@ -91,6 +95,11 @@ namespace LGen.LSimulate
 
         public bool limitAgentCount = false;
         public int maxNumAgents = 50;
+
+        public float maxSpeciesDelta;
+        public float speciation_c1;
+        public float speciation_c2;
+        public float speciation_c3;
 
         //
         // Top level functions
@@ -201,6 +210,24 @@ namespace LGen.LSimulate
             writer.Close();
         }
 
+        public static void WriteSpeciesToJSON(Species sp)
+        {
+            SimulationState state = Simulation.Instance.state;
+            System.IO.StreamWriter writer = new System.IO.StreamWriter($"Assets/JSON/{state.simulationID}/species_{sp.id}.json", true);
+            string s = "";
+            
+            s += "{\n";
+            s += $"    \"simulation_uuid\": \"{state.simulationID}\",\n";
+            s +=  "    \"generation\":" + state.generation + ",\n";
+            s += $"    \"speciesId\":{sp.id},\n";
+            s += $"    \"representative\":{sp.representative.system.ToString()},\n";
+            s += $"    \"parent_species_id\":{sp.parentSpeciesID}\n";
+            s +=  "}\n";
+            writer.Write(s);
+            
+            writer.Close();
+        }
+
         public void AddColliders(SimulationState state)
         {
             foreach(Agent a in state.agents)
@@ -280,6 +307,8 @@ namespace LGen.LSimulate
                     
                     state.grid[x, y].occupant = a;
                     state.agents.Add(a);
+
+                    Speciate(state, a, 0);
                 }
             }
         }
@@ -436,6 +465,9 @@ namespace LGen.LSimulate
 
                     seed.locationRelativeToParentRoot = agentData.seedReports[j].location; // TODO: make sure that seedReport.location really is relative to parent root
                     seed.parentGridLocation = agent.location;
+
+                    seed.parentID = agent.id;
+                    seed.parentSpecies = agent.speciesID;
                     
                     seed.absoluteLocation = this.gridScale*(new Vector3(seed.parentGridLocation.x, 0, seed.parentGridLocation.y)) + seed.locationRelativeToParentRoot;
                     seeds.Add(seed);
@@ -504,6 +536,8 @@ namespace LGen.LSimulate
                 state.agents.Add(agent);
                 state.grid[gridLocation.x, gridLocation.y].occupant = agent;
 
+                Speciate(state, agent, seed.parentSpecies);
+
                 // iterating over gridtiles within circle code from https://stackoverflow.com/a/41136531/9643841
                 //for (int iy = - radius  to  radius; iy++)
                 //    dx = (int) sqrt(radius * radius - iy * iy)
@@ -522,6 +556,35 @@ namespace LGen.LSimulate
                     }
                 }
             }
+
+            // remove all empty species
+            Dictionary<uint, bool> speciesHasMembers = new Dictionary<uint, bool>();
+            foreach(Agent a in state.agents) speciesHasMembers[a.speciesID] = true;
+            
+            List<Species> speciesToRemove = new List<Species>();
+            foreach(Species s in state.species) if (speciesHasMembers[s.id]) speciesToRemove.Add(s);
+            foreach(Species s in speciesToRemove) state.species.Remove(s);
+        }
+
+        public void Speciate(SimulationState state, Agent a, uint parentSpecies)
+        {
+            foreach(Species s in state.species)
+            {
+                if (Speciation.Delta(s.representative, a, this.speciation_c1, this.speciation_c2, this.speciation_c3) <= this.maxSpeciesDelta)
+                {
+                    a.speciesID = s.id;
+                    return;
+                }
+            }   
+
+            // create new species with a as the representative, and write it to file
+            Species sp = new Species();
+            sp.representative = a;
+            sp.parentSpeciesID = parentSpecies;
+            a.speciesID = Species.ID_COUNTER++;
+            
+            state.species.Add(sp);
+            WriteSpeciesToJSON(sp);
         }
 
         class Seed
@@ -533,6 +596,9 @@ namespace LGen.LSimulate
             public Vector2Int parentGridLocation;
 
             public Vector3 absoluteLocation;
+
+            public uint parentID;
+            public uint parentSpecies;
         }
     }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 namespace LGen.LSimulate { 
     public class Speciation
     {
-		public float Delta(Agent a, Agent b, float c1, float c2, float c3)
+		public static float Delta(Agent a, Agent b, float c1, float c2, float c3)
         {
 			// NEAT style speciation
 			// line up rules by id (innovation id)
