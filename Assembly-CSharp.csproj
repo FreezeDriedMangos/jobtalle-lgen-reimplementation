@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Assets\ButtonController.cs" />
     <Compile Include="Assets\CameraMove.cs" />
+    <Compile Include="Assets\Cladogram\Cladogram.cs" />
     <Compile Include="Assets\ClickHandler.cs" />
     <Compile Include="Assets\LGen\LEvolve\MutationProfile.cs" />
     <Compile Include="Assets\LGen\LEvolve\Mutator.cs" />
