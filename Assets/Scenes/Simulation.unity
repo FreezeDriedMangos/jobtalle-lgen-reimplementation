@@ -620,6 +620,10 @@ MonoBehaviour:
   seedOffset: 0
   limitAgentCount: 1
   maxNumAgents: 1
+  maxSpeciesDelta: 0
+  speciation_c1: 0
+  speciation_c2: 0
+  speciation_c3: 0
 --- !u!4 &651376578
 Transform:
   m_ObjectHideFlags: 0
@@ -2095,6 +2099,10 @@ MonoBehaviour:
   seedOffset: 0
   limitAgentCount: 0
   maxNumAgents: 10
+  maxSpeciesDelta: 3
+  speciation_c1: 10
+  speciation_c2: 10
+  speciation_c3: 1
 --- !u!1 &1741344239
 GameObject:
   m_ObjectHideFlags: 0
