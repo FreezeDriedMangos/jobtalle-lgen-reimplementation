@@ -96,6 +96,7 @@ namespace LGen.LSimulate
         public bool limitAgentCount = false;
         public int maxNumAgents = 50;
 
+        public bool writeSpeciesToDisc;
         public float maxSpeciesDelta;
         public float speciation_c1;
         public float speciation_c2;
@@ -212,6 +213,8 @@ namespace LGen.LSimulate
 
         public static void WriteSpeciesToJSON(SimulationState state, Species sp)
         {
+            if(!Simulation.Instance.writeSpeciesToDisc) return;
+
             string directory = $"Assets/JSON/{state.simulationID}/species";
             System.IO.Directory.CreateDirectory(directory);
             System.IO.StreamWriter writer = new System.IO.StreamWriter($"{directory}/species_{sp.id}.json", true);

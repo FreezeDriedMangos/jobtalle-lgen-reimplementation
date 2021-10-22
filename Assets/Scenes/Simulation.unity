@@ -620,6 +620,7 @@ MonoBehaviour:
   seedOffset: 0
   limitAgentCount: 1
   maxNumAgents: 1
+  writeSpeciesToDisc: 0
   maxSpeciesDelta: 0
   speciation_c1: 0
   speciation_c2: 0
@@ -2099,6 +2100,7 @@ MonoBehaviour:
   seedOffset: 0
   limitAgentCount: 0
   maxNumAgents: 10
+  writeSpeciesToDisc: 0
   maxSpeciesDelta: 3
   speciation_c1: 10
   speciation_c2: 10
