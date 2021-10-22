@@ -245,6 +245,8 @@ namespace LGen.LRender
                     return;
                 }
 
+                float maxScore = leafExposure.width*leafExposure.height;
+
                 shader.SetTexture(handleMain, "InputTexture", leafExposure);//RendererResources.Instance.testTex);//leafExposure);
                 shader.SetBuffer(handleMain, "HistogramBuffer", histogramBuffer);
                 shader.SetBuffer(handleInitialize, "HistogramBuffer", histogramBuffer);
@@ -273,7 +275,7 @@ namespace LGen.LRender
                 foreach(AgentRenderData agent in agents)
                 {
                     uint numPixels = histogramData[agent.leafIdentityColor.x + agent.leafIdentityColor.y*256]; //0; // histogramData[agent.leafIdentityColor.x + agent.leafIdentityColor.y*256]
-                    agent.agentData.exposureReport.exposure += (float)numPixels/numExposureTests;
+                    agent.agentData.exposureReport.exposure += (float)(numPixels/numExposureTests)/maxScore;
                 }
 
                 
