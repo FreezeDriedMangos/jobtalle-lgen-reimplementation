@@ -297,7 +297,7 @@ namespace LGen.LSimulate
             state.grid = new Grid(gridWidth, gridHeight, fertilityMap);
         }
 
-        public void InitializeAgents(SimulationState state, LSystem templateAgentSystem)
+        public virtual void InitializeAgents(SimulationState state, LSystem templateAgentSystem)
         {
             for(int x = 0; x < this.gridWidth; x += placeInitialSeedEveryNTiles)
             {
@@ -400,7 +400,9 @@ namespace LGen.LSimulate
                 // sunlight exposure
                 //
 
-                agent.viability_sunlightExposure = agentData.exposureReport.exposure * agentData.exposureReport.exposure / (float)agent.sentence.Tokens.Count;
+                float exposureReport = agentData.exposureReport.exposure*1000;
+                float divisor = agent.sentence.Tokens.Count * agent.sentence.Tokens.Count;
+                agent.viability_sunlightExposure = exposureReport * exposureReport / divisor;
 
                 //
                 // seeds

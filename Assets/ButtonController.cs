@@ -6,10 +6,14 @@ using UnityEngine;
 
 public class ButtonController : Singleton<ButtonController>
 {
+    public RectTransform UIParent;
     public UnityEngine.UI.InputField advanceIterationsInput;
 
     public GameObject gridDensityUiParent;
     public UnityEngine.UI.Text textPrefab;
+    public UnityEngine.UI.RawImage exposureCameraDisplayPrefab;
+
+    public List<GameObject> exposureCameraDisplays = new List<GameObject>();
 
     public void AdvanceIterations()
     {
@@ -25,6 +29,29 @@ public class ButtonController : Singleton<ButtonController>
         }
 
         SimInfoReporter.Instance.UpdateInfo();
+    }
+
+    public void ShowLeafExposureTextures()
+    {
+        if (exposureCameraDisplays.Count == 0)
+        {
+            foreach(Camera leafExposureCamera in LGen.LRender.RendererResources.Instance.leafExposureCameras)
+            {
+                UnityEngine.UI.RawImage display = GameObject.Instantiate(exposureCameraDisplayPrefab);
+                display.rectTransform.parent = UIParent;
+                display.texture = leafExposureCamera.targetTexture;
+                float y = -20 - display.rectTransform.sizeDelta.y/2f - exposureCameraDisplays.Count * display.rectTransform.sizeDelta.y;
+                display.rectTransform.anchoredPosition = new Vector2(-display.rectTransform.sizeDelta.x/2f, y);
+
+                exposureCameraDisplays.Add(display.gameObject);
+                display.gameObject.SetActive(false);
+            }
+        }
+
+        foreach(GameObject o in exposureCameraDisplays)
+        {
+            o.SetActive(true);
+        }
     }
 
     public void AddColliders()
