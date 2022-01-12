@@ -1,0 +1,2 @@
+Lower Limit of agent sentence size
+increase stability penalty

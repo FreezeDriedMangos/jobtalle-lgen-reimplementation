@@ -89,11 +89,13 @@
     <Compile Include="Assets\LGen\LRender\Turtle.cs" />
     <Compile Include="Assets\LGen\LRender\Utils.cs" />
     <Compile Include="Assets\LGen\LRender\Vertex.cs" />
+    <Compile Include="Assets\LGen\LSimulate\Examine.cs" />
     <Compile Include="Assets\LGen\LSimulate\Grid.cs" />
     <Compile Include="Assets\LGen\LSimulate\Simulation.cs" />
     <Compile Include="Assets\LGen\LSimulate\Speciation.cs" />
     <Compile Include="Assets\LGen\LSimulate\Species.cs" />
     <Compile Include="Assets\LGen\SimInfoReporter.cs" />
+    <Compile Include="Assets\SimulationAutoRunner.cs" />
     <Compile Include="Assets\Tests\LEvolveTest.cs" />
     <Compile Include="Assets\Tests\LParseTest.cs" />
     <Compile Include="Assets\Tests\LRenderTest.cs" />
@@ -105,6 +107,7 @@
     <None Include="Assets\LGen\LRender\ComputeTotalLeafExposure.compute" />
     <None Include="Assets\LGen\LRender\SeedShader.shader" />
     <None Include="Assets\LGen\LRender\StemShader.shader" />
+    <None Include="Assets\TODO.txt" />
     <None Include="Assets\LGen\LRender\LeafShader.shader" />
     <None Include="Assets\LGen\LRender\LeafExposure.shader" />
     <Reference Include="UnityEngine">
