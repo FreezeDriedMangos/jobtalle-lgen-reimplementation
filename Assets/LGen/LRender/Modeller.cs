@@ -40,6 +40,22 @@ namespace LGen.LRender
         public List<Vector3> seeds = new List<Vector3>();
 
         public Sentence sentence;
+
+        public static int CalculateMaxDepth(VertexTree tree)
+        {
+            if (tree.children.Count <= 0) return 1;
+
+            int max = 0;
+            foreach (VertexTree child in tree.children) {
+                int childDepth = CalculateMaxDepth(child);
+                if (childDepth > max)
+                {
+                    max = childDepth;           
+                }
+            }
+
+            return max+1;
+        }
     }
 
     public class Modeller
@@ -53,6 +69,7 @@ namespace LGen.LRender
             Armature armature = GenerateTree(sentence, branchLength, angleDelta, seedOffset);
             armature.sentence = sentence;
         
+            agent.structureReport.maxStructureDepth = Armature.CalculateMaxDepth(armature.VertexTree);
             agent.positionReport.centerOfGravity = CalculateCenterOfGravity(armature.VertexTree);
             agent.limitsReport = CalculateLimitsReport(armature.VertexTree, agent.limitsReport);    
             agent.seedReports = armature.seeds.ConvertAll(new Converter<Vector3, SeedReport>((Vector3 v) => new SeedReport(v) ));
@@ -71,14 +88,16 @@ namespace LGen.LRender
                     int t2 = m.triangles[i+2];
                     
                     Vector3 A = m.vertices[t0];
-                    Vector3 B = m.vertices[t0];
-                    Vector3 C = m.vertices[t0];
+                    Vector3 B = m.vertices[t1];
+                    Vector3 C = m.vertices[t2];
 
                     // area of a 3D triangle formula from https://math.stackexchange.com/a/128999
                     Vector3 AB = B - A;
                     Vector3 AC = C - A;
 
-                    r.area += 0.5f * Vector3.Cross(AB, AC).magnitude;
+                    r.area += 0.5f * Vector3.Cross(AB, AC).magnitude; // TODO: this is always 0
+                    //if (AB.x + AB.y + AB.z != 0)
+                    //    Debug.Log(AB + "  " + AC + "   " + Vector3.Cross(AB, AC));
                 }
             }
 

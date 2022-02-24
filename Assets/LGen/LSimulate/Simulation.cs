@@ -7,6 +7,9 @@ using UnityEngine;
 using System.Linq;
 using System.Diagnostics;
 
+using QuadTreeLib;
+using System.Drawing;
+
 namespace LGen.LSimulate
 {
     public class Agent
@@ -27,10 +30,12 @@ namespace LGen.LSimulate
         public float viability_seeds;
         public float viability_rules;
         public float viability_leaves;
+        public float viability_depth;
 
 
         public bool invalid;
-        public float viability { get { return invalid? -1 : viability_sunlightExposure * viability_stability * viability_seeds * viability_rules * viability_leaves; } }
+
+        public float viability { get { return invalid? -1 : viability_sunlightExposure * viability_stability * viability_seeds * viability_rules * viability_leaves * viability_depth; } }
     }
 
     public class SimulationState
@@ -68,6 +73,7 @@ namespace LGen.LSimulate
         public float seedDistributionAlpha;
         public int densityThreshold;
         public int sentenceLengthLimit;
+        public int maxNumForwardSymbolsInFinishedSentence;
 
         public string initialAxiom;
         public string[] initialRules;
@@ -255,7 +261,8 @@ namespace LGen.LSimulate
                 if (a.renderData.gameObject == o)
                 {
                     string s = "Sentence: "+a.sentence+"\n\nSystem:\n"+a.system+
-                            "\n\nInvalid?" + a.invalid + "\nViability: "+a.viability+"\nViability Sunlight: "+a.viability_sunlightExposure+"\nViability Stability: "+a.viability_stability+"\nViability Seeds: "+a.viability_seeds+"\nViability Rules: "+a.viability_rules+"\nViability Leaves: "+a.viability_leaves+ 
+                            "\n\nInvalid?" + a.invalid + "\nViability: "+a.viability+"\nViability Sunlight: "+a.viability_sunlightExposure+"\nViability Stability: "+a.viability_stability+"\nViability Seeds: "+a.viability_seeds+"\nViability Rules: "+a.viability_rules+"\nViability Leaves: "+a.viability_leaves+"\nViability Structure Depth"+a.viability_depth+ 
+                            "\n\nLeaf Areas" + string.Join(", ", a.renderData.agentData.leafReports.Select(leafReport => leafReport.area).ToArray()) +"\n"+
                             "\n\nLimits Minimum: "+a.renderData.agentData.limitsReport.minimum+"\nLimitsMaximum: "+a.renderData.agentData.limitsReport.maximum+"\nRadius: "+a.renderData.agentData.limitsReport.Radius+
                             "\n\nSystem E Set: " + (new GeneratedSymbols(a.system)).ToString() +
                             "\n\n"+a.renderData.agentData.exposureReport.exposure;
@@ -328,11 +335,11 @@ namespace LGen.LSimulate
                 
                 int x = Mathf.FloorToInt(fertility * GROWTH_PROFILE_RESOLUTION);
                 int iterations = 1 + Mathf.CeilToInt(4*(1-x/GROWTH_PROFILE_RESOLUTION));
-                int initial = 24;
+                int initial = 24; // // Problem 2: Plants were growing enormously long main trunks - solution: limit growth further
                 float multiplier = (GROWTH_PROFILE_RESOLUTION - x)*10f;
 
-                GrowthProfile growthProfile = new GrowthProfile.Quadratic(iterations, initial, multiplier);        
-
+                // Problem 4: Plants were still growing enormously long - solution: limit number of forward symbols
+                GrowthProfile growthProfile = new GrowthProfile.Quadratic(iterations, initial, multiplier, maxNumForwardSymbolsInFinishedSentence);        
                 agent.sentence = agent.system.Generate(growthProfile, this.randomizer);
             }
         }
@@ -401,7 +408,7 @@ namespace LGen.LSimulate
                 //
 
                 float exposureReport = agentData.exposureReport.exposure*1000;
-                float divisor = agent.sentence.Tokens.Count * agent.sentence.Tokens.Count;
+                float divisor = agent.sentence.Tokens.Count * agent.sentence.Tokens.Count; // Problem 1: dominant strategy was to grow leaves that literally blanketed the whole ground - solution: square the divisor
                 agent.viability_sunlightExposure = exposureReport * exposureReport / divisor;
 
                 //
@@ -420,8 +427,8 @@ namespace LGen.LSimulate
                 // stability
                 //
 
-                float lean = Vector3.Distance(agentData.positionReport.centerOfGravity, agentData.positionReport.rootPosition);
-                agent.viability_stability = 1f / (lean * lean * 0.3f + 1);
+                float lean = Vector3.Distance(agentData.positionReport.centerOfGravity, agentData.positionReport.rootPosition) + 1;
+                agent.viability_stability = 1f / (lean * lean + 1);
 
                 //
                 // leaves
@@ -434,13 +441,19 @@ namespace LGen.LSimulate
                     for(int l = 0; l < numLeaves; l++)
                     {
                         LeafReport r = agentData.leafReports[l];
-                        float areaFactor = r.area * 8f;
+                        float areaFactor = r.area * 8f      * 1000f;
                         leafEfficiencyFactor += 1 - areaFactor*areaFactor;
                     }
                     leafEfficiencyFactor /= (float)numLeaves;
                 
-                    agent.viability_leaves = leafEfficiencyFactor;
+                    agent.viability_leaves = Mathf.Sign(leafEfficiencyFactor) * leafEfficiencyFactor*leafEfficiencyFactor; // Problem 3: plants never evolved complex leaves, only non-branching leaves. Solution: square the leaf factor (and preserve sign)
                 }
+
+                // 
+                // depth 
+                //
+
+                agent.viability_depth = (30-agentData.structureReport.maxStructureDepth) * 10f; // Problem 4: the best strategy was still to evolve to be ridiculously long and spam leaves. Solution: penalize long, non-branching structures
             }
         }
 
@@ -453,6 +466,10 @@ namespace LGen.LSimulate
             //
             // generate seeds
             //
+
+        
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             
             for(int i = 0; i < state.agents.Count; i++)
             {
@@ -479,10 +496,18 @@ namespace LGen.LSimulate
                     seeds.Add(seed);
                 }
             }
+
+            
+
+            sw.Stop();
+            TimeKeeper.Instance.SeedNextState_GenerateSeeds = sw.Elapsed.ToString();
             
             //
             // Remove old agents
             //
+
+            sw = new Stopwatch();
+            sw.Start();
                         
             for(int i = 0; i < state.agents.Count; i++)
             {
@@ -509,19 +534,36 @@ namespace LGen.LSimulate
                 }
             }
 
+            
+
+            sw.Stop();
+            TimeKeeper.Instance.SeedNextState_RemoveOldAgents = sw.Elapsed.ToString();
+
             //
             // place new agents
             //
+            
+            sw = new Stopwatch();
+            sw.Start();
 
             // shuffle seeds
             seeds = seeds.OrderBy(seed => randomizer.MakeFloat(0, 99)).ToList<Seed>();
             // sort seeds by parentViability
             seeds = seeds.OrderBy(seed => -seed.parentViability).ToList<Seed>(); // orderby sorts things in ascending order, I want descending, so I make parent viabiilty negative
             
+            // TODO: use QuadTree
+            // TODO: class QuadTreeSeedItem { Seed seed; float radius; RectangleF Rectangle; int gridx; int gridy }
+            //float averageNumGridTilesIterated = 0;
+
             // distribute seeds
+            // QuadTree<QuadTreeSeedItem> quadTree = new QuadTree<QuadTreeSeedItem>(new RectangleF(0, 0, gridWidth, gridHeight));
             for(int i = 0; i < seeds.Count; i++)
             {
                 if (this.limitAgentCount && i >= this.maxNumAgents) break;
+
+                //
+                // generate seed
+                //
 
                 Seed seed = seeds[i];
                 //float distributionRadius = Mathf.Tan(seedDistributionAlpha) * seed.absoluteLocation.y; // a cone has a right triangle as its sillhouette
@@ -531,9 +573,52 @@ namespace LGen.LSimulate
                 Vector2 absoluteLocation = new Vector2(r * Mathf.Cos(theta) + seed.parentGridLocation.x*gridScale, r * Mathf.Sin(theta) + seed.parentGridLocation.y*gridScale);
                 Vector2Int gridLocation = new Vector2Int(Mathf.RoundToInt(absoluteLocation.x / gridScale), Mathf.RoundToInt(absoluteLocation.y / gridScale));
                 gridLocation = new Vector2Int(System.Math.Max(System.Math.Min(this.gridWidth-1, gridLocation.x), 0), System.Math.Max(System.Math.Min(this.gridHeight-1, gridLocation.y), 0));
-
+                
+                //
+                // check if seed has valid location
+                //
                 if (state.grid[gridLocation.x, gridLocation.y].density >= this.densityThreshold) continue;
+        
                 if (state.grid[gridLocation.x, gridLocation.y].occupant != null) continue;
+
+                // // QuadTree alternate to the density grid
+                //
+                //int gridspaceRadius = Mathf.CeilToInt(seed.parentRadius/this.gridScale); // radius in grid coords
+                //gridspaceRadius += gridspaceRadius %2 == 0? 0 : 1; // make it even for convinence
+                //RectangleF queryRect = new RectangleF(gridLocation.x - gridspaceRadius/2, gridLocation.y - gridspaceRadius/2, gridspaceRadius, gridspaceRadius);
+                //List<QuadTreeSeedItem> seedItems = quadTree.Query(queryRect);
+                //
+                //int density = 0;
+                //foreach (QuadTreeSeedItem item in seedItems)
+                //{
+                //    float dx = item.gridLocation.x - gridLocation.x;
+                //    float dy = item.gridLocation.y - gridLocation.y;
+                //    float distanceSquared = dx*dx + dy*dy;  
+                //    
+                //    float combinedRadius = item.gridspaceRadius + gridspaceRadius;
+                //    float combinedRadiusSquared = combinedRadius*combinedRadius;
+                //
+                //    if (distanceSquared <= combinedRadiusSquared) density++;
+                //    if (density >= this.densityThreshold) break;
+                //}
+                //
+                //if (density >= this.densityThreshold) continue;
+                //
+                ////
+                //// Add seed to quadtree
+                ////
+                //
+                //QuadTreeSeedItem thisItem = new QuadTreeSeedItem();
+                //thisItem.rectangle = queryRect;
+                //thisItem.seed = seed;
+                //thisItem.gridspaceRadius = gridspaceRadius;
+                //thisItem.gridLocation = gridLocation;
+                //quadTree.Insert(thisItem);
+
+
+                //
+                // create agent from seed (aka germinate seed)
+                //
 
                 Agent agent = new Agent();
                 agent.location = gridLocation;
@@ -542,34 +627,54 @@ namespace LGen.LSimulate
                 state.agents.Add(agent);
                 state.grid[gridLocation.x, gridLocation.y].occupant = agent;
 
-                Speciate(state, agent, seed.parentSpecies);
+                //Speciate(state, agent, seed.parentSpecies); // TODO: This is EXTROARDINARILY slow
 
                 // iterating over gridtiles within circle code from https://stackoverflow.com/a/41136531/9643841
                 //for (int iy = - radius  to  radius; iy++)
                 //    dx = (int) sqrt(radius * radius - iy * iy)
                 //    for (int ix = - dx  to  dx; ix++)
                 //        doSomething(CX + ix, CY + iy);
+                //float iterCount = 0;
                 int radius = Mathf.CeilToInt(seed.parentRadius/this.gridScale); // radius in grid coords
                 for (int iy = -radius; iy < radius; iy++)
                 {
                     int dx = Mathf.CeilToInt(Mathf.Sqrt(radius * radius - iy * iy));
                     for (int ix = -dx; ix < dx; ix++)
                     {
+                        //iterCount++;
+
                         int gx = ix + gridLocation.x;
                         int gy = iy + gridLocation.y;
                         if (gx < 0 || gy < 0 || gx >= gridWidth || gy >= gridHeight) continue;
                         state.grid[gx, gy].density++;
                     }
                 }
+
+                //averageNumGridTilesIterated += iterCount/((float)seeds.Count);
             }
+            
+            //UnityEngine.Debug.Log("Average num grid tiles iterated per seed: " + averageNumGridTilesIterated);
+            //UnityEngine.Debug.Log("Num seeds: " + seeds.Count);
+            
+
+            sw.Stop();
+            TimeKeeper.Instance.SeedNextState_DistributeSeeds = sw.Elapsed.ToString();
+
+            sw = new Stopwatch();
+            sw.Start();
 
             // remove all empty species
             Dictionary<uint, bool> speciesHasMembers = new Dictionary<uint, bool>();
             foreach(Agent a in state.agents) speciesHasMembers[a.speciesID] = true;
             
             List<Species> speciesToRemove = new List<Species>();
-            foreach(Species s in state.species) if (speciesHasMembers[s.id]) speciesToRemove.Add(s);
+            foreach(Species s in state.species) if (!speciesHasMembers.ContainsKey(s.id) || !speciesHasMembers[s.id]) speciesToRemove.Add(s);
             foreach(Species s in speciesToRemove) state.species.Remove(s);
+
+            
+
+            sw.Stop();
+            TimeKeeper.Instance.SeedNextState_ResetSpecies = sw.Elapsed.ToString();
         }
 
         public void Speciate(SimulationState state, Agent a, uint parentSpecies)
@@ -605,6 +710,15 @@ namespace LGen.LSimulate
 
             public uint parentID;
             public uint parentSpecies;
+        }
+
+        class QuadTreeSeedItem : IHasRect { 
+            public Seed seed; 
+            public float gridspaceRadius;
+            public RectangleF rectangle; 
+            public Vector2Int gridLocation;
+
+            RectangleF IHasRect.Rectangle => rectangle;
         }
     }
 }

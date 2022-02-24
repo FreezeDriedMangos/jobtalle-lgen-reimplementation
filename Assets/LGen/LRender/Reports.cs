@@ -50,4 +50,9 @@ namespace LGen.LRender
     {
         public int branchLoad;
     }
+
+    public class StructureReport
+    {
+        public int maxStructureDepth;
+    }
 }

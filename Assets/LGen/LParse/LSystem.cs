@@ -42,8 +42,9 @@ namespace LGen.LParse
 			Sentence sentence = new Sentence(this.Axiom);
 
 			for(int application = 0; application < iterations; application++)
-				if(!sentence.Apply(this.Rules, randomizer, growthProfile.GetGrowth(application)))
+				if(!sentence.Apply(this.Rules, randomizer, growthProfile.GetGrowth(application), growthProfile.GetMaxNumForwardSymbols(application)))
 					break;
+				
 
 			return sentence;
 		}

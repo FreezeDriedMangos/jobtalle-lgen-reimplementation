@@ -48,7 +48,7 @@ namespace LGen.LParse
 			return true;
         }
 
-		public bool Apply(List<Rule> rules, Randomizer randomizer, int limit) 
+		public bool Apply(List<Rule> rules, Randomizer randomizer, int limit, int limitForwardTokens=-1) 
 		{
 			List<Token> newTokens = new List<Token>();
 			bool ruleWasApplied = false;
@@ -78,7 +78,16 @@ namespace LGen.LParse
 				}
 
 				if (newTokens.Count > limit) 
-					return true;
+					return false;
+			}
+
+			// make sure there's not too many forward symbols
+			if (limitForwardTokens > 0)
+			{
+				int numForward = 0;
+				foreach(Token t in newTokens) if(t.OnRangeInclusive(Legend.STEP_MIN, Legend.STEP_MAX)) numForward++;
+
+				if (numForward > limitForwardTokens) return false;
 			}
 
 			this.Tokens = newTokens;

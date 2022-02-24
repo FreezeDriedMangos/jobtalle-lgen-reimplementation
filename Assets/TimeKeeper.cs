@@ -10,6 +10,10 @@ public class TimeKeeper : Singleton<TimeKeeper>
     public string EvaluateLeafExposure;
     public string EvaluateViability;
     public string SeedNextState;
+    public string SeedNextState_GenerateSeeds;
+    public string SeedNextState_DistributeSeeds;
+    public string SeedNextState_ResetSpecies;
+    public string SeedNextState_RemoveOldAgents;
 
     //BuildAgentSentences(state);
     //RenderAgents_AndEvaluateLeafExposure(state);

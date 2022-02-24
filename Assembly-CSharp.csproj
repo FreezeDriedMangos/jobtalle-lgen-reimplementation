@@ -102,10 +102,15 @@
     <Compile Include="Assets\Tests\LRenderTest2.cs" />
     <Compile Include="Assets\Tests\LRenderTestExposure.cs" />
     <Compile Include="Assets\TimeKeeper.cs" />
+    <Compile Include="Assets\imported\QuadTreeLib\IHasRect.cs" />
+    <Compile Include="Assets\imported\QuadTreeLib\Properties\AssemblyInfo.cs" />
+    <Compile Include="Assets\imported\QuadTreeLib\QuadTree.cs" />
+    <Compile Include="Assets\imported\QuadTreeLib\QuadTreeNode.cs" />
     <Compile Include="Assets\imported\Singleton.cs" />
     <None Include="Assets\LGen\LRender\GroundShader.shader" />
     <None Include="Assets\LGen\LRender\ComputeTotalLeafExposure.compute" />
     <None Include="Assets\LGen\LRender\SeedShader.shader" />
+    <None Include="Assets\imported\QuadTreeLib\SOURCED FROM.txt" />
     <None Include="Assets\LGen\LRender\StemShader.shader" />
     <None Include="Assets\TODO.txt" />
     <None Include="Assets\LGen\LRender\LeafShader.shader" />

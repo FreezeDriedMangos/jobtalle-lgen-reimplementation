@@ -14,6 +14,7 @@ namespace LGen.LRender
         public ExposureReport exposureReport = new ExposureReport();
         public PositionReport positionReport = new PositionReport();
         public List<BranchReport> branchReports = new List<BranchReport>();
+        public StructureReport structureReport = new StructureReport();
     }
 
     public class AgentMeshes
