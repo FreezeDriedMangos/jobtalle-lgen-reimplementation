@@ -561,7 +561,7 @@ Transform:
   m_GameObject: {fileID: 610792124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.3, y: 0, z: -0.3}
-  m_LocalScale: {x: 20.5, y: 1, z: 20.5}
+  m_LocalScale: {x: 41, y: 1, z: 41}
   m_Children:
   - {fileID: 1027633194}
   - {fileID: 608598692}
@@ -2390,16 +2390,17 @@ MonoBehaviour:
   LOG_LEAF_EXPOSURES: 0
   randomizerSeed: 0
   gridScale: 0.3
-  gridWidth: 33
-  gridHeight: 33
+  gridWidth: 132
+  gridHeight: 132
   placeInitialSeedEveryNTiles: 5
   maxNumSeedsPerAgent: 999
   seedDistributionAlpha: 10
-  densityThreshold: 10
+  densityThreshold: 2
   sentenceLengthLimit: 10
   maxNumForwardSymbolsInFinishedSentence: 200
-  initialAxiom: '*'
-  initialRules: []
+  initialAxiom: '*<A]'
+  initialRules:
+  - A => A+[^B]B*
   fertilityMap: {fileID: 2800000, guid: 0c9f4efcfc5430d4ba5fdb27647f5e50, type: 3}
   leafOpacity: 0.8
   maxExpectedBranchLoad_displayPurposesOnly: 2

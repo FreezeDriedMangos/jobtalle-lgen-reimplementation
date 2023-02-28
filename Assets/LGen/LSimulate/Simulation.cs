@@ -409,6 +409,7 @@ namespace LGen.LSimulate
 
                 float exposureReport = agentData.exposureReport.exposure*1000;
                 float divisor = agent.sentence.Tokens.Count * agent.sentence.Tokens.Count; // Problem 1: dominant strategy was to grow leaves that literally blanketed the whole ground - solution: square the divisor
+                // float divisor = agent.sentence.Tokens.Count;
                 agent.viability_sunlightExposure = exposureReport * exposureReport / divisor;
 
                 //
@@ -441,19 +442,22 @@ namespace LGen.LSimulate
                     for(int l = 0; l < numLeaves; l++)
                     {
                         LeafReport r = agentData.leafReports[l];
-                        float areaFactor = r.area * 8f      * 1000f;
-                        leafEfficiencyFactor += 1 - areaFactor*areaFactor;
+                        float areaFactor = r.area * 8f;
+                        //leafEfficiencyFactor += 1 - areaFactor*areaFactor;
+                        leafEfficiencyFactor += 1 - (areaFactor*areaFactor / (float)numLeaves);
                     }
-                    leafEfficiencyFactor /= (float)numLeaves;
+                    //leafEfficiencyFactor /= (float)numLeaves;
                 
                     agent.viability_leaves = Mathf.Sign(leafEfficiencyFactor) * leafEfficiencyFactor*leafEfficiencyFactor; // Problem 3: plants never evolved complex leaves, only non-branching leaves. Solution: square the leaf factor (and preserve sign)
+                    // agent.viability_leaves = leafEfficiencyFactor;
                 }
 
                 // 
                 // depth 
                 //
 
-                agent.viability_depth = (30-agentData.structureReport.maxStructureDepth) * 10f; // Problem 4: the best strategy was still to evolve to be ridiculously long and spam leaves. Solution: penalize long, non-branching structures
+                // agent.viability_depth = (30-agentData.structureReport.maxStructureDepth) * 10f; // Problem 4: the best strategy was still to evolve to be ridiculously long and spam leaves. Solution: penalize long, non-branching structures
+                agent.viability_depth = 1;
             }
         }
 
